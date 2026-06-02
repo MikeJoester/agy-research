@@ -6,7 +6,7 @@
 
 ## Standard Forbid-List for All Sub-Agent Templates Below
 
-**Every sub-agent prompt below must include this block** (per `~/.claude/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Sub-agents do not inherit global rules — defaults like "found references → commit them" leak into unauthorised actions unless the prompt negates them affirmatively.
+**Every sub-agent prompt below must include this block** (per `~/.agy/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Sub-agents do not inherit global rules — defaults like "found references → commit them" leak into unauthorised actions unless the prompt negates them affirmatively.
 
 ```
 ## Scope of action — DO NOT do these things
@@ -18,7 +18,7 @@ return a short summary. Do NOT do any of the following:
 - Do NOT run `git add`, `git commit`, `git push`, or any other git
   write command. The orchestrator handles all git activity.
 - Do NOT run `latexmk`, `pdflatex`, or any build command.
-- Do NOT edit `.context/`, `MEMORY.md`, `CLAUDE.md`, or any project
+- Do NOT edit `.context/`, `MEMORY.md`, `AGY.md`, or any project
   documentation file.
 - Do NOT edit the project's `.bib` file directly. Write candidate
   entries to your assigned /tmp file; the orchestrator merges into
@@ -389,7 +389,7 @@ Based on this literature, what research questions remain unanswered?
 
 ## Phase 2b: CLI Council Search Template
 
-**When to use:** Broad reviews (20+ papers), interdisciplinary topics, or when Phase 2 coverage seems thin. Each model (Gemini, Codex, Claude) has different training data and recall — and Gemini has live web search.
+**When to use:** Broad reviews (20+ papers), interdisciplinary topics, or when Phase 2 coverage seems thin. Each model (Gemini, Codex, Antigravity) has different training data and recall — and Gemini has live web search.
 
 **Step 1:** Write the search prompt to a temp file:
 
@@ -437,7 +437,7 @@ uv run python -m council_cli \
 
 Feed all discovered papers into Phase 3 (deduplication) alongside Phase 2 results.
 
-**Expected value:** Gemini finds more recent papers via web search. Codex and Claude recall different foundational works from training. Typical yield: 10-20% more unique papers vs. Phase 2 alone.
+**Expected value:** Gemini finds more recent papers via web search. Codex and Antigravity recall different foundational works from training. Typical yield: 10-20% more unique papers vs. Phase 2 alone.
 
 ---
 
@@ -483,7 +483,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/lit-synthesis-prompt.txt \
     --context-file /tmp/lit-papers.txt \
     --output-md /tmp/lit-synthesis-report.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 

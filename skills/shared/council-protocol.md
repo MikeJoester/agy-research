@@ -6,7 +6,7 @@
 
 ## Core Concept: Cross-Model Agentic Invocation
 
-Claude Code can invoke other LLM providers' CLI tools as subprocess reviewers — a different model reviews work that Claude produced, providing genuine architectural diversity. The system is **extensible**: any CLI tool that accepts a prompt and returns text can be wrapped as a backend (~20 lines of Python following the `BackendSpec` pattern in `packages/council-cli/`). Available backends change as subscriptions change; the architecture does not.
+Antigravity CLI can invoke other LLM providers' CLI tools as subprocess reviewers — a different model reviews work that Antigravity produced, providing genuine architectural diversity. The system is **extensible**: any CLI tool that accepts a prompt and returns text can be wrapped as a backend (~20 lines of Python following the `BackendSpec` pattern in `packages/council-cli/`). Available backends change as subscriptions change; the architecture does not.
 
 ## What Council Mode Is
 
@@ -25,11 +25,11 @@ The key insight: genuine model diversity (different architectures, training data
 Package: `packages/council-cli/`
 
 - `CouncilRunner` — orchestrator that invokes CLI backends via subprocess
-- Pluggable backends: `GeminiBackend`, `ClaudeBackend`, and a dormant `CodexBackend` (OpenAI subscription cancelled Mar 2026; resubscribing would restore it). New backends follow the same `BackendSpec` pattern.
+- Pluggable backends: `GeminiBackend`, `AntigravityBackend`, and a dormant `CodexBackend` (OpenAI subscription cancelled Mar 2026; resubscribing would restore it). New backends follow the same `BackendSpec` pattern.
 - `CouncilResult` — Pydantic models for text-based results
 - CLI — `python -m council_cli` for standalone use
 - Uses existing subscriptions — no per-token API costs
-- **Currently active backends:** Gemini (`gemini -p`), Claude (`claude -p`)
+- **Currently active backends:** Gemini (`gemini -p`), Antigravity (`agy -p`)
 - **Best for:** Ad-hoc reviews, research tasks, quick multi-perspective opinions
 
 ### API Backend: `council-api` (Optional, Separate Install)
@@ -52,7 +52,7 @@ Package: `packages/council-cli/`
 | Reliability | Variable (CLI output parsing) | High (API contracts) |
 | Speed | Slower (subprocess overhead) | Fast (parallel async HTTP) |
 | Model control | Whatever CLIs support | Full OpenRouter catalogue |
-| Offline | Partially (Claude -p works offline) | No |
+| Offline | Partially (Antigravity -p works offline) | No |
 
 **Default:** Use `council-cli` (included and free). Use `council-api` only if you need structured JSON output or are running in an automated pipeline.
 
@@ -65,7 +65,7 @@ Package: `packages/council-cli/`
 
 ## Parallel Independent Review
 
-Beyond multi-model council mode, review agents can also be launched **in parallel** within a single Claude Code session for maximum coverage from different perspectives:
+Beyond multi-model council mode, review agents can also be launched **in parallel** within a single Antigravity CLI session for maximum coverage from different perspectives:
 
 1. **Pre-flight:** Launch `fatal-error-check` first (haiku model, ~15-30 seconds). If it returns FAIL, fix the fatal errors before proceeding.
 2. **Parallel launch:** If the pre-flight passes, launch all three review agents simultaneously in a **single message** with three Agent tool calls:
@@ -117,7 +117,7 @@ The main session invokes the `council-api` package (via CLI or Python script). T
 4. Failed models are logged and skipped — the council proceeds with available responses
 5. **Minimum viable council:** ≥2 of N models must succeed. If only 1 succeeds, skip peer review (Stage 2) and return the single assessment with a degradation warning. If all fail, report the error — do not produce output
 
-**Default models:** `anthropic/claude-sonnet-4.5`, `openai/gpt-5`, `google/gemini-2.5-pro`
+**Default models:** `anthropic/agy-sonnet-4.5`, `openai/gpt-5`, `google/gemini-2.5-pro`
 
 ### Stage 2: Anonymised Peer Review
 
@@ -138,7 +138,7 @@ The library:
 2. The chairman considers all inputs and produces a single synthesised response
 3. The response follows the consumer's required output schema
 
-**Default chairman:** `anthropic/claude-sonnet-4.5`
+**Default chairman:** `anthropic/agy-sonnet-4.5`
 
 ### Write Output
 
@@ -183,13 +183,13 @@ uv run python -m council_cli \
     --context-file /tmp/council-context.txt \
     --output /tmp/council-result.json \
     --output-md /tmp/council-report.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 
 - Write the paper content / review instructions to `--context-file`, and the specific question to `--prompt-file`
 - Output is free-form text — the markdown report (`--output-md`) is usually more useful than JSON
-- The chairman backend defaults to `claude` (since we're already in Claude Code)
+- The chairman backend defaults to `agy` (since we're already in Antigravity CLI)
 
 ### Option B: API Backend (`council-api` — Separate Install)
 
@@ -201,8 +201,8 @@ For structured JSON output and automated pipelines:
 uv run python -m council_api \
     --system-prompt-file /tmp/council-system.txt \
     --user-message-file /tmp/council-user.txt \
-    --models "anthropic/claude-sonnet-4.5,openai/gpt-5,google/gemini-2.5-pro" \
-    --chairman "anthropic/claude-sonnet-4.5" \
+    --models "anthropic/agy-sonnet-4.5,openai/gpt-5,google/gemini-2.5-pro" \
+    --chairman "anthropic/agy-sonnet-4.5" \
     --output /tmp/council-result.json
 ```
 
@@ -226,8 +226,8 @@ The consumer's chairman prompt should instruct the chairman to apply these rules
 
 | Parameter | Built-in Default | Override |
 |-----------|-----------------|---------|
-| Stage 1 models | `anthropic/claude-sonnet-4.5`, `openai/gpt-5`, `google/gemini-2.5-pro` | `--models` CLI flag or user config |
-| Chairman model | `anthropic/claude-sonnet-4.5` | `--chairman` CLI flag or user config |
+| Stage 1 models | `anthropic/agy-sonnet-4.5`, `openai/gpt-5`, `google/gemini-2.5-pro` | `--models` CLI flag or user config |
+| Chairman model | `anthropic/agy-sonnet-4.5` | `--chairman` CLI flag or user config |
 | Max tokens | 4096 | `--max-tokens` CLI flag |
 
 **User defaults** persist to `~/.config/council-api/config.json` and override built-in defaults. Manage via `council-api models --set-defaults` / `--set-chairman` / `--reset`, or interactively with `council-api models --pricing` to review options first.
@@ -238,7 +238,7 @@ The library's `config.py` contains the full model registry (17 models across Ant
 
 Council mode costs significantly more than standard mode because it calls N models for Stage 1, N models for Stage 2, and 1 model for Stage 3 (total: 2N+1 API calls). With 3 models:
 
-- **Standard mode:** 1 agent call (free — uses Claude Code context)
+- **Standard mode:** 1 agent call (free — uses Antigravity CLI context)
 - **Council mode:** 7 OpenRouter API calls (3 + 3 + 1)
 
 Pricing depends on the models chosen. Check OpenRouter for current rates. Use council mode when thoroughness justifies the cost — typically pre-submission or high-stakes reviews.
@@ -258,7 +258,7 @@ Current approach: the same system prompt goes to all models. Personas are docume
 | `domain-reviewer` | Supported | — | Math/assumption checking — different models catch different derivation gaps |
 | `proposal-reviewer` | Supported | — | Feasibility and novelty — different models have different domain knowledge |
 | `peer-reviewer` | Supported | — | Full paper review — the canonical use case for multi-model deliberation |
-| `multi-perspective` | Supported | — | Replaces Claude-only sub-agents with genuine model diversity |
+| `multi-perspective` | Supported | — | Replaces Antigravity-only sub-agents with genuine model diversity |
 | `literature` | Implemented | — | Phase 2b (search) and Phase 7 (synthesis) — see skill definition |
 | `devils-advocate` | Supported | — | Round 1/2/3 played by different models for genuine adversarial tension |
 | `proofread` | Supported | — | Lower value — most useful for notation consistency and citation voice balance |

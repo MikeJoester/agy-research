@@ -5,13 +5,13 @@
 ## Directory Structure
 
 ```
-claude-research/
-├── CLAUDE.md                         # Main instruction file
+agy-research/
+├── AGY.md                         # Main instruction file
 ├── README.md                         # Setup guide
 ├── MEMORY.md                         # Accumulated knowledge
 ├── .gitignore
 │
-├── .claude/
+├── .agy/
 │   ├── agents/                       # 6 specialised review agents
 │   │   ├── referee2-reviewer.md
 │   │   ├── peer-reviewer.md
@@ -24,7 +24,7 @@ claude-research/
 │   │   ├── scope-discipline.md
 │   │   ├── learn-tags.md
 │   │   ├── read-docs-first.md
-│   │   ├── lean-claude-md.md
+│   │   ├── lean-agy-md.md
 │   │   ├── overleaf-separation.md
 │   │   ├── ignore-agents-md.md
 │   │   ├── ignore-gemini-md.md
@@ -93,13 +93,13 @@ claude-research/
 
 ## Symlink Architecture
 
-The `setup.sh` script creates four symlinks in `~/.claude/`:
+The `setup.sh` script creates four symlinks in `~/.agy/`:
 
 ```
-~/.claude/skills/  → <repo>/skills/
-~/.claude/agents/  → <repo>/.claude/agents/
-~/.claude/rules/   → <repo>/.claude/rules/
-~/.claude/hooks/   → <repo>/hooks/
+~/.agy/skills/  → <repo>/skills/
+~/.agy/agents/  → <repo>/.agy/agents/
+~/.agy/rules/   → <repo>/.agy/rules/
+~/.agy/hooks/   → <repo>/hooks/
 ```
 
 This makes all components globally available from any project directory.
@@ -110,19 +110,19 @@ This makes all components globally available from any project directory.
 Session Start
     │
     ├── startup-context-loader.sh  →  Reads .context/ files
-    │                                  Outputs to Claude as additionalContext
+    │                                  Outputs to Antigravity as additionalContext
     │
     ├── Rules loaded                →  All 9 rules active
     │
-    └── Claude ready
+    └── Antigravity ready
          │
          ├── User: "/proofread"    →  Skill invoked (same session)
          │
          ├── User: "Review paper"  →  Agent launched (separate context via Task tool)
          │
-         ├── Claude: "git push -f" →  block-destructive-git.sh BLOCKS
+         ├── Antigravity: "git push -f" →  block-destructive-git.sh BLOCKS
          │
-         ├── Claude uses Bash      →  context-monitor.py tracks usage
+         ├── Antigravity uses Bash      →  context-monitor.py tracks usage
          │
          ├── Context compression   →  precompact-autosave.py saves state
          │                             postcompact-restore.py restores state
@@ -132,9 +132,9 @@ Session Start
 
 ## Configuration
 
-All configuration lives in `~/.claude/settings.json`:
+All configuration lives in `~/.agy/settings.json`:
 
-- **`permissions.allow`**: Commands Claude can run without prompting
+- **`permissions.allow`**: Commands Antigravity can run without prompting
 - **`permissions.deny`**: Commands that are always blocked (bare python/pip)
 - **`hooks`**: Which scripts run at which events
 - **`model`**: Default model preference
@@ -146,14 +146,14 @@ All configuration lives in `~/.claude/settings.json`:
 2. Available immediately as `/my-skill`
 
 ### Adding a new agent
-1. Create `.claude/agents/my-agent.md`
+1. Create `.agy/agents/my-agent.md`
 2. Available immediately via Task tool
 
 ### Adding a new hook
 1. Create script in `hooks/`
 2. Make executable: `chmod +x hooks/my-hook.sh`
-3. Add to `~/.claude/settings.json`
+3. Add to `~/.agy/settings.json`
 
 ### Adding a new rule
-1. Create `.claude/rules/my-rule.md`
+1. Create `.agy/rules/my-rule.md`
 2. Auto-loaded in every session

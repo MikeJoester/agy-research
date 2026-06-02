@@ -55,7 +55,7 @@
 | `quarto-deck` | Reveal.js HTML presentations (teaching, informal talks) |
 | `quarto-course` | Quarto course websites with slides and exercises |
 | `project-deck` | Status decks for supervisor meetings and handoffs |
-| `insights-deck` | Claude Code usage insights as a Beamer presentation |
+| `insights-deck` | Antigravity CLI usage insights as a Beamer presentation |
 | `latex-posters` | Research posters in LaTeX (beamerposter, tikzposter, baposter) |
 | `translate-to-quarto` | Translate Beamer LaTeX slides to Quarto RevealJS |
 | `pptx` | Create, read, edit, or manipulate PowerPoint files |
@@ -89,7 +89,7 @@
 |-------|---------|
 | `init-project-research` | Full project scaffold (interview, git, Overleaf, vault) |
 | `init-project-course` | Course/module folder scaffold |
-| `init-project-light` | Lightweight scaffold (CLAUDE.md only, no git/vault) |
+| `init-project-light` | Lightweight scaffold (AGY.md only, no git/vault) |
 | `init-project-orchestration` | Add project agents, commands, and planning to a research project |
 | `project-safety` | Safety rules and folder structures to prevent data loss |
 | `session-log` | Timestamped progress logs for session continuity |
@@ -142,7 +142,7 @@
 | Skill | Purpose |
 |-------|---------|
 | `sync-repo` | Sync docs with system state for atlas, biblio, taskflow, or private repos |
-| `sync-public-repo` | Sync private infrastructure to the public repo (claude-research) |
+| `sync-public-repo` | Sync private infrastructure to the public repo (agy-research) |
 | `sync-public-review` | Interactive review and editing of public sync allowlists |
 | `sync-friends-repo` | Regenerate the friends-repo starter kit from private rules |
 | `sync-resources` | Pull latest from cloned resource repos |
@@ -174,7 +174,7 @@
 |-------|---------|
 | `machine-inventory` | Audit machine environment (Homebrew, dotfiles, credentials, dev tools, nested repos, MCP) |
 | `machine-evaluation` | Holistic review of machine setup from snapshots: missing tools, redundant apps, cross-machine parity |
-| `radar` | Search the web for Claude Code updates, AI workflow patterns, and MCP ecosystem news |
+| `radar` | Search the web for Antigravity CLI updates, AI workflow patterns, and MCP ecosystem news |
 | `radar-integrate` | Convert saved radar tips into infrastructure changes |
 
 ### Infrastructure (5)

@@ -12,7 +12,7 @@ argument-hint: [paper-or-argument-description]
 
 Based on Scott Cunningham's Part 3: "Creating Devil's Advocate Agents for Tough Problems" - addressing the "LLM thing of over-confidence in diagnosing a problem."
 
-**For formal code audits with replication scripts and referee reports, use the Referee 2 agent instead (`.claude/agents/referee2-reviewer.md`).** This skill is for quick adversarial feedback on arguments, not systematic audits.
+**For formal code audits with replication scripts and referee reports, use the Referee 2 agent instead (`.agy/agents/referee2-reviewer.md`).** This skill is for quick adversarial feedback on arguments, not systematic audits.
 
 ## When to Use
 
@@ -97,7 +97,7 @@ For quick checks (e.g., "just poke holes in this argument"), skip the multi-turn
 
 ## Council Mode (Optional)
 
-For the highest-stakes arguments, run the devil's advocate debate across multiple LLM providers. Different models have genuinely different reasoning patterns — a critique that Claude finds weak, GPT may find devastating, and vice versa. This produces adversarial tension that a single model cannot replicate internally.
+For the highest-stakes arguments, run the devil's advocate debate across multiple LLM providers. Different models have genuinely different reasoning patterns — a critique that Antigravity finds weak, GPT may find devastating, and vice versa. This produces adversarial tension that a single model cannot replicate internally.
 
 **Trigger:** "Council devil's advocate" or "thorough challenge"
 
@@ -113,7 +113,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/devils-advocate-prompt.txt \
     --context-file /tmp/paper-content.txt \
     --output-md /tmp/devils-advocate-council.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 

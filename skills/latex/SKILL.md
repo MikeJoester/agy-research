@@ -210,11 +210,11 @@ After all phases complete, compute the quality score:
 
 When the compile produced a PDF (and any backup copy), emit an outputs manifest and run the shared verifier per [`_shared/verify-outputs.md`](../_shared/verify-outputs.md):
 
-1. Write manifest to `<project>/.claude/state/outputs-manifest-<UTC-timestamp>.json` listing every file written this invocation (PDF, backup PDF if 2.4 ran, log files).
+1. Write manifest to `<project>/.agy/state/outputs-manifest-<UTC-timestamp>.json` listing every file written this invocation (PDF, backup PDF if 2.4 ran, log files).
 2. Run:
 
    ```bash
-   python3 "$HOME/.claude/skills/_shared/verify_outputs.py" \
+   python3 "$HOME/.agy/skills/_shared/verify_outputs.py" \
        --manifest "$MANIFEST" \
        --project-root "$PROJECT_ROOT"
    ```
@@ -233,7 +233,7 @@ All LaTeX build artifacts (`.aux`, `.log`, `.bbl`, `.fls`, etc.) go to an `out/`
 
 The PDF-copy convention is enforced in **two places** — keep them in sync when making changes:
 
-1. **`.latexmkrc`** (per-project) — Perl `END {}` block copies PDF after terminal/Claude Code builds
+1. **`.latexmkrc`** (per-project) — Perl `END {}` block copies PDF after terminal/Antigravity CLI builds
 2. **VS Code `.vscode/settings.json`** (per-workspace) — explicit latexmk args in LaTeX Workshop tool definition
 
 VS Code integration, engine auto-detection (pdfLaTeX/XeLaTeX/LuaLaTeX), manual override configs, reference checking scripts, and manual compilation commands:

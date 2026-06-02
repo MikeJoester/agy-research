@@ -19,7 +19,7 @@ Script writes JSON to `/tmp/init-paper-book-verifier-<slug>.json` and exits non-
 CLI:
 
 ```bash
-uv run python ~/.claude/skills/init-paper-book/references/verify_chapters.py \
+uv run python ~/.agy/skills/init-paper-book/references/verify_chapters.py \
     --book-dir ~/Research-Vault/books/<slug>/ \
     --paper-tex <full-path-to-main.tex> \
     --bib <full-path-to-references.bib> \

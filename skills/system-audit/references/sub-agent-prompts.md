@@ -8,7 +8,7 @@
 
 ```
 Task Management root: $TM/
-Global Claude config: ~/.claude/
+Global Antigravity config: ~/.agy/
 Project index: .context/projects/_index.md
 Research projects root: $RESEARCH_ROOT/
 Research project categories (subdirectories of the root above):
@@ -66,11 +66,11 @@ For each project, check:
 2. **Overleaf separation:** If a paper/ directory exists, is it a symlink? Check that paper/ contains ONLY LaTeX source files (.tex, .sty, .cls, .bst, .bbl, .bib, .latexmkrc, out/) and figures (.pdf, .png, .eps, .jpg, .svg, .tikz). Flag any code files (.py, .R, .jl, .sh, .ipynb), data files (.csv, .xlsx, .json, .dta, .parquet), or other non-LaTeX artifacts found inside paper/.
 3. **Hook executability:** All .sh files in $TM/hooks/ should be executable (chmod +x).
 4. **Python environment:** If .py files exist in the project, is there a pyproject.toml? Any sign of bare pip usage (requirements.txt without pyproject.toml, pip in scripts)?
-5. **CLAUDE.md presence:** Does each project have a CLAUDE.md?
+5. **AGY.md presence:** Does each project have a AGY.md?
 6. **Git health:** Is the project a git repo? Any uncommitted changes? Any untracked files that should probably be tracked?
 
 Report per-project compliance as a table:
-Project | Category | LaTeX/out | Overleaf sep. | Python env | CLAUDE.md | Git
+Project | Category | LaTeX/out | Overleaf sep. | Python env | AGY.md | Git
 
 Only scan top-level project directories — don't recurse deeply into subdirectories.
 ```
@@ -81,7 +81,7 @@ Documentation checks (stale counts, broken markdown links, `.context/` mtime fre
 
 ## (Removed) Sub-Agent 5: Ecosystem Health
 
-Ecosystem checks (MCP server alignment between Code/Desktop configs, orphan tool refs, CLI tool presence) are now handled deterministically by `.scripts/system_audit_facts.py ecosystem`. The deterministic version reads the canonical `.mcp.json` + Claude Desktop config and emits aligned tables rather than re-parsing them per-run in a sub-agent. See SKILL.md Phase 1.
+Ecosystem checks (MCP server alignment between Code/Desktop configs, orphan tool refs, CLI tool presence) are now handled deterministically by `.scripts/system_audit_facts.py ecosystem`. The deterministic version reads the canonical `.mcp.json` + Antigravity Desktop config and emits aligned tables rather than re-parsing them per-run in a sub-agent. See SKILL.md Phase 1.
 
 Staleness/orphan detection (90-day mtime sweep across skills/hooks/agents/rules/scripts) is a known-judgment domain — currently absorbed into SA6 Skill Quality. If a separate orphan-detection script becomes worthwhile, add it as another section in the facts script rather than reviving this sub-agent.
 
@@ -117,8 +117,8 @@ Return a summary table:
 Check for functional overlap ACROSS component types (skills, hooks, agents, rules, .scripts/). Read the description/purpose of each component:
 - skills/*/SKILL.md (frontmatter description)
 - hooks/*.sh and hooks/*.py (header comment block)
-- .claude/agents/*.md (first 10 lines for purpose)
-- .claude/rules/*.md (first 10 lines for principle)
+- .agy/agents/*.md (first 10 lines for purpose)
+- .agy/rules/*.md (first 10 lines for principle)
 - .scripts/*.py and .scripts/*.sh (header comment block)
 
 Flag cases where two different component types appear to do the same thing or enforce the same constraint. Common overlap patterns to check:

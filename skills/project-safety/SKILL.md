@@ -8,24 +8,24 @@ argument-hint: [project-path]
 
 **CRITICAL RULE: Never delete data or code files. Never.** Use legacy/ folder for originals. Copy, don't move.
 
-> Establish safety rules and structures before Claude makes changes to research projects.
+> Establish safety rules and structures before Antigravity makes changes to research projects.
 
 ## Purpose
 
-Based on Scott Cunningham's workflow: prevent accidental data loss by establishing rules and using legacy folders before Claude reorganizes or modifies project files.
+Based on Scott Cunningham's workflow: prevent accidental data loss by establishing rules and using legacy folders before Antigravity reorganizes or modifies project files.
 
 ## When to Use
 
 - Starting a new research project folder
-- Before asking Claude to reorganize files
-- When Claude will be running code or modifying data
+- Before asking Antigravity to reorganize files
+- When Antigravity will be running code or modifying data
 - Setting up a project for collaborative work
 
 ---
 
 ## Safety Rules Template
 
-Add this to any project's CLAUDE.md file:
+Add this to any project's AGY.md file:
 
 ```markdown
 ## Safety Rules
@@ -50,7 +50,7 @@ After safety setup:
 
 ```
 project/
-├── CLAUDE.md           ← Safety rules + project context
+├── AGY.md           ← Safety rules + project context
 ├── README.md           ← Project documentation
 ├── legacy/             ← PROTECTED: original files
 │   └── [all originals]
@@ -73,7 +73,7 @@ project/
 
 ## Dry Run Pattern
 
-Before Claude executes potentially destructive operations, ask for a preview:
+Before Antigravity executes potentially destructive operations, ask for a preview:
 
 > "Tell me what commands you would run to reorganize this folder, but don't execute them yet."
 
@@ -96,7 +96,7 @@ Before Claude executes potentially destructive operations, ask for a preview:
 
 ## Workflow
 
-1. **Create CLAUDE.md** with safety rules
+1. **Create AGY.md** with safety rules
 2. **Create legacy/ folder**
 3. **Move all originals to legacy/**
 4. **Copy needed files** into new structure
@@ -110,7 +110,7 @@ Before Claude executes potentially destructive operations, ask for a preview:
 ```
 I'm starting work on [PROJECT]. Before we do anything:
 
-1. Create a CLAUDE.md with safety rules (never delete data/code, use legacy folder)
+1. Create a AGY.md with safety rules (never delete data/code, use legacy folder)
 2. Create a legacy/ folder
 3. Move all existing files into legacy/
 4. Show me the proposed new directory structure before creating it
@@ -122,8 +122,8 @@ Do a dry run first — tell me what you would do before doing it.
 
 ## Why This Matters
 
-- Claude operates at speed — mistakes happen fast
-- You can't always verify what Claude will do before it does it
+- Antigravity operates at speed — mistakes happen fast
+- You can't always verify what Antigravity will do before it does it
 - Version control (git, Dropbox) helps but prevention is better
 - The legacy/ folder is your safety net
 - Dry runs give you a chance to catch mistakes
@@ -132,4 +132,4 @@ Do a dry run first — tell me what you would do before doing it.
 
 ## Example Use
 
-"Set up my new Carbon Markets project with proper safety rules. Create the CLAUDE.md, legacy folder, and recommended directory structure. Show me your plan before executing."
+"Set up my new Carbon Markets project with proper safety rules. Create the AGY.md, legacy folder, and recommended directory structure. Show me your plan before executing."

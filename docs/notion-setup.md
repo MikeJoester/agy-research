@@ -7,7 +7,7 @@ The task management system uses **two Notion databases** to track your work:
 1. **Tasks Tracker** — individual tasks with status, priority, due dates, and project links
 2. **Research Pipeline** — paper-level tracking with stages (Idea → Literature Review → Drafting → Submitted → R&R → Published), target journals, and co-authors
 
-Together with the local context library (`.context/`), these create a hybrid system: Notion handles dynamic task data, while local files handle persistent context that Claude reads every session.
+Together with the local context library (`.context/`), these create a hybrid system: Notion handles dynamic task data, while local files handle persistent context that Antigravity reads every session.
 
 ## How It Works
 
@@ -15,18 +15,18 @@ Together with the local context library (`.context/`), these create a hybrid sys
 You say "plan my day"
         │
         ▼
-Claude reads .context/current-focus.md     ← what you're working on
-Claude reads .context/workflows/daily-review.md  ← how to help you plan
-Claude queries Notion Tasks Tracker        ← overdue/due today/high priority
+Antigravity reads .context/current-focus.md     ← what you're working on
+Antigravity reads .context/workflows/daily-review.md  ← how to help you plan
+Antigravity queries Notion Tasks Tracker        ← overdue/due today/high priority
         │
         ▼
-Claude asks orientation questions           ← energy, commitments, yesterday's work
+Antigravity asks orientation questions           ← energy, commitments, yesterday's work
         │
         ▼
-Claude helps you prioritise                 ← based on your answers + context
+Antigravity helps you prioritise                 ← based on your answers + context
         │
         ▼
-Claude updates .context/current-focus.md   ← so next session picks up where you left off
+Antigravity updates .context/current-focus.md   ← so next session picks up where you left off
 ```
 
 ## Available Workflows
@@ -39,17 +39,17 @@ Claude updates .context/current-focus.md   ← so next session picks up where yo
 | "Weekly review" | Guides reflection: what got done, what didn't, what emerged, next week's Big 3 |
 | "What's overdue?" | Queries Notion and summarises |
 | "Update my research pipeline" | Shows paper status, helps update stages and target journals |
-| "Sync this project" (`/sync-notion`) | Propagates project state: CLAUDE.md → context library → Notion |
+| "Sync this project" (`/sync-notion`) | Propagates project state: AGY.md → context library → Notion |
 
 ## Step 1: Enable the Notion MCP
 
-The Notion integration uses **Claude.ai's managed Notion integration** — a built-in MCP server that Claude Code can connect to. No self-hosted server needed.
+The Notion integration uses **Antigravity.ai's managed Notion integration** — a built-in MCP server that Antigravity CLI can connect to. No self-hosted server needed.
 
-1. Go to [claude.ai/settings/integrations](https://claude.ai/settings/integrations)
+1. Go to [agy.ai/settings/integrations](https://agy.ai/settings/integrations)
 2. Connect your Notion workspace
-3. Grant access to the pages/databases Claude should see
+3. Grant access to the pages/databases Antigravity should see
 
-Once connected, Claude Code automatically has access to Notion tools (`notion-search`, `notion-fetch`, `notion-create-pages`, `notion-update-page`, etc.).
+Once connected, Antigravity CLI automatically has access to Notion tools (`notion-search`, `notion-fetch`, `notion-create-pages`, `notion-update-page`, etc.).
 
 ## Step 2: Create the Databases
 
@@ -78,11 +78,11 @@ You need two Notion databases. Create them anywhere in your workspace.
 | Priority | Select | High, Medium, Low |
 | Status | Rich text | Brief status note |
 
-## Step 3: Add Database IDs to CLAUDE.md
+## Step 3: Add Database IDs to AGY.md
 
 1. Open each database in Notion
 2. Copy the database ID from the URL (the 32-character hex string after your workspace name: `notion.so/workspace/DATABASE_ID_HERE?v=...`)
-3. Add them to `CLAUDE.md`:
+3. Add them to `AGY.md`:
 
 ```markdown
 ## Notion Databases
@@ -93,16 +93,16 @@ You need two Notion databases. Create them anywhere in your workspace.
 | Research Pipeline | `your-pipeline-database-id-here` |
 ```
 
-Claude reads these IDs from `CLAUDE.md` and uses them to query and update your databases.
+Antigravity reads these IDs from `AGY.md` and uses them to query and update your databases.
 
 ## Step 4: Start Using It
 
 ```bash
-claude
+agy
 > Plan my day
 ```
 
-Claude will read your context, query Notion, ask you orientation questions, and help you prioritise.
+Antigravity will read your context, query Notion, ask you orientation questions, and help you prioritise.
 
 ## Graceful Degradation
 

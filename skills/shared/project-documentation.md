@@ -2,7 +2,7 @@
 
 > Shared conventions for outward-facing documentation: project READMEs, user manuals, architecture docs, deploy guides, and in-app help. Ensures consistency across Scout, council packages, and future projects.
 >
-> Companion to `system-documentation.md` (which covers internal Task Management docs like CLAUDE.md, SKILL.md, and component catalogues).
+> Companion to `system-documentation.md` (which covers internal Task Management docs like AGY.md, SKILL.md, and component catalogues).
 
 ---
 
@@ -43,7 +43,7 @@ When **auditing** a project's documentation (via `/sync-repo scout`, `/update-pr
 
 1. Grep for `Governed by: skills/shared/project-documentation.md` across all `.md` and `.tex` files
 2. Flag any outward-facing docs that lack the tag — these are candidates for tagging
-3. Do not tag internal docs (CLAUDE.md, SKILL.md, `.context/` files, `log/` files, `docs/components/skills.md`, etc.) — those are governed by `system-documentation.md`
+3. Do not tag internal docs (AGY.md, SKILL.md, `.context/` files, `log/` files, `docs/components/skills.md`, etc.) — those are governed by `system-documentation.md`
 
 ---
 

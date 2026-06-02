@@ -43,7 +43,7 @@ Build a chronological sequence of events:
 
 | Time | Action | Actor | Outcome |
 |------|--------|-------|---------|
-| HH:MM | [What was done] | [Claude/User] | [Result] |
+| HH:MM | [What was done] | [Antigravity/User] | [Result] |
 
 Key questions:
 - What was the trigger?
@@ -92,7 +92,7 @@ Classify each fix by type:
 | **Skill** | Recurring workflow needs structure | Create SKILL.md via `/skill-extract` |
 | **Guard** | Action requires mandatory checkpoint | Add approval gate to existing skill |
 | **Rule** | Behavioural constraint needed globally | Create `rules/*.md` |
-| **Documentation** | Knowledge gap caused the issue | Update CLAUDE.md, MEMORY.md, or docs/ |
+| **Documentation** | Knowledge gap caused the issue | Update AGY.md, MEMORY.md, or docs/ |
 | **Hook** | Manual step was forgotten | Create script in hooks/ |
 | **Checklist** | Multiple steps need verification | Add to existing skill |
 

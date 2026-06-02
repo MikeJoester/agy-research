@@ -1,6 +1,6 @@
 ---
 name: update-project-doc
-description: "Use when you need to update a project's own CLAUDE.md, README.md, or docs/ to reflect current state."
+description: "Use when you need to update a project's own AGY.md, README.md, or docs/ to reflect current state."
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash(ls*), Bash(git log*), Bash(git diff*), Bash(readlink*), Bash(wc*), Bash(date*), AskUserQuestion
 argument-hint: (no arguments)
 ---
@@ -30,12 +30,12 @@ argument-hint: (no arguments)
 
 Find all documentation files in the project:
 
-1. Check for `CLAUDE.md` in project root
+1. Check for `AGY.md` in project root
 2. Check for `README.md` in project root
 3. Scan `docs/` and `docs/*/` for `.md` files containing file trees or counts
 4. Note which files exist — only update what's present
 
-**Special case:** Some projects (e.g., the political information paper) have no `CLAUDE.md` because they use a committed `README.md` as their primary project documentation instead. This is intentional for repos meant to be shared or published. In these cases, treat `README.md` as the main documentation file and apply all the same checks to it.
+**Special case:** Some projects (e.g., the political information paper) have no `AGY.md` because they use a committed `README.md` as their primary project documentation instead. This is intentional for repos meant to be shared or published. In these cases, treat `README.md` as the main documentation file and apply all the same checks to it.
 
 Read each detected file to understand its current content.
 
@@ -56,12 +56,12 @@ Collect the actual state of the project:
 9. **Skill lengths** — `wc -l skills/*/SKILL.md` to identify bloated skills
 
 **Leanness data** (all projects):
-10. **CLAUDE.md line count** — `wc -l CLAUDE.md`
-11. **CLAUDE.md section sizes** — count lines per `##` section
+10. **AGY.md line count** — `wc -l AGY.md`
+11. **AGY.md section sizes** — count lines per `##` section
 12. **README.md line count** — `wc -l README.md`
 13. **SKILL.md line counts** — (Task Management only) `wc -l skills/*/SKILL.md`
-14. **Duplication scan** — check if CLAUDE.md content duplicates what's already in README.md, docs/, or .context/ files
-15. **Agent line counts** — `wc -l .claude/agents/*.md` (if present)
+14. **Duplication scan** — check if AGY.md content duplicates what's already in README.md, docs/, or .context/ files
+15. **Agent line counts** — `wc -l .agy/agents/*.md` (if present)
 16. **Context file line counts** — `wc -l .context/*.md` (if present)
 
 ### Step 3: Run Staleness Checks
@@ -76,8 +76,8 @@ Compare gathered state against documented content. Flag any mismatches:
 | **Next steps / roadmap** | Cross-reference items against recent commits and session logs — flag items that appear completed |
 | **Manuscript status** | Flag sections marked "TODO", "incomplete", or "placeholder" that now have content |
 | **Symlinks** | Verify documented symlink targets still resolve with `readlink` |
-| **Skill/hook counts** | (Task Management only) Compare actual count vs documented numbers in CLAUDE.md, README.md, and `.tex` files |
-| **Venue/target info** | If CLAUDE.md documents a target journal, check it matches `.context/projects/_index.md` (if accessible) |
+| **Skill/hook counts** | (Task Management only) Compare actual count vs documented numbers in AGY.md, README.md, and `.tex` files |
+| **Venue/target info** | If AGY.md documents a target journal, check it matches `.context/projects/_index.md` (if accessible) |
 
 ### Step 3b: Leanness Audit
 
@@ -85,12 +85,12 @@ Using the data gathered in Step 2 (items 10-14), check infrastructure file sizes
 
 | File | Threshold | What to flag | Fix |
 |------|-----------|-------------|-----|
-| `CLAUDE.md` | > 200 lines total | Current line count | Extract reference sections to `docs/`, replace with pointers (see `lean-claude-md` rule) |
-| `CLAUDE.md` sections | Any `##` section > 15 lines of reference material | Section name + line count | Extract to `docs/` with a one-line summary + link |
-| `CLAUDE.md` duplication | Content duplicated from README/docs/.context | Which content is duplicated and where | Keep only the pointer in CLAUDE.md |
+| `AGY.md` | > 200 lines total | Current line count | Extract reference sections to `docs/`, replace with pointers (see `lean-agy-md` rule) |
+| `AGY.md` sections | Any `##` section > 15 lines of reference material | Section name + line count | Extract to `docs/` with a one-line summary + link |
+| `AGY.md` duplication | Content duplicated from README/docs/.context | Which content is duplicated and where | Keep only the pointer in AGY.md |
 | `README.md` | > 300 lines total | Current line count | Extract long sections to `docs/` |
 | `SKILL.md` files | > 300 lines each (TM only) | File name + line count | Move templates/examples/report formats to `references/` or `templates/` subdirectory |
-| Project agents (`.claude/agents/*.md`) | > 400 lines each | File name + line count | Extract verbose prompt sections to companion files |
+| Project agents (`.agy/agents/*.md`) | > 400 lines each | File name + line count | Extract verbose prompt sections to companion files |
 | Context files (`.context/*.md`) | > 200 lines each | File name + line count | Archive stale content, keep current |
 
 **What counts as "reference material"** (extractable): assessment guidelines, detailed literature notes, long examples, report templates, checklists, reviewer feedback.
@@ -106,7 +106,7 @@ Present findings grouped by file:
 ```
 Staleness report for [Project Name]:
 
-CLAUDE.md:
+AGY.md:
   - File structure tree is outdated (missing: X, Y; removed: Z)
   - Skill count says 23, actual is 26
   - "Last updated" date is 3 weeks old
@@ -120,7 +120,7 @@ docs/overview.md:
   - No issues detected
 
 Leanness:
-  - CLAUDE.md: 237 lines (threshold: 200) — ## Assessment section is 42 lines of guidelines
+  - AGY.md: 237 lines (threshold: 200) — ## Assessment section is 42 lines of guidelines
   - README.md: OK (189 lines)
 ```
 
@@ -145,7 +145,7 @@ Leanness fixes available:
 
 | # | File | Issue | Current | Fix |
 |---|------|-------|---------|-----|
-| 1 | CLAUDE.md | >200 lines | 237 | Extract ## Assessment section → docs/ |
+| 1 | AGY.md | >200 lines | 237 | Extract ## Assessment section → docs/ |
 | 2 | skills/X/SKILL.md | >300 lines | 382 | Move checklists → references/ |
 ```
 
@@ -170,7 +170,7 @@ After all edits, print a summary:
 
 ```
 Updated project docs:
-  CLAUDE.md:  file tree, skill count (23 → 26)
+  AGY.md:  file tree, skill count (23 → 26)
   README.md:  directory structure, bib count (38 → 42), 1 next-step marked complete
   Total: 5 edits across 2 files
 ```

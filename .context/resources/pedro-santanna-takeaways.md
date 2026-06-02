@@ -1,19 +1,19 @@
-# Pedro Sant'Anna — Claude Code Workflow Takeaways
+# Pedro Sant'Anna — Antigravity CLI Workflow Takeaways
 
-> Source: `resources/pedro-santanna/claude-code-my-workflow`
+> Source: `resources/pedro-santanna/antigravity-cli-my-workflow`
 > Context: Production workflow used for 6 PhD lecture decks (800+ slides), Econ 730 at Emory
 > Saved: February 2026
 
 ## What It Is
 
-A modular, opinionated system for using Claude Code to develop academic lecture materials (Beamer + Quarto). Everything is parameterised so other academics can fork it.
+A modular, opinionated system for using Antigravity CLI to develop academic lecture materials (Beamer + Quarto). Everything is parameterised so other academics can fork it.
 
 ## Architecture
 
 ```
-CLAUDE.md                  — Project memory (~150 lines, links to detailed rules)
-.claude/agents/ (10)       — Specialized reviewers (proofreader, slide-auditor, pedagogy, R, TikZ, etc.)
-.claude/skills/ (13)       — Slash commands (/compile-latex, /translate-to-quarto, /qa-quarto, etc.)
+AGY.md                  — Project memory (~150 lines, links to detailed rules)
+.agy/agents/ (10)       — Specialized reviewers (proofreader, slide-auditor, pedagogy, R, TikZ, etc.)
+.agy/skills/ (13)       — Slash commands (/compile-latex, /translate-to-quarto, /qa-quarto, etc.)
 rules/ (39)                — Auto-loaded enforcement protocols
 quality_reports/            — Plans and session logs (survive context compression)
 ```
@@ -69,7 +69,7 @@ Format: `[LEARN:tag] Incorrect → Correct`
 
 ### 9. Stop Hook for Verification
 - `settings.json` includes a hook that runs on conversation end
-- Checks: did Claude verify compilation/rendering before stopping?
+- Checks: did Antigravity verify compilation/rendering before stopping?
 - Prevents shipping broken outputs
 
 ### 10. Knowledge Base Template
@@ -80,8 +80,8 @@ Format: `[LEARN:tag] Incorrect → Correct`
 
 ## Philosophy
 
-- Claude as **collaborative partner**, not fully autonomous agent
-- Human drives vision and approves; Claude implements, reviews, iterates
+- Antigravity as **collaborative partner**, not fully autonomous agent
+- Human drives vision and approves; Antigravity implements, reviews, iterates
 - Verification is **non-negotiable** — enforced by hooks
 - Decision rationale preserved in session logs (git shows *what*, logs show *why*)
 - Orchestrator frees cognitive load for creative work

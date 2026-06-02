@@ -29,7 +29,7 @@ The user wants you to read, review, or summarize an academic paper. The input is
 **If a search query or paper title is provided:**
 
 Determine the download directory:
-- **Inside a research project** (has `CLAUDE.md`, `data/`, `paper/`, etc.): use `./articles/` in the project directory (create if needed).
+- **Inside a research project** (has `AGY.md`, `data/`, `paper/`, etc.): use `./articles/` in the project directory (create if needed).
 - **Outside a project** (e.g., ad-hoc reading from Task Management root): use `to-sort/downloads/` in the Task Management folder.
 
 Then:

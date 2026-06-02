@@ -35,12 +35,12 @@ THRESHOLDS = [
 THROTTLE_SECONDS = 60  # Minimum seconds between info-level messages
 
 # --- Paths ---
-SESSIONS_BASE = Path.home() / ".claude" / "sessions"
+SESSIONS_BASE = Path.home() / ".agy" / "sessions"
 
 
 def project_hash() -> str:
     """Deterministic hash of the project directory."""
-    project_dir = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
+    project_dir = os.environ.get("AGY_PROJECT_DIR", os.getcwd())
     return hashlib.sha256(project_dir.encode()).hexdigest()[:12]
 
 

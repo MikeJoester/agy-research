@@ -29,7 +29,7 @@ Compare a project's `.bib` file against a Paperpile label to identify gaps betwe
 1. **Project `.bib` file** — detected automatically (same logic as `/bib-validate`: look for `references.bib`, then any `.bib` in the project)
 2. **Paperpile label** — resolved from:
    - Explicit `--topic <slug>` argument
-   - Project's `CLAUDE.md` or Atlas topic frontmatter
+   - Project's `AGY.md` or Atlas topic frontmatter
    - Directory name if inside a research project
    - If no collection can be resolved, report an error and suggest specifying `--topic`
 

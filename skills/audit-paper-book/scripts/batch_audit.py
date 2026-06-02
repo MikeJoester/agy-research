@@ -92,7 +92,7 @@ ACRONYM_ALLOW = {
     # Decision-science / OR / stats vocabulary (universal in MCDA / OR books)
     "MCDA", "OR", "SPSS", "ICC", "UI", "OSF", "BDS",
     # Project file conventions (filenames, not jargon acronyms)
-    "CLAUDE", "MEMORY", "README", "AGENTS",
+    "AGY", "MEMORY", "README", "AGENTS",
     # ML / LLM universal vocabulary + hardware proper nouns
     "GLM", "DPO", "NP", "MF", "A100", "GPT-4", "GPT-3", "RLHF",
     "PEFT", "LoRA", "ICL", "CoT", "BPE",

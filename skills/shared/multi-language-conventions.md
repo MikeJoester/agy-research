@@ -8,7 +8,7 @@
 Detect from project context in this order:
 
 1. Existing scripts in `code/` or `src/` → match language
-2. `CLAUDE.md` or `MEMORY.md` mentions → follow stated preference
+2. `AGY.md` or `MEMORY.md` mentions → follow stated preference
 3. User request → explicit language choice
 4. Default → R for econometrics/causal inference, Python for ML/simulation
 

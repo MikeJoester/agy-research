@@ -50,7 +50,7 @@
 
 ## Settings — settings.local.json
 
-If `.claude/settings.local.json` exists, leave it. If not, create one:
+If `.agy/settings.local.json` exists, leave it. If not, create one:
 
 ```json
 {
@@ -82,11 +82,11 @@ Offer to create entries in the appropriate vault submissions/tracking. If the us
 ### Student module → Vault Module Entry (Student)
 
 - **Database data source ID:** `YOUR-MODULES-STUDENT-DATABASE-ID-HERE`
-- Set: Module Name, Module Code, University, Programme, Term, Year, Status, Assessment Type, Credits, Instructor, Folder Path, Has CLAUDE.md = `__YES__`
+- Set: Module Name, Module Code, University, Programme, Term, Year, Status, Assessment Type, Credits, Instructor, Folder Path, Has AGY.md = `__YES__`
 
 ### Instructor module → Vault Module Entry (Instructor)
 
 - **Database data source ID:** `YOUR-MODULES-INSTRUCTOR-DATABASE-ID-HERE`
-- Set: Module Name, Module Code, University, Term, Year, Role, Status, Module Leader, Folder Path, Has CLAUDE.md = `__YES__`
+- Set: Module Name, Module Code, University, Term, Year, Role, Status, Module Leader, Folder Path, Has AGY.md = `__YES__`
 
 Use information gathered from the interview. Leave unknown fields empty rather than guessing.

@@ -57,8 +57,8 @@ scholarly arxiv-get-paper --arxiv-id 1904.02868 > /tmp/lit/ghorbani-zou.json 2>&
 uv run python -c "
 from pathlib import Path
 import sys
-sys.path.insert(0, '$HOME/.claude/skills/literature/references')
-exec(Path('$HOME/.claude/skills/literature/references/scholarly-output-parsing.md').read_text().split('\`\`\`python')[1].split('\`\`\`')[0])
+sys.path.insert(0, '$HOME/.agy/skills/literature/references')
+exec(Path('$HOME/.agy/skills/literature/references/scholarly-output-parsing.md').read_text().split('\`\`\`python')[1].split('\`\`\`')[0])
 data = get_paper_data('/tmp/lit/ghorbani-zou.json')
 print(data['title'], '|', data['doi'])
 "

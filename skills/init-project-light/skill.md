@@ -29,7 +29,7 @@ argument-hint: "[no arguments — runs in current directory]"
 
 Read everything already in the directory before asking questions.
 
-1. List all files and folders (excluding `.claude/`, `.DS_Store`)
+1. List all files and folders (excluding `.agy/`, `.DS_Store`)
 2. Read text files (`.md`, `.tex`, `.bib`, `.txt`) to understand content — respect file size (skip files > 500 lines, note them)
 3. Build a mental model: what is this project, what's the main output, who's involved?
 
@@ -52,9 +52,9 @@ If Phase 1 gave you enough, confirm your understanding instead of asking:
 
 ---
 
-## Phase 3: Create CLAUDE.md
+## Phase 3: Create AGY.md
 
-Follow the `lean-claude-md` rule. Include only:
+Follow the `lean-agy-md` rule. Include only:
 
 1. **Project overview** — 2-3 sentences from interview/scan
 2. **People** — if collaborators/supervisors exist
@@ -86,9 +86,9 @@ Based on what's in the directory, **suggest** lightweight organisation. Present 
 - Never create more than 2-3 folders — this is a light project
 - Never move files without explicit approval
 - If the existing structure already makes sense, say so and skip this phase
-- If there's a `.claude/settings.local.json`, leave it. If not, create one with standard permissions.
+- If there's a `.agy/settings.local.json`, leave it. If not, create one with standard permissions.
 
-### Standard permissions (`.claude/settings.local.json`)
+### Standard permissions (`.agy/settings.local.json`)
 
 ```json
 {
@@ -121,9 +121,9 @@ Short report:
 Set up lightweight project: <name>
 
 Created:
-  - CLAUDE.md
+  - AGY.md
   - [any folders created]
-  - [.claude/settings.local.json if created]
+  - [.agy/settings.local.json if created]
 
 Skipped (use /init-project-research if needed later):
   - Git, Overleaf, vault atlas, code scaffold
@@ -136,4 +136,4 @@ Skipped (use /init-project-research if needed later):
 | Skill | Relationship |
 |-------|-------------|
 | `/init-project-research` | Escalate to this for full research projects |
-| `/update-project-doc` | Run later to refresh CLAUDE.md if the project grows |
+| `/update-project-doc` | Run later to refresh AGY.md if the project grows |

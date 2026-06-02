@@ -6,7 +6,7 @@ This mode spawns parallel sub-agents that each verify a batch of entries and wri
 
 ## Standard Forbid-List for Verification Sub-Agents
 
-**Paste this block into every verification sub-agent prompt** (per `~/.claude/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Verification sub-agents shell out to the scholarly CLI to verify DOIs but are otherwise read-only.
+**Paste this block into every verification sub-agent prompt** (per `~/.agy/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Verification sub-agents shell out to the scholarly CLI to verify DOIs but are otherwise read-only.
 
 ```
 ## Scope of action — DO NOT do these things
@@ -21,7 +21,7 @@ and return a short summary. Do NOT do any of the following:
 - Do NOT run `git add`, `git commit`, `git push`, or any other git
   write command.
 - Do NOT run `latexmk` or any build command.
-- Do NOT edit `.context/`, `MEMORY.md`, `CLAUDE.md`, or any project
+- Do NOT edit `.context/`, `MEMORY.md`, `AGY.md`, or any project
   documentation.
 - Do NOT add entries to Paperpile (`paperpile write-bib`); the
   orchestrator's fix-mode handles Paperpile sync.

@@ -20,9 +20,9 @@ When resolving a reference (checking if it exists, finding metadata, verifying D
 **For any reconciliation of more than a handful of entries, call `skills/_shared/reconcile_bib.py` instead of writing an ad-hoc matching loop.** Hand-rolled fuzzy matchers caused an unrecoverable file corruption on 2026-05-30 (a surname+year matcher collapsed one author's four papers onto a single key, with no backup). The helper bakes in the invariants below.
 
 ```bash
-python3 ~/.claude/skills/_shared/reconcile_bib.py <bib>                  # dry-run report (default)
-python3 ~/.claude/skills/_shared/reconcile_bib.py <bib> --apply         # swap keys + backfill DOIs (backs up first)
-python3 ~/.claude/skills/_shared/reconcile_bib.py <bib> --apply --enrich # also Crossref-by-DOI enrich authors/journal/vol/pages
+python3 ~/.agy/skills/_shared/reconcile_bib.py <bib>                  # dry-run report (default)
+python3 ~/.agy/skills/_shared/reconcile_bib.py <bib> --apply         # swap keys + backfill DOIs (backs up first)
+python3 ~/.agy/skills/_shared/reconcile_bib.py <bib> --apply --enrich # also Crossref-by-DOI enrich authors/journal/vol/pages
 ```
 
 **Non-negotiable invariants (the helper enforces them; honour them in any manual fallback):**

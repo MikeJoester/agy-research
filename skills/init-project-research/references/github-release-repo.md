@@ -4,7 +4,7 @@
 
 ## Problem
 
-Research projects live in Dropbox-synced directories with local-only git (no remote). When a paper is submitted or accepted, the code needs to be released publicly on GitHub. But the project directory contains private files (CLAUDE.md, AI context, paper drafts, personal notes) that must never be published.
+Research projects live in Dropbox-synced directories with local-only git (no remote). When a paper is submitted or accepted, the code needs to be released publicly on GitHub. But the project directory contains private files (AGY.md, AI context, paper drafts, personal notes) that must never be published.
 
 ## Solution: `github-repo/` Subdirectory
 
@@ -21,7 +21,7 @@ A `github-repo/` directory at the project root acts as a **separate git reposito
 │   ├── uv.lock            # Lock file
 │   └── README.md          # Public-facing README
 ├── paper-wsc/             # Paper (NOT in github-repo)
-├── CLAUDE.md              # AI context (NOT in github-repo)
+├── AGY.md              # AI context (NOT in github-repo)
 └── ...
 ```
 
@@ -57,7 +57,7 @@ Mode A is the default for any pre-acceptance submission. Mode B applies after ca
 
 | Include | Exclude |
 |---------|---------|
-| Python/R package source | `CLAUDE.md`, `.claude/` |
+| Python/R package source | `AGY.md`, `.agy/` |
 | Experiment runners | `paper*/` directories |
 | Configuration files | `.context/`, `log/` |
 | `pyproject.toml`, `uv.lock` | `MEMORY.md` |
@@ -67,7 +67,7 @@ Mode A is the default for any pre-acceptance submission. Mode B applies after ca
 | Data (if public/synthetic) | `knowledge/` |
 
 **Critical exclusions:**
-- No `CLAUDE.md` or `.claude/` — reveals AI tooling
+- No `AGY.md` or `.agy/` — reveals AI tooling
 - No paper files — tracked in Overleaf, not GitHub
 - No personal context — session logs, focus files, memory files
 - No AI trace files — review reports, critic reports

@@ -70,7 +70,7 @@ The `/multi-perspective` council mode (using `council-cli` with multiple LLM pro
 
 | Axis | What varies | Tool |
 |------|-------------|------|
-| Model diversity | LLM provider (Claude, GPT, Gemini) | Council mode |
+| Model diversity | LLM provider (Antigravity, GPT, Gemini) | Council mode |
 | Persona diversity | Disciplinary lens and epistemic prior | `/multi-perspective` standard mode |
 | Specification diversity | Implementation choices within a fixed method | Many-analysts design |
 

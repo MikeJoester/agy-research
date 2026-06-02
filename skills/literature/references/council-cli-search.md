@@ -5,7 +5,7 @@
 
 ## Phase 2b: CLI Council Search (Optional)
 
-**When to use:** Broad literature reviews (20+ papers), interdisciplinary topics, or when maximum recall matters. Each model has different training data and recall — running the same search query through Gemini, Codex, and Claude surfaces papers that any single model would miss. Gemini additionally has live web search.
+**When to use:** Broad literature reviews (20+ papers), interdisciplinary topics, or when maximum recall matters. Each model has different training data and recall — running the same search query through Gemini, Codex, and Antigravity surfaces papers that any single model would miss. Gemini additionally has live web search.
 
 **How it works:** Run `council-cli` from the `packages/council-cli/` package. The council sends the same search prompt to all three CLI backends in parallel, collects their independent paper lists, then synthesises a merged list.
 
@@ -47,7 +47,7 @@ Skip these already-known papers: [LIST OF EXISTING CITATION KEYS]
 
 **After the council returns:**
 1. Parse the synthesis and individual assessments from the JSON output
-2. Extract paper lists from each backend's response (Gemini often finds more recent papers via web search; Codex and Claude recall different foundational works)
+2. Extract paper lists from each backend's response (Gemini often finds more recent papers via web search; Codex and Antigravity recall different foundational works)
 3. Feed ALL discovered papers into Phase 3 alongside the Phase 2 results for deduplication
 
 **When to skip:** Small requests (< 10 papers), narrow/well-defined topics, or when Phase 2 already returns sufficient coverage. The standard Phase 2 agents (Scholar + `scholarly` CLI) remain the primary search mechanism; Phase 2b supplements with model-diversity recall.

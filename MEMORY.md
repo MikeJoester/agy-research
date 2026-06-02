@@ -1,7 +1,7 @@
 # Memory — Project Knowledge Base
 
 <!-- This file accumulates domain knowledge across sessions.
-     See .claude/rules/learn-tags.md for how entries are recorded. -->
+     See .agy/rules/learn-tags.md for how entries are recorded. -->
 
 ## Notation Registry
 

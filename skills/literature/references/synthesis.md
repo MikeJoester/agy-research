@@ -56,7 +56,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/lit-synthesis-prompt.txt \
     --context-file /tmp/lit-papers.txt \
     --output-md /tmp/lit-synthesis-report.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 

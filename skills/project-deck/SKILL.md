@@ -17,7 +17,7 @@ Based on Scott Cunningham's Part 7: "Making Beautiful Decks For My Future Self" 
 
 "I use decks to help me keep track of the work I was doing so that I can communicate it to my coauthors and myself later in the week when we meet to go over our projects."
 
-Claude has absorbed the "rhetoric of decks" - the tacit knowledge about what makes presentations effective:
+Antigravity has absorbed the "rhetoric of decks" - the tacit knowledge about what makes presentations effective:
 - One idea per slide
 - Titles are assertions, not labels
 - Lead with conclusions

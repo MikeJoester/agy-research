@@ -86,7 +86,7 @@ Your methodological preference: [METHODOLOGICAL PREFERENCE]
 Your primary concern: [LIKELY CONCERN]
 
 Context about the project:
-[Relevant project context — CLAUDE.md summary, paper abstract if available]
+[Relevant project context — AGY.md summary, paper abstract if available]
 
 TASK: Analyse this question from your perspective. Address:
 1. How would you frame this question in your discipline?
@@ -277,12 +277,12 @@ Create `correspondence/internal-reviews/` if it does not exist (`mkdir -p`). Wri
 
 ## Council Mode Enhancement
 
-In standard mode, Phase 3 spawns Claude sub-agents with different personas — but they all share the same underlying model. Council mode upgrades this to genuine model diversity: different LLM providers (Claude, GPT, Gemini) bring genuinely different reasoning patterns, training biases, and knowledge bases.
+In standard mode, Phase 3 spawns Antigravity sub-agents with different personas — but they all share the same underlying model. Council mode upgrades this to genuine model diversity: different LLM providers (Antigravity, GPT, Gemini) bring genuinely different reasoning patterns, training biases, and knowledge bases.
 
 **Trigger:** "Council multi-perspective" or "thorough multi-perspective"
 
 **What changes in council mode:**
-- Phase 3 (Parallel Investigation): Each perspective is assigned to a different LLM provider via `council-cli`, not Claude sub-agents
+- Phase 3 (Parallel Investigation): Each perspective is assigned to a different LLM provider via `council-cli`, not Antigravity sub-agents
 - Phase 3.3 (Cross-Evaluation): Each model evaluates the others' perspectives without knowing which model produced which — genuine blind review
 - Phase 4 (Synthesis): Chairman model reads all perspectives and cross-evaluations, weighted by peer scores
 
@@ -293,7 +293,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/perspective-prompt.txt \
     --context-file /tmp/research-context.txt \
     --output-md /tmp/perspectives-council.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 

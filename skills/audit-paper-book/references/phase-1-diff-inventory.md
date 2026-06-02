@@ -39,7 +39,7 @@ diff <(grep -oE "@\w+\{[^,]+," "$PAPER_BIB" | sort) \
 
 ```bash
 ~/Task-Management/packages/atlas-workspace/.venv/bin/python \
-    ~/.claude/skills/init-paper-book/scripts/regenerate_intro.py \
+    ~/.agy/skills/init-paper-book/scripts/regenerate_intro.py \
     <slug> --apply
 ```
 

@@ -59,7 +59,7 @@ Every atomic referee comment is classified into one of four categories:
 3. Quote the changed passage in the response letter (before/after)
 
 ### DISAGREE workflow
-1. **Flag for user** — Claude never autonomously pushes back on referees
+1. **Flag for user** — Antigravity never autonomously pushes back on referees
 2. Draft a diplomatic response that:
    - Acknowledges the reviewer's concern
    - Explains why the current approach is preferred

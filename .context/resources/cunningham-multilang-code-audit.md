@@ -1,6 +1,6 @@
 # Scott Cunningham — Multi-Language Code Audits
 
-> Source: Substack (Feb 2026). First in a series on Claude Code for causal inference pipelines.
+> Source: Substack (Feb 2026). First in a series on Antigravity CLI for causal inference pipelines.
 
 ## Core Idea
 
@@ -46,7 +46,7 @@ replace olddog = 10 if olddog > 10
 replace olddog = 10 if olddog > 10 & olddog ~= .
 ```
 
-Claude Code knows the correct version (trained on Stata manuals + Nick Cox's listserv posts) but may randomly omit the missing-value guard. If you only run Stata, this propagates silently. If you also run R and Python (where `NA` handling differs), the discrepancy surfaces in the output comparison.
+Antigravity CLI knows the correct version (trained on Stata manuals + Nick Cox's listserv posts) but may randomly omit the missing-value guard. If you only run Stata, this propagates silently. If you also run R and Python (where `NA` handling differs), the discrepancy surfaces in the output comparison.
 
 ## Case Study
 

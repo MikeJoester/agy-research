@@ -61,7 +61,7 @@ mkdir -p paper-jbdm
 ln -s "$overleaf_root/Paper BDS Identity Belief Alignment (JBDM)" paper-jbdm/paper
 ```
 
-**Important:** Never rename or delete Overleaf folders — see `.claude/rules/overleaf-separation.md` (Overleaf Folder Lifecycle).
+**Important:** Never rename or delete Overleaf folders — see `.agy/rules/overleaf-separation.md` (Overleaf Folder Lifecycle).
 
 Ensure `.latexmkrc` exists inside the Overleaf target (the symlink destination), not in the wrapper directory. Drop the canonical config:
 
@@ -91,19 +91,19 @@ done
 
 ## Permissions Sync (Phase 4)
 
-After writing `.claude/settings.local.json` (with hook config), merge global permissions into it so the new project starts with full permissions from day one:
+After writing `.agy/settings.local.json` (with hook config), merge global permissions into it so the new project starts with full permissions from day one:
 
-1. Read `~/.claude/settings.json` → extract `permissions.allow` array
-2. Read the newly created `.claude/settings.local.json`
+1. Read `~/.agy/settings.json` → extract `permissions.allow` array
+2. Read the newly created `.agy/settings.local.json`
 3. Compute the union: `local_permissions ∪ global_permissions`
-4. Write the merged `permissions.allow` back to `.claude/settings.local.json` (preserving the `hooks` key)
+4. Write the merged `permissions.allow` back to `.agy/settings.local.json` (preserving the `hooks` key)
 
 ```bash
 # Merge global permissions into the new project's settings
 jq -s '.[0].permissions.allow as $global |
   .[1] | .permissions.allow = ((.permissions.allow // []) + $global | unique | sort)' \
-  ~/.claude/settings.json .claude/settings.local.json > .claude/settings.local.json.tmp \
-  && mv .claude/settings.local.json.tmp .claude/settings.local.json
+  ~/.agy/settings.json .agy/settings.local.json > .agy/settings.local.json.tmp \
+  && mv .agy/settings.local.json.tmp .agy/settings.local.json
 ```
 
 Also merge the `permissions.deny` array using the same logic.

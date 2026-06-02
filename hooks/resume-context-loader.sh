@@ -3,7 +3,7 @@
 source "$(dirname "$0")/resolve-task-mgmt.sh" || exit 0
 # resume-context-loader.sh
 # SessionStart hook (resume) — surfaces current focus and latest session log
-# so Claude picks up where things left off.
+# so Antigravity picks up where things left off.
 FOCUS_FILE="$TASK_MGMT/.context/current-focus.md"
 LOG_DIR="$TASK_MGMT/log"
 

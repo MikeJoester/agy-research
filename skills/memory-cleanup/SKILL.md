@@ -31,14 +31,14 @@ Ask the user which mode to run:
 
 | Mode | Scope | What it does |
 |------|-------|-------------|
-| **Project** (default) | Single project's `MEMORY.md` + `.claude/state/personal-memory.md` | Consolidate both tiers |
+| **Project** (default) | Single project's `MEMORY.md` + `.agy/state/personal-memory.md` | Consolidate both tiers |
 | **Global** | All `MEMORY.md` + personal-memory files across projects + Task Management | Consolidate all, cross-pollinate shared patterns |
 
 ## Workflow
 
 ### Phase 1: Sleep (Consolidation)
 
-Read the target `MEMORY.md` file(s) and `.claude/state/personal-memory.md` (if it exists) and perform:
+Read the target `MEMORY.md` file(s) and `.agy/state/personal-memory.md` (if it exists) and perform:
 
 #### 1.1 Duplicate Detection
 
@@ -78,7 +78,7 @@ Find entries that are no longer relevant.
 Check whether entries are in the correct tier (see `learn-tags` rule for the two-tier system).
 
 **Promotion candidates** (personal-memory → MEMORY.md):
-- Entries in `.claude/state/personal-memory.md` that would help a collaborator on a different machine
+- Entries in `.agy/state/personal-memory.md` that would help a collaborator on a different machine
 - Local workarounds that turned out to be general conventions
 - Tool quirks that apply to all machines (not just this one)
 
@@ -144,7 +144,7 @@ Rewrite `MEMORY.md` with:
 3. **Regular entries** in their standard sections (Notation Registry, Citations, Key Decisions, Anti-Patterns, Code Pitfalls)
 4. **Stale entries removed** (only those confirmed by user)
 
-If `.claude/state/personal-memory.md` exists, also rewrite it with consolidated machine-specific entries. Apply any user-approved promotions (move to MEMORY.md) and demotions (move from MEMORY.md to personal-memory).
+If `.agy/state/personal-memory.md` exists, also rewrite it with consolidated machine-specific entries. Apply any user-approved promotions (move to MEMORY.md) and demotions (move from MEMORY.md to personal-memory).
 
 #### 3.2 Diff Report
 
@@ -183,8 +183,8 @@ Before writing, show a summary:
 **What to do:**
 
 1. Identify the shared copy location(s) that correspond to the local scope:
-   - Task Management auto-memory (`~/.claude/projects/-Users-user-*Task-Management/memory/`) → `$TM/.context/auto-memory/task-management/`
-   - Global auto-memory (`~/.claude/projects/*/memory/` for non-TM projects) → `$TM/.context/auto-memory/global/`
+   - Task Management auto-memory (`~/.agy/projects/-Users-user-*Task-Management/memory/`) → `$TM/.context/auto-memory/task-management/`
+   - Global auto-memory (`~/.agy/projects/*/memory/` for non-TM projects) → `$TM/.context/auto-memory/global/`
 
 2. Mirror local → shared for each location:
    - **MEMORY.md and MEMORY-ARCHIVE.md:** force-copy from local to shared (overwrites, bypasses append-merge)
@@ -204,7 +204,7 @@ Before writing, show a summary:
 **Example (Task Management scope):**
 
 ```bash
-local_dir=~/.claude/projects/-Users-user-Task-Management/memory
+local_dir=~/.agy/projects/-Users-user-Task-Management/memory
 shared_dir="$TM/.context/auto-memory/task-management"
 
 # REMOVED = the entry files THIS cleanup deleted (user-confirmed in Phase 3).
@@ -270,7 +270,7 @@ $TM/MEMORY.md
 
 Also check the auto-memory directory (path varies by machine — glob for it):
 ```
-~/.claude/projects/-Users-user-*Task-Management/memory/MEMORY.md
+~/.agy/projects/-Users-user-*Task-Management/memory/MEMORY.md
 ```
 
 ## Cross-References

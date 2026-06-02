@@ -25,9 +25,9 @@ module-folder/
 ├── knowledge/               # LLM-maintained wiki (compiled by /compile-knowledge)
 ├── reviews/                 # Created on demand by review agents
 ├── to-sort/                 # Inbox for unsorted files
-├── .claude/
+├── .agy/
 │   └── settings.local.json
-├── CLAUDE.md
+├── AGY.md
 └── MEMORY.md                # Notation registry, code pitfalls (seeded)
 ```
 
@@ -55,9 +55,9 @@ module-folder/
 ├── knowledge/               # LLM-maintained wiki (compiled by /compile-knowledge)
 ├── reviews/                 # Created on demand by review agents
 ├── to-sort/                 # Inbox for unsorted files
-├── .claude/
+├── .agy/
 │   └── settings.local.json
-├── CLAUDE.md
+├── AGY.md
 └── MEMORY.md                # Student misconceptions, code pitfalls (seeded)
 ```
 

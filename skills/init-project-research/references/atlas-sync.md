@@ -67,7 +67,7 @@ cd "$TM/packages/atlas-vault" && uv run python generate_recap.py
 
 ## 7e. Update Atlas Counts
 
-If topic or theme count changed, update `$TM/packages/atlas-vault/CLAUDE.md` topic/theme counts and theme directory listing.
+If topic or theme count changed, update `$TM/packages/atlas-vault/AGY.md` topic/theme counts and theme directory listing.
 
 ## Atlas Defaults
 

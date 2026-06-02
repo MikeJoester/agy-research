@@ -4,9 +4,9 @@
 
 ## What This Is
 
-Uses an external LLM CLI (Codex or Gemini) to get a **fresh, independent perspective** from a competing model on Claude Code infrastructure. This extends the agents-vs-skills principle: not just fresh Claude context, but an entirely different model reviewing the work.
+Uses an external LLM CLI (Codex or Gemini) to get a **fresh, independent perspective** from a competing model on Antigravity CLI infrastructure. This extends the agents-vs-skills principle: not just fresh Antigravity context, but an entirely different model reviewing the work.
 
-**Key difference from `/system-audit`:** System audit uses Claude sub-agents for mechanical checks (counts, symlinks, broken links). External audits are **qualitative** — architecture coherence, design quality, redundancy, missing capabilities, improvement suggestions.
+**Key difference from `/system-audit`:** System audit uses Antigravity sub-agents for mechanical checks (counts, symlinks, broken links). External audits are **qualitative** — architecture coherence, design quality, redundancy, missing capabilities, improvement suggestions.
 
 **Model selection:** Pass `--model codex` or `--model gemini` (default: gemini). Running both triangulates — different training and reasoning patterns produce more reliable findings than either alone.
 
@@ -37,7 +37,7 @@ Before anything else:
 
 ## Phase 1: Generate Manifest
 
-Claude generates a concise ecosystem manifest describing what the model will be auditing. This gives it the map before it explores the territory.
+Antigravity generates a concise ecosystem manifest describing what the model will be auditing. This gives it the map before it explores the territory.
 
 Write to `/tmp/external-audit-manifest-{scope}.md`:
 

@@ -4,7 +4,7 @@
 
 ## Principle
 
-**Corrections should appear where they're needed.** A `[LEARN:method]` tag about TWFE bias should appear when `/literature` or `/r-econometrics` is invoked — not buried in MEMORY.md hoping Claude recalls it. Annotation injection makes the existing correction system actually reach the right skills.
+**Corrections should appear where they're needed.** A `[LEARN:method]` tag about TWFE bias should appear when `/literature` or `/r-econometrics` is invoked — not buried in MEMORY.md hoping Antigravity recalls it. Annotation injection makes the existing correction system actually reach the right skills.
 
 ## How It Works
 

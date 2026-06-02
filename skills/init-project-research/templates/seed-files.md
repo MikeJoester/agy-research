@@ -2,10 +2,10 @@
 
 > Templates for Phase 4 of `/init-project-research`. Replace `<placeholders>` with interview answers.
 
-## CLAUDE.md
+## AGY.md
 
 ```markdown
-# Claude Context for <Working Title>
+# Antigravity Context for <Working Title>
 
 ## Project Overview
 - **Working title:** <title>
@@ -119,7 +119,7 @@ log/
 to-sort/
 
 # Machine-specific memory (gitignored, never synced)
-.claude/state/
+.agy/state/
 
 # GitHub release repo (separate git repo — see references/github-release-repo.md)
 github-repo/
@@ -254,7 +254,7 @@ Seed MEMORY.md at project root based on project type. Use the **research** templ
 | | | |
 ```
 
-## .claude/state/personal-memory.md (optional)
+## .agy/state/personal-memory.md (optional)
 
 Not created during init — only created on first machine-specific `[LEARN]` tag. Seed template for reference:
 
@@ -334,7 +334,7 @@ Copy the template from `skills/init-project-research/templates/field-calibration
 <empty — add key papers as literature review progresses>
 ```
 
-## .claude/hooks/copy-paper-pdf.sh
+## .agy/hooks/copy-paper-pdf.sh
 
 PostToolUse hook that copies compiled paper PDFs to the backup folder after LaTeX compilation. Multi-paper-safe: scans for all `paper-*` directories/symlinks and copies each `main.pdf` to `<paper-wrapper>/backup/<dirname>_vcurrent.pdf`.
 
@@ -362,7 +362,7 @@ for paper_dir in "$PROJECT_ROOT"/paper-*; do
 done
 ```
 
-After creating the hook script, the PostToolUse hook must also be registered in `.claude/settings.local.json`. Add the following to the `hooks` key:
+After creating the hook script, the PostToolUse hook must also be registered in `.agy/settings.local.json`. Add the following to the `hooks` key:
 
 ```json
 "hooks": {
@@ -372,7 +372,7 @@ After creating the hook script, the PostToolUse hook must also be registered in 
             "hooks": [
                 {
                     "type": "command",
-                    "command": ".claude/hooks/copy-paper-pdf.sh"
+                    "command": ".agy/hooks/copy-paper-pdf.sh"
                 }
             ]
         }

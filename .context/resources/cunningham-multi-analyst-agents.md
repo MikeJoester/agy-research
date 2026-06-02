@@ -1,6 +1,6 @@
 # Scott Cunningham — Multi-Analyst Agent Designs & Non-Standard Errors
 
-> Source: Substack posts 21, 25, 26, 27 (Feb–Mar 2026). Series on Claude Code for causal inference.
+> Source: Substack posts 21, 25, 26, 27 (Feb–Mar 2026). Series on Antigravity CLI for causal inference.
 
 ## Post 26: Computational Many-Analysts Design (DiD Part 2)
 
@@ -11,7 +11,7 @@ Run N independent AI agents on the same dataset + estimator, isolating each in a
 ### Experiment
 
 - 15 agents × 5 packages (csdid, csdid2, did, differences, diff-diff) × 3 languages
-- Each launched via `claude -p` in isolated temp dirs, no shared history
+- Each launched via `agy -p` in isolated temp dirs, no shared history
 - Instructions: Callaway & Sant'Anna estimator, universal base period, not-yet-treated controls
 - **Primary discretionary node:** covariate selection for conditional parallel trends
 
@@ -84,7 +84,7 @@ AI collapses the cost of producing submission-quality manuscripts → 5x submiss
 - ~12,000 research-active economists, ~39,000 submissions/year currently
 - At 5x: top-5 acceptance drops from 5% to 1%; 87 journals go from $6.2M to $31M in fees
 - Referee need: 146K reports/year against ~54K realistic supply
-- Individual cost of 3x scaling: ~$3,200/year (fees + Claude Max)
+- Individual cost of 3x scaling: ~$3,200/year (fees + Antigravity Max)
 
 ### Project APE (Zurich Social Catalyst Lab)
 

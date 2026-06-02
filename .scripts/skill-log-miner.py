@@ -4,7 +4,7 @@ Skill Log Miner — Extracts skill invocation data from session logs.
 
 Fallback observation method when the Skill tool doesn't emit hook events.
 Scans log/*.md files for `/skill-name` references, extracts structured
-invocation records, and writes to ~/.claude/ecc/observations-*.jsonl.
+invocation records, and writes to ~/.agy/ecc/observations-*.jsonl.
 
 Idempotent: tracks which log files have been mined in a watermark file.
 Re-running only processes new logs.
@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # ── Config ──────────────────────────────────────────────────────────────────
-ECC_DIR = Path.home() / ".claude" / "ecc"
+ECC_DIR = Path.home() / ".agy" / "ecc"
 WATERMARK_FILE = ECC_DIR / "miner-watermark.json"
 
 # Where to find session logs — resolve from config
@@ -76,8 +76,8 @@ def sha256_prefix(value: str, length: int = 12) -> str:
 
 
 def load_known_skills() -> set[str]:
-    """Load valid skill names from ~/.claude/skills/."""
-    skills_dir = Path.home() / ".claude" / "skills"
+    """Load valid skill names from ~/.agy/skills/."""
+    skills_dir = Path.home() / ".agy" / "skills"
     if not skills_dir.is_dir():
         return set()
     return {d.name for d in skills_dir.iterdir() if d.is_dir() and (d / "SKILL.md").exists()}
@@ -212,7 +212,7 @@ def main():
 
     known_skills = load_known_skills()
     if not known_skills:
-        print("Warning: no skills found in ~/.claude/skills/", file=sys.stderr)
+        print("Warning: no skills found in ~/.agy/skills/", file=sys.stderr)
 
     log_dirs = find_log_dirs()
     if not log_dirs:

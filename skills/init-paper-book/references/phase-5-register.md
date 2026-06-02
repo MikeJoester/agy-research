@@ -55,7 +55,7 @@ for ch in intro background setup method results limitations extend appendix refe
 done
 
 # DOM-based assertions (one Playwright script — see references/visual_check.mjs)
-node ~/.claude/skills/init-paper-book/references/visual_check.mjs \
+node ~/.agy/skills/init-paper-book/references/visual_check.mjs \
     --slug "${SLUG}" \
     --base-url "http://localhost:8770" \
     --output /tmp/init-paper-book-visual-${SLUG}.json

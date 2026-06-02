@@ -71,7 +71,7 @@ Full schema + protocol: [`docs/reference/sprint-contract-protocol.md`](../../doc
 
 ## Autonomy
 
-Per the global `--autonomous` / `-y` convention defined in `~/.claude/rules/phased-work.md` § "Autonomy flag convention". When set:
+Per the global `--autonomous` / `-y` convention defined in `~/.agy/rules/phased-work.md` § "Autonomy flag convention". When set:
 
 - **No Phase 1.4 search-plan confirmation** — emit the plan to the session log and proceed
 - **No Phase 2.2 dedup/rank pause** — apply default filters and continue
@@ -204,7 +204,7 @@ Full protocol: [`references/phase-4-verification.md`](references/phase-4-verific
 
 #### Dispatch Rule (Steps 1 & 4)
 
-Per [`_shared/cli-dispatch-policy.md`](../_shared/cli-dispatch-policy.md): if Step 1 or Step 4 would require **2 or more** `scholarly-verify-dois` calls (i.e. >50 DOIs total), dispatch a single Bash sub-agent that runs all batched calls and writes merged JSON to `/tmp/lit-verify.json`. Main context reads only the merged result, never the raw CLI output. For the bulk-threshold rationale, see `~/.claude/rules/subagent-prompt-discipline.md` § Bulk-Operation Dispatch Rule.
+Per [`_shared/cli-dispatch-policy.md`](../_shared/cli-dispatch-policy.md): if Step 1 or Step 4 would require **2 or more** `scholarly-verify-dois` calls (i.e. >50 DOIs total), dispatch a single Bash sub-agent that runs all batched calls and writes merged JSON to `/tmp/lit-verify.json`. Main context reads only the merged result, never the raw CLI output. For the bulk-threshold rationale, see `~/.agy/rules/subagent-prompt-discipline.md` § Bulk-Operation Dispatch Rule.
 
 ### 3.5 Iterative deep loop (deep mode only)
 
@@ -252,16 +252,16 @@ After 4.3 passes (bib-validate clean) and 4.4 completes: (1) vault sync via `tas
 
 Before any auto-commit, emit an outputs manifest and run the shared verifier per [`_shared/verify-outputs.md`](../_shared/verify-outputs.md):
 
-1. Write manifest to `<project>/.claude/state/outputs-manifest-<UTC-timestamp>.json` listing every file this skill claims to have written, paths relative to the project root.
+1. Write manifest to `<project>/.agy/state/outputs-manifest-<UTC-timestamp>.json` listing every file this skill claims to have written, paths relative to the project root.
 2. Run:
 
    ```bash
-   python3 "$HOME/.claude/skills/_shared/verify_outputs.py" \
+   python3 "$HOME/.agy/skills/_shared/verify_outputs.py" \
        --manifest "$MANIFEST" \
        --project-root "$PROJECT_ROOT"
    ```
 
-3. If the verifier exits non-zero, **do not commit**. Surface the missing-files list and stop. The verifier logs an `error` entry to `~/.claude/ecc/skill-outcomes.jsonl`.
+3. If the verifier exits non-zero, **do not commit**. Surface the missing-files list and stop. The verifier logs an `error` entry to `~/.agy/ecc/skill-outcomes.jsonl`.
 
 Closes the "hallucinated outputs" failure class (commit `b2cff75`, 2026-04-18).
 

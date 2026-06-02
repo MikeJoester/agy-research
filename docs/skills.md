@@ -2,7 +2,7 @@
 
 > 50 reusable workflow definitions available across all projects.
 
-Skills are structured instruction sets (`SKILL.md` files) that turn Claude into a specialised tool for specific tasks — from compiling LaTeX to bootstrapping research projects.
+Skills are structured instruction sets (`SKILL.md` files) that turn Antigravity into a specialised tool for specific tasks — from compiling LaTeX to bootstrapping research projects.
 
 ## Overview
 
@@ -25,7 +25,7 @@ Skills are structured instruction sets (`SKILL.md` files) that turn Claude into 
 | `init-project-course` | Use when you need to bootstrap a university course or module folder |
 | `init-project-light` | Use when you need to bootstrap a lightweight project with minimal structure |
 | `init-project-research` | Use when you need to bootstrap a full research project with directory scaffold and Overleaf symlink |
-| `insights-deck` | Use when you need a timestamped Claude Code insights report and Beamer presentation |
+| `insights-deck` | Use when you need a timestamped Antigravity CLI insights report and Beamer presentation |
 | `interview-me` | Use when you need to conduct a structured interview to extract knowledge or preferences |
 | `latex` | Use when you need to compile a LaTeX document — includes autonomous error resolution, citation audit, and quality scoring |
 | `latex-health-check` | Use when you need to compile all LaTeX projects and check cross-project consistency |
@@ -54,7 +54,7 @@ Skills are structured instruction sets (`SKILL.md` files) that turn Claude into 
 | `system-audit` | Use when you need to run parallel audits across skills, hooks, agents, rules, and conventions |
 | `task-management` | Use when you need help with daily planning, weekly reviews, meeting actions, or vault task queries |
 | `update-focus` | Use when you need to update current-focus.md with a structured session summary |
-| `update-project-doc` | Use when you need to update a project's own CLAUDE.md, README.md, or docs/ to reflect current state |
+| `update-project-doc` | Use when you need to update a project's own AGY.md, README.md, or docs/ to reflect current state |
 | `voice-analyzer` | Use when you need to analyze writing samples to create a portable voice profile. Analyze writing samples to create a portable voice profile and style guide. Use when setting up voice-matched AI writing, onboarding to a new project, or refreshing an outdated style guide |
 | `voice-editor` | Use when you need to edit content to match a specific voice profile. Edit auto-generated or draft content to match a voice profile. Use when transforming generic AI output into authentic voice-matched content, or when editing drafts to sound more like you |
 | `xlsx` | Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved |
@@ -71,7 +71,7 @@ Skills are structured instruction sets (`SKILL.md` files) that turn Claude into 
 Each skill is a directory in `skills/` containing a `SKILL.md` file with:
 
 1. **YAML frontmatter** — name, description, and allowed tools
-2. **Markdown body** — structured instructions Claude follows
+2. **Markdown body** — structured instructions Antigravity follows
 
 ## Creating New Skills
 

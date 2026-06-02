@@ -1,6 +1,6 @@
 # Profile
 
-<!-- Customise this with your own details. This file helps Claude understand
+<!-- Customise this with your own details. This file helps Antigravity understand
      your background and calibrate its responses. -->
 
 ## Identity

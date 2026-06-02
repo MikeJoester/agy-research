@@ -83,7 +83,7 @@ echo
 echo "─── purge Cloudflare edge cache ───"
 # shellcheck disable=SC1091
 source /Volumes/Secrets/1password-service-account.env
-CF_TOKEN="$(op read "op://Research/Claude Code/CLOUDFLARE_API_TOKEN")"
+CF_TOKEN="$(op read "op://Research/Antigravity CLI/CLOUDFLARE_API_TOKEN")"
 curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/4ac4b9388b993f5c83e44ffd81857eac/purge_cache" \
     -H "Authorization: Bearer $CF_TOKEN" \
     -H "Content-Type: application/json" \

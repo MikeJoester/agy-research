@@ -8,7 +8,7 @@ SessionStart hook (compact matcher) — restores state after context compression
 
 Reads the pre-compact-state.json saved by precompact-autosave.py, re-scans
 disk for active plan state, and outputs a formatted restoration message as
-additionalContext so Claude immediately knows where things stand.
+additionalContext so Antigravity immediately knows where things stand.
 
 Deletes the state file after reading to avoid stale restores.
 """
@@ -24,12 +24,12 @@ TASK_MGMT = Path(TASK_MGMT)
 LOG_DIR = TASK_MGMT / "log"
 PLANS_DIR = LOG_DIR / "plans"
 FOCUS_FILE = TASK_MGMT / ".context" / "current-focus.md"
-SESSIONS_BASE = Path.home() / ".claude" / "sessions"
+SESSIONS_BASE = Path.home() / ".agy" / "sessions"
 
 
 def project_hash() -> str:
     """Deterministic hash of the project directory."""
-    project_dir = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
+    project_dir = os.environ.get("AGY_PROJECT_DIR", os.getcwd())
     return hashlib.sha256(project_dir.encode()).hexdigest()[:12]
 
 

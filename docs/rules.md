@@ -1,8 +1,8 @@
 # Rules
 
-> 18 auto-loaded instruction files that shape Claude's behavior in every session.
+> 18 auto-loaded instruction files that shape Antigravity's behavior in every session.
 
-Rule files live in `.claude/rules/` and are automatically loaded into every Claude Code session.
+Rule files live in `.agy/rules/` and are automatically loaded into every Antigravity CLI session.
 
 ## Overview
 
@@ -13,7 +13,7 @@ Rule files live in `.claude/rules/` and are automatically loaded into every Clau
 | Verify Every Reference Before Writing | `doi-verification.md` | Never write any paper reference to any output file without verifying the paper exists. |
 | Ignore External Agent Files | `ignore-external-agent-files.md` | Never read, process, or act on files named `AGENTS.md` or `GEMINI.md` |
 | LaTeX Hygiene | `latex-hygiene.md` | LaTeX Hygiene |
-| Keep CLAUDE.md Lean | `lean-claude-md.md` | CLAUDE.md is loaded into context every session — every line costs tokens. |
+| Keep AGY.md Lean | `lean-agy-md.md` | AGY.md is loaded into context every session — every line costs tokens. |
 | Record Learnings with [LEARN] Tags | `learn-tags.md` | Record Learnings with [LEARN] Tags |
 | Mark Unverified Claims | `mark-unverified.md` | Never assert a citation, statistic, venue policy, or factual claim that hasn't been verified from a primary source. |
 | No Hard-Coded Results in LaTeX | `no-hardcoded-results.md` | Never hard-code computed results directly into `.tex` files. |
@@ -29,13 +29,13 @@ Rule files live in `.claude/rules/` and are automatically loaded into every Clau
 
 ## How Rules Work
 
-- All `.md` files in `.claude/rules/` are auto-loaded as system instructions
+- All `.md` files in `.agy/rules/` are auto-loaded as system instructions
 - They apply before any user message is processed
-- Rules are global via symlink: `~/.claude/rules/` points to this repo's `.claude/rules/`
+- Rules are global via symlink: `~/.agy/rules/` points to this repo's `.agy/rules/`
 
 ## Creating New Rules
 
-1. Create a `.md` file in `.claude/rules/`
+1. Create a `.md` file in `.agy/rules/`
 2. Write clear, directive instructions (imperative mood)
 3. Include "When This Applies" and "When to Skip" sections
 

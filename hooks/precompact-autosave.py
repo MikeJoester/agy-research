@@ -8,7 +8,7 @@ PreCompact hook — saves state before context compression.
 
 Two outputs:
 1. Human-readable snapshot → log/{TIMESTAMP}-compact.md  (existing behaviour)
-2. Machine-readable state  → ~/.claude/sessions/{hash}/pre-compact-state.json
+2. Machine-readable state  → ~/.agy/sessions/{hash}/pre-compact-state.json
    (new — read back by postcompact-restore.py after compaction)
 """
 
@@ -24,12 +24,12 @@ TASK_MGMT = Path(TASK_MGMT)
 LOG_DIR = TASK_MGMT / "log"
 PLANS_DIR = LOG_DIR / "plans"
 FOCUS_FILE = TASK_MGMT / ".context" / "current-focus.md"
-SESSIONS_BASE = Path.home() / ".claude" / "sessions"
+SESSIONS_BASE = Path.home() / ".agy" / "sessions"
 
 
 def project_hash() -> str:
     """Deterministic hash of the project directory (same approach as Pedro's)."""
-    project_dir = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())
+    project_dir = os.environ.get("AGY_PROJECT_DIR", os.getcwd())
     return hashlib.sha256(project_dir.encode()).hexdigest()[:12]
 
 
@@ -174,7 +174,7 @@ def main():
     print(json.dumps(output))
 
     # Exit 0 = success, allow compaction to proceed.
-    # (Previously sys.exit(2), which Claude Code interprets as a blocking error.)
+    # (Previously sys.exit(2), which Antigravity CLI interprets as a blocking error.)
     sys.exit(0)
 
 

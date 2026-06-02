@@ -12,7 +12,7 @@
 
 1. Gather inputs. If not provided, ask via `AskUserQuestion`:
    - Reviews PDF path — try auto-discovery first (`to-sort/*.pdf`, then `correspondence/referee-reviews/{venue}-round{n}/*.pdf`, then `correspondence/referee-reviews/*.pdf`)
-   - Project path — auto-detect from cwd if a `CLAUDE.md` or `paper*/` is present
+   - Project path — auto-detect from cwd if a `AGY.md` or `paper*/` is present
    - Venue slug (e.g., `ejor`, `facct-2026`)
    - Revision round (integer, default 1)
    - Response deadline (date or "TBD")

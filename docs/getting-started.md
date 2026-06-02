@@ -2,21 +2,21 @@
 
 # Getting Started
 
-## How to Use Claude Code
+## How to Use Antigravity CLI
 
-Claude Code is the AI engine that reads your CLAUDE.md, runs skills, and executes hooks. You can access it in several ways:
+Antigravity CLI is the AI engine that reads your AGY.md, runs skills, and executes hooks. You can access it in several ways:
 
 | Interface | Best for | Install |
 |-----------|----------|---------|
-| **[Terminal CLI](https://docs.anthropic.com/en/docs/claude-code)** | Power users, full control, scripting | See install table below |
-| **[VS Code extension](https://marketplace.visualstudio.com/items?itemName=anthropics.claude-code)** | Integrated coding + chat in one window | Install from VS Code marketplace |
-| **[JetBrains extension](https://plugins.jetbrains.com/plugin/27189-claude-code)** | IntelliJ, PyCharm, WebStorm users | Install from JetBrains marketplace |
-| **[Web app](https://claude.ai/code)** | Quick access from any browser, no install | Visit claude.ai/code |
-| **[Desktop app](https://claude.ai/download)** | GUI chat (Mac/Windows) | Download from claude.ai |
+| **[Terminal CLI](https://docs.anthropic.com/en/docs/antigravity-cli)** | Power users, full control, scripting | See install table below |
+| **[VS Code extension](https://marketplace.visualstudio.com/items?itemName=anthropics.antigravity-cli)** | Integrated coding + chat in one window | Install from VS Code marketplace |
+| **[JetBrains extension](https://plugins.jetbrains.com/plugin/27189-antigravity-cli)** | IntelliJ, PyCharm, WebStorm users | Install from JetBrains marketplace |
+| **[Web app](https://agy.ai/code)** | Quick access from any browser, no install | Visit agy.ai/code |
+| **[Desktop app](https://agy.ai/download)** | GUI chat (Mac/Windows) | Download from agy.ai |
 
 All interfaces share the same skills, agents, hooks, and rules once you run the setup script. The terminal CLI is the most full-featured and what this guide focuses on, but you can use whichever interface suits your workflow.
 
-**You need an Anthropic account with a Claude subscription** (Max plan recommended for heavy research use).
+**You need an Anthropic account with a Antigravity subscription** (Max plan recommended for heavy research use).
 
 ## Prerequisites
 
@@ -64,13 +64,13 @@ Python is required for several hooks (context monitor, compact save/restore) and
 | **Linux** | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `uv --version` |
 | **Windows** | `winget install astral-sh.uv` | `uv --version` |
 
-> **Why uv instead of pip?** [uv](https://docs.astral.sh/uv/) is a fast Python package manager that handles virtual environments automatically. When Claude runs Python code or installs dependencies, it uses `uv run python` and `uv pip install` instead of bare `python` or `pip`. This prevents conflicts between projects (each gets its own isolated environment) and avoids polluting your system Python. The `settings.json` included with this repo enforces this by blocking bare `python` and `pip` commands.
+> **Why uv instead of pip?** [uv](https://docs.astral.sh/uv/) is a fast Python package manager that handles virtual environments automatically. When Antigravity runs Python code or installs dependencies, it uses `uv run python` and `uv pip install` instead of bare `python` or `pip`. This prevents conflicts between projects (each gets its own isolated environment) and avoids polluting your system Python. The `settings.json` included with this repo enforces this by blocking bare `python` and `pip` commands.
 
 ### 4. Other tools
 
 | Tool | What it's for | macOS | Ubuntu/Debian | Fedora | Arch | Windows |
 |------|--------------|-------|---------------|--------|------|---------|
-| [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) | The engine | `curl -fsSL https://claude.ai/install.sh \| bash` | same | same | same | `winget install Anthropic.ClaudeCode` |
+| [Antigravity CLI CLI](https://docs.anthropic.com/en/docs/antigravity-cli) | The engine | `curl -fsSL https://agy.ai/install.sh \| bash` | same | same | same | `winget install Anthropic.AntigravityCode` |
 | [Git](https://git-scm.com/) | Version control | Included | `sudo apt install git` | `sudo dnf install git` | `sudo pacman -S git` | `winget install Git.Git` |
 | [TeX Live](https://tug.org/texlive/) | LaTeX compilation | `brew install --cask mactex` | `sudo apt install texlive-full` | `sudo dnf install texlive-scheme-full` | `sudo pacman -S texlive` | [install guide](https://tug.org/texlive/windows.html) |
 
@@ -92,7 +92,7 @@ If you have Node.js 18+ installed:
 npx flonat-research
 ```
 
-This downloads the package, runs the setup script, and symlinks skills, agents, hooks, and rules into `~/.claude/`. Good for trying it out quickly.
+This downloads the package, runs the setup script, and symlinks skills, agents, hooks, and rules into `~/.agy/`. Good for trying it out quickly.
 
 > **Note:** The npm install places files inside `node_modules/`. For full customisation (editing context files, adding your own skills), use the git clone method below.
 
@@ -101,8 +101,8 @@ This downloads the package, runs the setup script, and symlinks skills, agents, 
 #### macOS / Linux
 
 ```bash
-git clone https://github.com/flonat/claude-research.git
-cd claude-research
+git clone https://github.com/flonat/agy-research.git
+cd agy-research
 ./scripts/setup.sh
 ```
 
@@ -111,19 +111,19 @@ cd claude-research
 Open **PowerShell** (not Command Prompt) and run:
 
 ```powershell
-git clone https://github.com/flonat/claude-research.git
-cd claude-research
+git clone https://github.com/flonat/agy-research.git
+cd agy-research
 .\scripts\setup.ps1
 ```
 
 > **If you get an execution policy error:** Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` first, then retry. This allows PowerShell to run local scripts.
 
-The setup script creates links in `~/.claude/` so Claude Code can find your skills, agents, hooks, and rules from any project directory.
+The setup script creates links in `~/.agy/` so Antigravity CLI can find your skills, agents, hooks, and rules from any project directory.
 
 ### What the setup script does
 
-1. Creates `~/.claude/` if it doesn't exist
-2. Links `skills/`, `agents/`, `rules/`, and `hooks/` into `~/.claude/`
+1. Creates `~/.agy/` if it doesn't exist
+2. Links `skills/`, `agents/`, `rules/`, and `hooks/` into `~/.agy/`
 3. Copies `settings.json` (first install only — preserved on updates)
 4. Checks that Python, uv, Git, and LaTeX are installed
 5. Creates `log/` directories for session continuity
@@ -156,19 +156,19 @@ The setup script handles this, but if you copy files manually or reset permissio
 
 Many distros ship an older Python as the system default. Check with `python3 --version`. If it's below 3.11, install a newer version alongside it (the deadsnakes PPA on Ubuntu, or your distro's package for Python 3.12). The system Python is untouched — uv manages its own environments.
 
-### `~/.claude/` location
+### `~/.agy/` location
 
-On Linux, `~` resolves to `/home/youruser/`. Claude Code looks for `~/.claude/` there. If you use a non-standard `$HOME`, verify the symlinks point correctly after setup.
+On Linux, `~` resolves to `/home/youruser/`. Antigravity CLI looks for `~/.agy/` there. If you use a non-standard `$HOME`, verify the symlinks point correctly after setup.
 
 ## Windows Setup
 
-Windows works well with Claude Code but needs a few adjustments:
+Windows works well with Antigravity CLI but needs a few adjustments:
 
 ### Shell hooks
 
 The `.sh` hook scripts require a Unix-like shell. Two options:
 
-1. **Git Bash (recommended):** Installed automatically with Git for Windows. Claude Code can use Git Bash to run `.sh` scripts. Make sure Git Bash is in your PATH (the Git installer does this by default).
+1. **Git Bash (recommended):** Installed automatically with Git for Windows. Antigravity CLI can use Git Bash to run `.sh` scripts. Make sure Git Bash is in your PATH (the Git installer does this by default).
 
 2. **WSL (Windows Subsystem for Linux):** If you prefer a full Linux environment, [install WSL](https://learn.microsoft.com/en-us/windows/wsl/install) with `wsl --install`. You can then run the Linux setup inside WSL.
 
@@ -185,11 +185,11 @@ Copy-Item (Get-Command python).Source ((Get-Command python).Source -replace 'pyt
 ```
 
 **Option B — Edit `settings.json`** to replace `python3` with `python`:
-Open `~/.claude/settings.json` and replace every occurrence of `"python3 "` with `"python "` in the hooks section.
+Open `~/.agy/settings.json` and replace every occurrence of `"python3 "` with `"python "` in the hooks section.
 
 ### Path separators
 
-Claude Code handles path separators automatically. You don't need to change `/` to `\` in any configuration files.
+Antigravity CLI handles path separators automatically. You don't need to change `/` to `\` in any configuration files.
 
 ## Customise Your Context
 
@@ -198,11 +198,11 @@ Edit these files with your own details:
 - `.context/profile.md` — Your name, institution, research areas, supervisors
 - `.context/current-focus.md` — What you're working on right now
 - `.context/projects/_index.md` — Your active research projects
-- `CLAUDE.md` — Conventions and tool preferences
+- `AGY.md` — Conventions and tool preferences
 
 ## Configure Settings
 
-Edit `.claude/settings.json` to adjust:
+Edit `.agy/settings.json` to adjust:
 - Allowed/denied commands
 - Hook configuration
 - Model preferences
@@ -211,10 +211,10 @@ Edit `.claude/settings.json` to adjust:
 
 ```bash
 cd ~/your-research-project
-claude
+agy
 ```
 
-Claude will automatically load your context, skills, and rules. Try:
+Antigravity will automatically load your context, skills, and rules. Try:
 
 - "Plan my day" — Daily planning with task queries
 - "Extract actions from my meeting" — Turn transcripts into tasks
@@ -228,7 +228,7 @@ Claude will automatically load your context, skills, and rules. Try:
 ## Adding a New Research Project
 
 1. Create a directory for your project
-2. Add a `CLAUDE.md` in the project with project-specific instructions
+2. Add a `AGY.md` in the project with project-specific instructions
 3. Symlink `paper/` to your Overleaf directory (if applicable)
 4. Add the project to `.context/projects/_index.md`
 5. Create a paper file in `.context/projects/papers/`
@@ -256,8 +256,8 @@ Windows uses `python` instead of `python3`. See the [Python command name](#pytho
 
 ### Hooks not running
 
-1. Check that `~/.claude/settings.json` exists and contains the `"hooks"` section
-2. Verify the hook files are executable: `ls -la ~/.claude/hooks/` (macOS/Linux) or check they exist in `%USERPROFILE%\.claude\hooks\` (Windows)
+1. Check that `~/.agy/settings.json` exists and contains the `"hooks"` section
+2. Verify the hook files are executable: `ls -la ~/.agy/hooks/` (macOS/Linux) or check they exist in `%USERPROFILE%\.agy\hooks\` (Windows)
 3. On Windows, ensure Git Bash is in your PATH for `.sh` hooks
 
 ### LaTeX skills fail with "latexmk not found"

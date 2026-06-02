@@ -31,7 +31,7 @@ Ten phases, in order:
 1. **Interview** — gather project details via three structured rounds
 2. **Validate** — pre-scaffold checks (atlas dup, sibling directories, existing files)
 3. **Scaffold** — create directory structure based on project type
-4. **Seed files** — populate CLAUDE.md, README.md, .gitignore from interview answers
+4. **Seed files** — populate AGY.md, README.md, .gitignore from interview answers
 5. **Overleaf symlink** — link `paper/` to Overleaf folder via mkdir + symlink
 6. **Git init** — initialise repo and make first commit (conditional)
 7. **Atlas sync** — create Atlas topic file, vault atlas entry, venue links
@@ -96,7 +96,7 @@ Pre-scaffold checks. Run before any directory creation. If any near-match is fou
    ls -d "$RESEARCH_ROOT/<theme>/"*/ 2>/dev/null
    ```
 3. **Paper sub-project check** — if scaffolding a new `paper-{venue}/` inside an existing project, list existing `paper*/` dirs and check for manuscript-content overlap (not just venue) before creating.
-4. **Existing-files reorganisation** — if the target directory already exists with files, scan (excluding `.claude/`), read documents, present a reorganisation plan: keep in place / move to `docs/` / move to `docs/readings/` / move to `paper/` / move to `to-sort/` / absorb into seed files. Wait for approval, execute, double-check before deletions. Use any extracted interview content to reduce Round 3 questions.
+4. **Existing-files reorganisation** — if the target directory already exists with files, scan (excluding `.agy/`), read documents, present a reorganisation plan: keep in place / move to `docs/` / move to `docs/readings/` / move to `paper/` / move to `to-sort/` / absorb into seed files. Wait for approval, execute, double-check before deletions. Use any extracted interview content to reduce Round 3 questions.
 
 If the directory doesn't exist, create it and proceed.
 
@@ -111,12 +111,12 @@ If the directory doesn't exist, create it and proceed.
 
 ### Hard Rules
 
-- **`paper/` is for LaTeX source files ONLY.** No code, data, scripts, computational artifacts. See `.claude/rules/overleaf-separation.md`.
+- **`paper/` is for LaTeX source files ONLY.** No code, data, scripts, computational artifacts. See `.agy/rules/overleaf-separation.md`.
 - **Research papers are drafted in LaTeX (`.tex`), never Markdown.** Seed `paper-{venue}/paper/main.tex` from the LaTeX working-paper template. No Markdown drafts under `paper*/` — papers compile via `/latex` and sync to Overleaf. Markdown is reserved for README, notes, and context files outside `paper*/`.
 
 ### Common Core + Conditional Structure
 
-**Common core** (always created): `CLAUDE.md`, `README.md`, `MEMORY.md`, `.gitignore`, `.context/`, `.claude/`, `docs/` (literature-review, readings, venues), `log/`, `paper-{venue}/` (with symlink + `correspondence/referee-reviews/`), `github-repo/` (optional), `knowledge/`, `reviews/INDEX.md` (manifest only — per-source subdirs created lazily, per `rules/review-artefact-routing.md`), `correspondence/editorial/`, `correspondence/referee-reviews/`, `to-sort/`.
+**Common core** (always created): `AGY.md`, `README.md`, `MEMORY.md`, `.gitignore`, `.context/`, `.agy/`, `docs/` (literature-review, readings, venues), `log/`, `paper-{venue}/` (with symlink + `correspondence/referee-reviews/`), `github-repo/` (optional), `knowledge/`, `reviews/INDEX.md` (manifest only — per-source subdirs created lazily, per `rules/review-artefact-routing.md`), `correspondence/editorial/`, `correspondence/referee-reviews/`, `to-sort/`.
 
 > **Note:** the legacy `REVIEW-STATE.md` at project root + `reviews/` empty dir + `correspondence/internal-reviews/` layout is superseded by `rules/review-artefact-routing.md`. New projects scaffold the new layout directly; existing projects retrofit via `/tidy-project-reviews`. Per-paper `backup/` directories are created lazily by the LaTeX-compile PostToolUse hook and are gitignored via `paper-*/backup/`.
 
@@ -141,9 +141,9 @@ Full scaffold tree, hook details, .gitkeep placement, implementation commands: [
 
 ## Phase 4: Seed Files
 
-### CLAUDE.md vs README.md
+### AGY.md vs README.md
 
-- **CLAUDE.md** — instructions for Claude: safety rules, folder structure, conventions, symlink paths. Follow the `lean-claude-md` rule.
+- **AGY.md** — instructions for Antigravity: safety rules, folder structure, conventions, symlink paths. Follow the `lean-agy-md` rule.
 - **README.md** — human-readable overview: title, authors, abstract, status checklist, links.
 
 Both overlap on basic metadata but diverge in purpose.
@@ -152,7 +152,7 @@ Full templates: [`templates/seed-files.md`](templates/seed-files.md).
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | Claude instructions: overview, venue, RQs, setup, conventions |
+| `AGY.md` | Antigravity instructions: overview, venue, RQs, setup, conventions |
 | `README.md` | Human overview: title, authors, abstract, links, status |
 | `.gitignore` | Standard ignores: OS, IDE, data, paper, Python, R, LaTeX |
 | `MEMORY.md` | Knowledge base: notation, estimands, decisions, pitfalls |
@@ -160,14 +160,14 @@ Full templates: [`templates/seed-files.md`](templates/seed-files.md).
 | `.context/current-focus.md` | Initial "just initialised" state |
 | `.context/field-calibration.md` | Per-project domain profile placeholder (`/interview-me` populates) |
 | `.context/project-recap.md` | Research design notes |
-| `.claude/hooks/copy-paper-pdf.sh` | PDF copy hook |
+| `.agy/hooks/copy-paper-pdf.sh` | PDF copy hook |
 | `log/YYYY-MM-DD-HHMM-setup.md` | Initial setup log |
 | `docs/pipeline-manifest.md` | **Experimental/Computational only** — script/data/figure manifest. Template: [`templates/pipeline-manifest.md`](templates/pipeline-manifest.md) |
 | `run_all.sh` | **Experimental/Computational only** — multi-language pipeline executor. Template: [`templates/run-all.sh`](templates/run-all.sh). `chmod +x` after creation. |
 
 ### Permissions Sync
 
-After writing `.claude/settings.local.json`, merge global permissions from `~/.claude/settings.json` into it so the new project starts with full permissions from day one. `jq` union command and deny-array handling: [`references/paper-directory.md`](references/paper-directory.md) § Permissions Sync.
+After writing `.agy/settings.local.json`, merge global permissions from `~/.agy/settings.json` into it so the new project starts with full permissions from day one. `jq` union command and deny-array handling: [`references/paper-directory.md`](references/paper-directory.md) § Permissions Sync.
 
 ---
 
@@ -177,7 +177,7 @@ After writing `.claude/settings.local.json`, merge global permissions from `~/.c
 
 **Overleaf naming:** `Paper {THEME_PREFIX} {Title Cased Slug} ({VENUE})` — theme prefix AND venue suffix both required, even for single-venue papers. Examples: `Paper ASG Privacy Compliance Gaming (CCS)`, `Paper MechDes Strategic Compliance (NeurIPS 26)`.
 
-**Create the Overleaf folder via `mkdir`** under the root from `~/.config/task-mgmt/overleaf-root`. Overleaf auto-creates a project from a new folder. Never rename or delete Overleaf folders — see `.claude/rules/overleaf-separation.md`.
+**Create the Overleaf folder via `mkdir`** under the root from `~/.config/task-mgmt/overleaf-root`. Overleaf auto-creates a project from a new folder. Never rename or delete Overleaf folders — see `.agy/rules/overleaf-separation.md`.
 
 **Backup:** create `backup/<paper-dir-name>/` for each paper. Daily `backup-overleaf-papers.sh` populates them.
 

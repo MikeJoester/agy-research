@@ -14,7 +14,7 @@
 | Tier | Location | Scope | Committed? |
 |------|----------|-------|-----------|
 | **Project** | `<project>/.cache/literature/` | One research project | No (gitignored) |
-| **Central** | `~/.cache/claude-literature/` | All projects | No |
+| **Central** | `~/.cache/agy-literature/` | All projects | No |
 
 The project cache takes precedence over the central cache (more specific context).
 
@@ -93,7 +93,7 @@ This is lighter than full caching but prevents redundant within-session searches
 |---------|--------|
 | Manual: user says "fresh search" or "ignore cache" | Skip cache, overwrite with new results |
 | TTL expired | Treat as cache miss |
-| `scholarly` CLI updated (new sources, schema changes) | Clear central cache: `rm -rf ~/.cache/claude-literature/` |
+| `scholarly` CLI updated (new sources, schema changes) | Clear central cache: `rm -rf ~/.cache/agy-literature/` |
 | Project `.bib` updated significantly | Clear project cache for that topic |
 
 ## Gitignore Setup

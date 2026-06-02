@@ -3,7 +3,7 @@
 source "$(dirname "$0")/resolve-task-mgmt.sh" || exit 0
 # startup-context-loader.sh
 # SessionStart hook (startup) — auto-detects and surfaces project documentation
-# on fresh sessions in any project, so Claude doesn't waste tokens searching.
+# on fresh sessions in any project, so Antigravity doesn't waste tokens searching.
 CWD="$(pwd)"
 CONTEXT=""
 MAX_LINES=30
@@ -108,7 +108,7 @@ if [ -f "$AGENT_MSG_FILE" ]; then
 fi
 
 # --- Skill observations: weekly review check ---
-REVIEW_DATE_FILE="$HOME/.claude/skill-observations/last-review-date.txt"
+REVIEW_DATE_FILE="$HOME/.agy/skill-observations/last-review-date.txt"
 if [ -f "$REVIEW_DATE_FILE" ]; then
   LAST_REVIEW=$(cat "$REVIEW_DATE_FILE" | tr -d '\n')
   DAYS_SINCE=$(( ( $(date +%s) - $(date -j -f "%Y-%m-%d" "$LAST_REVIEW" +%s 2>/dev/null || echo 0) ) / 86400 ))

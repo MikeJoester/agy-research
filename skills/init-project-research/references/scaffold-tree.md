@@ -6,7 +6,7 @@
 
 ```
 <Folder Name>/
-├── CLAUDE.md
+├── AGY.md
 ├── README.md
 ├── MEMORY.md
 ├── REVIEW-STATE.md      # Per-project review log; populated by 20 review tools; rendered by /review-recap
@@ -15,7 +15,7 @@
 │   ├── current-focus.md
 │   ├── field-calibration.md
 │   └── project-recap.md
-├── .claude/
+├── .agy/
 │   ├── hooks/
 │   │   └── copy-paper-pdf.sh   # PostToolUse hook — copies paper-*/paper/main.pdf → backup/*_vcurrent.pdf
 │   └── settings.local.json
@@ -60,6 +60,6 @@
 
 ```bash
 mkdir -p <dir> && touch <dir>/.gitkeep  # Create all directories
-mkdir -p .claude/hooks                   # Create hook, chmod +x
-mkdir -p .claude/state                   # Machine-specific memory (gitignored)
+mkdir -p .agy/hooks                   # Create hook, chmod +x
+mkdir -p .agy/state                   # Machine-specific memory (gitignored)
 ```

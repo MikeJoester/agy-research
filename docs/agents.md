@@ -2,7 +2,7 @@
 
 > 15 specialised review agents with separate context and persistent memory.
 
-Agents are autonomous sub-processes that run in a separate context via Claude Code's Task tool.
+Agents are autonomous sub-processes that run in a separate context via Antigravity CLI's Task tool.
 Unlike skills, agents solve the "grading your own homework" problem — they review work
 without access to the author's reasoning.
 
@@ -41,7 +41,7 @@ but only when explicitly invoked.
 
 ## Creating a New Agent
 
-Create a `.md` file in `.claude/agents/` with YAML frontmatter:
+Create a `.md` file in `.agy/agents/` with YAML frontmatter:
 
 ```yaml
 ---
@@ -50,4 +50,4 @@ description: "What this agent does"
 ---
 ```
 
-Agents are available globally via symlink: `~/.claude/agents/` points to this repo's `.claude/agents/`.
+Agents are available globally via symlink: `~/.agy/agents/` points to this repo's `.agy/agents/`.

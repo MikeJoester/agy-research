@@ -138,8 +138,8 @@ Reference rates for common APIs. **Always verify current pricing before submitti
 | OpenAI | gpt-4.1 | $2.00 | $8.00 | Batch API is 50% off |
 | OpenAI | gpt-4.1-mini | $0.40 | $1.60 | Batch API is 50% off |
 | OpenAI | gpt-4.1-nano | $0.10 | $0.40 | Batch API is 50% off |
-| Anthropic | claude-sonnet-4 | $3.00 | $15.00 | Batches: 50% off, prompt caching available |
-| Anthropic | claude-haiku-3.5 | $0.80 | $4.00 | Batches: 50% off |
+| Anthropic | agy-sonnet-4 | $3.00 | $15.00 | Batches: 50% off, prompt caching available |
+| Anthropic | agy-haiku-3.5 | $0.80 | $4.00 | Batches: 50% off |
 
 **Formula:** Always show the user the calculation, not just the result:
 

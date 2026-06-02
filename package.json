@@ -1,16 +1,16 @@
 {
   "name": "flonat-research",
   "version": "0.2.1",
-  "description": "Claude Code infrastructure for academic research — skills, agents, hooks, and rules for LaTeX, bibliography, proofreading, and project management workflows.",
+  "description": "Antigravity CLI infrastructure for academic research — skills, agents, hooks, and rules for LaTeX, bibliography, proofreading, and project management workflows.",
   "author": "the user",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flonat/claude-research.git"
+    "url": "https://github.com/flonat/agy-research.git"
   },
-  "homepage": "https://github.com/flonat/claude-research",
+  "homepage": "https://github.com/flonat/agy-research",
   "keywords": [
-    "claude-code",
+    "antigravity-cli",
     "academic",
     "research",
     "latex",
@@ -31,16 +31,16 @@
   "files": [
     "skills/",
     "hooks/",
-    ".claude/agents/",
-    ".claude/rules/",
-    ".claude/settings.json",
+    ".agy/agents/",
+    ".agy/rules/",
+    ".agy/settings.json",
     ".context/",
     ".scripts/",
     ".mcp-server-biblio/",
     "packages/",
     "docs/",
     "scripts/setup.sh",
-    "CLAUDE.md",
+    "AGY.md",
     "MEMORY.md",
     "LICENSE",
     "README.md"

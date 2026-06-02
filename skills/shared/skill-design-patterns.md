@@ -267,7 +267,7 @@ Before finalising any skill, verify:
 
 | Check | Question |
 |-------|----------|
-| Trigger clarity | Would Claude know when to invoke this from the description alone? |
+| Trigger clarity | Would Antigravity know when to invoke this from the description alone? |
 | Pattern fit | Does the structure match one of the 4 patterns above? |
 | No duplication | Does this overlap with an existing skill? |
 | Anti-patterns | Does it say what NOT to do, not just what to do? |
@@ -284,19 +284,19 @@ Before finalising any skill, verify:
 
 ## Evaluation-Driven Development
 
-Per [Anthropic's official best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices):
+Per [Anthropic's official best practices](https://platform.agy.com/docs/en/agents-and-tools/agent-skills/best-practices):
 
-1. **Identify gaps:** Run Claude on representative tasks without the skill. Document specific failures.
+1. **Identify gaps:** Run Antigravity on representative tasks without the skill. Document specific failures.
 2. **Create evaluations:** Build 3+ scenarios that test these gaps.
-3. **Establish baseline:** Measure Claude's performance without the skill.
+3. **Establish baseline:** Measure Antigravity's performance without the skill.
 4. **Write minimal instructions:** Just enough to address the gaps and pass evaluations.
 5. **Iterate:** Execute evaluations, compare against baseline, refine.
 
-### Claude A / Claude B Pattern
+### Antigravity A / Antigravity B Pattern
 
-- **Claude A** (the expert): helps design and refine the skill
-- **Claude B** (the user): tests the skill in real tasks with fresh context
-- Observe Claude B's behavior, bring insights back to Claude A
+- **Antigravity A** (the expert): helps design and refine the skill
+- **Antigravity B** (the user): tests the skill in real tasks with fresh context
+- Observe Antigravity B's behavior, bring insights back to Antigravity A
 - Repeat: observe → refine → test
 
 This is similar to the existing `/skill-creator` workflow but emphasises real-task testing over synthetic evaluation.

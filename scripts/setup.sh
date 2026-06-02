@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# setup.sh — Set up Claude Code for Academic Research
+# setup.sh — Set up Antigravity CLI for Academic Research
 #
-# Creates symlinks so Claude Code can find skills, agents, hooks, and rules
+# Creates symlinks so Antigravity CLI can find skills, agents, hooks, and rules
 # from any project directory.
 #
 # Usage:
@@ -11,7 +11,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-CLAUDE_DIR="$HOME/.claude"
+AGY_DIR="$HOME/.agy"
 VERSION="$(grep '"version"' "$REPO_DIR/package.json" 2>/dev/null | head -1 | sed 's/.*: *"\(.*\)".*/\1/' || echo "unknown")"
 UPDATE_MODE=false
 
@@ -25,7 +25,7 @@ err()   { echo -e "${RED}[setup]${NC} $*" >&2; }
 
 echo ""
 echo "========================================="
-echo "  Claude Code for Academic Research"
+echo "  Antigravity CLI for Academic Research"
 if $UPDATE_MODE; then
   echo "  Update (v$VERSION)"
 else
@@ -63,28 +63,28 @@ link_component() {
   fi
 }
 
-# ---------- 1. Create ~/.claude if needed ----------
-if [[ ! -d "$CLAUDE_DIR" ]]; then
-  info "Creating $CLAUDE_DIR..."
-  mkdir -p "$CLAUDE_DIR"
-  ok "Created $CLAUDE_DIR"
+# ---------- 1. Create ~/.agy if needed ----------
+if [[ ! -d "$AGY_DIR" ]]; then
+  info "Creating $AGY_DIR..."
+  mkdir -p "$AGY_DIR"
+  ok "Created $AGY_DIR"
 fi
 
 # ---------- 2. Symlink components ----------
-link_component "skills" "$REPO_DIR/skills" "$CLAUDE_DIR/skills"
-link_component "agents" "$REPO_DIR/.claude/agents" "$CLAUDE_DIR/agents"
-link_component "rules"  "$REPO_DIR/.claude/rules"  "$CLAUDE_DIR/rules"
-link_component "hooks"  "$REPO_DIR/hooks"  "$CLAUDE_DIR/hooks"
+link_component "skills" "$REPO_DIR/skills" "$AGY_DIR/skills"
+link_component "agents" "$REPO_DIR/.agy/agents" "$AGY_DIR/agents"
+link_component "rules"  "$REPO_DIR/.agy/rules"  "$AGY_DIR/rules"
+link_component "hooks"  "$REPO_DIR/hooks"  "$AGY_DIR/hooks"
 
 # ---------- 3. Copy settings (skip in update mode) ----------
 if $UPDATE_MODE; then
   info "Update mode — skipping settings.json (preserving your config)"
-elif [[ -f "$CLAUDE_DIR/settings.json" ]]; then
-  warn "~/.claude/settings.json already exists — not overwriting"
-  warn "Compare with $REPO_DIR/.claude/settings.json and merge manually"
+elif [[ -f "$AGY_DIR/settings.json" ]]; then
+  warn "~/.agy/settings.json already exists — not overwriting"
+  warn "Compare with $REPO_DIR/.agy/settings.json and merge manually"
 else
-  cp "$REPO_DIR/.claude/settings.json" "$CLAUDE_DIR/settings.json"
-  ok "Copied settings.json → $CLAUDE_DIR/settings.json"
+  cp "$REPO_DIR/.agy/settings.json" "$AGY_DIR/settings.json"
+  ok "Copied settings.json → $AGY_DIR/settings.json"
 fi
 
 # ---------- 4. Create log directory ----------
@@ -132,10 +132,10 @@ if ! $UPDATE_MODE; then
   echo "  1. Edit .context/profile.md with your details"
   echo "  2. Edit .context/current-focus.md with your current work"
   echo "  3. Edit .context/projects/_index.md with your projects"
-  echo "  4. Edit CLAUDE.md to customise conventions"
-  echo "  5. Review ~/.claude/settings.json for permissions and hooks"
+  echo "  4. Edit AGY.md to customise conventions"
+  echo "  5. Review ~/.agy/settings.json for permissions and hooks"
   echo ""
-  echo "Then open any project directory and run 'claude' to start!"
+  echo "Then open any project directory and run 'agy' to start!"
 else
   echo "Symlinks updated. Your settings.json was preserved."
   echo ""

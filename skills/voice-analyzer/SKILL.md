@@ -256,7 +256,7 @@ Generate 3 test prompts tailored to this person's typical writing contexts. Thes
 - **Project-specific:** `<project>/.context/voice/voice.md` (for project-specific voice)
 - **Multiple profiles:** `.context/voice/[context]-voice.md` (academic, casual, teaching)
 
-Add a pointer in the project's CLAUDE.md so it auto-loads:
+Add a pointer in the project's AGY.md so it auto-loads:
 ```markdown
 ## Voice Profile
 See [`.context/voice/florian-voice.md`](.context/voice/florian-voice.md)

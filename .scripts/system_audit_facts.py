@@ -44,19 +44,19 @@ from typing import Any
 # ─── Roots ─────────────────────────────────────────────────────────────────
 
 TM = Path(__file__).resolve().parent.parent
-CLAUDE_HOME = Path.home() / ".claude"
+AGY_HOME = Path.home() / ".agy"
 
-# ~/.claude.json is the canonical Claude Code user-config file. Has top-level
+# ~/.agy.json is the canonical Antigravity CLI user-config file. Has top-level
 # `mcpServers` (user-scope) and `projects.<abs-path>.mcpServers` (project-scope).
-# ~/.claude/settings.json is the newer split config but does NOT carry mcpServers
+# ~/.agy/settings.json is the newer split config but does NOT carry mcpServers
 # on this install — we read it for completeness but expect it usually empty.
-CLAUDE_USER_JSON = Path.home() / ".claude.json"
+AGY_USER_JSON = Path.home() / ".agy.json"
 
 # Desktop config — historically Mac path. May not exist (Desktop uninstalled or
 # never configured). All callers must use `.exists()` before reading.
 DESKTOP_CONFIG = (
     Path.home()
-    / "Library/Application Support/Claude/claude_desktop_config.json"
+    / "Library/Application Support/Antigravity/claude_desktop_config.json"
 )
 
 
@@ -69,15 +69,15 @@ def count_skills() -> int:
 
 
 def count_hooks() -> int:
-    """Count Claude-Code hook files: .sh + .py + .mjs in hooks/ (top-level only)."""
+    """Count Antigravity-Code hook files: .sh + .py + .mjs in hooks/ (top-level only)."""
     return sum(
         len(list((TM / "hooks").glob(f"*.{ext}"))) for ext in ("sh", "py", "mjs")
     )
 
 
 def count_agents() -> int:
-    """Count agent .md files in .claude/agents/ (top-level only)."""
-    return len(list((TM / ".claude/agents").glob("*.md")))
+    """Count agent .md files in .agy/agents/ (top-level only)."""
+    return len(list((TM / ".agy/agents").glob("*.md")))
 
 
 def count_rules() -> int:
@@ -150,11 +150,11 @@ class InventorySection:
     counts: dict[str, int] = field(default_factory=dict)
     deployed_copies: dict[str, str] = field(default_factory=dict)
     # MCP servers by source:
-    #   user           — `~/.claude.json` top-level `mcpServers` (user-scope, Code)
+    #   user           — `~/.agy.json` top-level `mcpServers` (user-scope, Code)
     #   project_local  — `<TM>/.mcp.json` (project-scope, Code, .mcp.json convention)
-    #   project_user   — `~/.claude.json` `projects.<TM>.mcpServers` (Code per-project pref)
-    #   settings       — `~/.claude/settings.json` (newer split config; usually empty)
-    #   desktop        — Claude Desktop config (only if installed)
+    #   project_user   — `~/.agy.json` `projects.<TM>.mcpServers` (Code per-project pref)
+    #   settings       — `~/.agy/settings.json` (newer split config; usually empty)
+    #   desktop        — Antigravity Desktop config (only if installed)
     mcp_servers_user: list[str] = field(default_factory=list)
     mcp_servers_project_local: list[str] = field(default_factory=list)
     mcp_servers_project_user: list[str] = field(default_factory=list)
@@ -182,10 +182,10 @@ def section_inventory() -> InventorySection:
         "rules",
         "hooks",
         "settings.json",
-        "CLAUDE.md",
+        "AGY.md",
     ]
     for t in targets:
-        p = CLAUDE_HOME / t
+        p = AGY_HOME / t
         if not p.exists():
             s.deployed_copies[t] = "missing"
         elif p.is_symlink():
@@ -194,10 +194,10 @@ def section_inventory() -> InventorySection:
             s.deployed_copies[t] = "copy"
 
     # MCP servers — read from five sources
-    # 1+3: ~/.claude.json (user-scope + per-project-scope under projects.<TM>)
-    if CLAUDE_USER_JSON.exists():
+    # 1+3: ~/.agy.json (user-scope + per-project-scope under projects.<TM>)
+    if AGY_USER_JSON.exists():
         try:
-            data = json.loads(CLAUDE_USER_JSON.read_text())
+            data = json.loads(AGY_USER_JSON.read_text())
             s.mcp_servers_user = sorted((data.get("mcpServers") or {}).keys())
             projects = data.get("projects") or {}
             project_entry = projects.get(str(TM)) or {}
@@ -205,7 +205,7 @@ def section_inventory() -> InventorySection:
                 (project_entry.get("mcpServers") or {}).keys()
             )
         except Exception as e:
-            s.issues.append(f"~/.claude.json unreadable: {e}")
+            s.issues.append(f"~/.agy.json unreadable: {e}")
 
     # 2: <TM>/.mcp.json (project-local convention)
     mcp_json = TM / ".mcp.json"
@@ -218,8 +218,8 @@ def section_inventory() -> InventorySection:
         except Exception as e:
             s.issues.append(f".mcp.json unreadable: {e}")
 
-    # 4: ~/.claude/settings.json (newer split config — usually no mcpServers)
-    settings_path = CLAUDE_HOME / "settings.json"
+    # 4: ~/.agy/settings.json (newer split config — usually no mcpServers)
+    settings_path = AGY_HOME / "settings.json"
     if settings_path.exists():
         try:
             data = json.loads(settings_path.read_text())
@@ -227,7 +227,7 @@ def section_inventory() -> InventorySection:
         except Exception as e:
             s.issues.append(f"settings.json unreadable: {e}")
 
-    # 5: Claude Desktop config (optional)
+    # 5: Antigravity Desktop config (optional)
     if DESKTOP_CONFIG.exists():
         try:
             data = json.loads(DESKTOP_CONFIG.read_text())
@@ -283,7 +283,7 @@ def _undocumented_agents() -> list[str]:
         m = re.match(r"^\|\s*`([a-z0-9-]+)`\s*\|", line)
         if m:
             referenced.add(m.group(1) + ".md")
-    on_disk = {p.name for p in (TM / ".claude/agents").glob("*.md")}
+    on_disk = {p.name for p in (TM / ".agy/agents").glob("*.md")}
     return sorted(on_disk - referenced)
 
 
@@ -331,7 +331,7 @@ def section_docs() -> DocsSection:
 
     # Broken links across key docs
     targets = [
-        TM / "CLAUDE.md",
+        TM / "AGY.md",
         TM / "README.md",
         TM / "docs/system.md",
         *list((TM / "docs/components").glob("*.md")),
@@ -387,7 +387,7 @@ def section_ecosystem() -> EcosystemSection:
 
     # MCP server references in skills + agents
     refs: set[str] = set()
-    for d in [TM / "skills", TM / ".claude/agents"]:
+    for d in [TM / "skills", TM / ".agy/agents"]:
         for p in d.rglob("*.md"):
             try:
                 text = p.read_text(errors="replace")
@@ -398,15 +398,15 @@ def section_ecosystem() -> EcosystemSection:
     s.mcp_referenced = sorted(refs)
 
     # Configured servers — union across all known sources.
-    # ~/.claude.json carries both user-scope (top-level mcpServers) and per-
-    # project-scope (projects.<abs-path>.mcpServers). ~/.claude/settings.json
+    # ~/.agy.json carries both user-scope (top-level mcpServers) and per-
+    # project-scope (projects.<abs-path>.mcpServers). ~/.agy/settings.json
     # rarely carries mcpServers on this install but check anyway. .mcp.json is
     # the project-local convention. DESKTOP_CONFIG is optional.
     configured: set[str] = set()
 
-    if CLAUDE_USER_JSON.exists():
+    if AGY_USER_JSON.exists():
         try:
-            data = json.loads(CLAUDE_USER_JSON.read_text())
+            data = json.loads(AGY_USER_JSON.read_text())
             configured.update((data.get("mcpServers") or {}).keys())
             projects = data.get("projects") or {}
             project_entry = projects.get(str(TM)) or {}
@@ -414,7 +414,7 @@ def section_ecosystem() -> EcosystemSection:
         except Exception:
             pass
 
-    for src in (CLAUDE_HOME / "settings.json", TM / ".mcp.json", DESKTOP_CONFIG):
+    for src in (AGY_HOME / "settings.json", TM / ".mcp.json", DESKTOP_CONFIG):
         if src.exists():
             try:
                 data = json.loads(src.read_text())
@@ -435,7 +435,7 @@ def section_ecosystem() -> EcosystemSection:
     # Staleness (>90 days)
     for label, root, pattern in [
         ("skills", TM / "skills", "**/SKILL.md"),
-        ("agents", TM / ".claude/agents", "*.md"),
+        ("agents", TM / ".agy/agents", "*.md"),
         ("hooks_sh", TM / "hooks", "*.sh"),
         ("hooks_py", TM / "hooks", "*.py"),
         ("rules", TM / "rules", "*.md"),
@@ -574,10 +574,10 @@ def _human(sections: dict[str, dict]) -> str:
         out.append("## Inventory")
         out.append(f"  Counts: {inv['counts']}")
         out.append(f"  Deployed: {inv['deployed_copies']}")
-        out.append(f"  MCP (~/.claude.json user-scope):    {len(inv['mcp_servers_user'])} — {inv['mcp_servers_user']}")
-        out.append(f"  MCP (~/.claude.json project-scope): {len(inv['mcp_servers_project_user'])} — {inv['mcp_servers_project_user']}")
+        out.append(f"  MCP (~/.agy.json user-scope):    {len(inv['mcp_servers_user'])} — {inv['mcp_servers_user']}")
+        out.append(f"  MCP (~/.agy.json project-scope): {len(inv['mcp_servers_project_user'])} — {inv['mcp_servers_project_user']}")
         out.append(f"  MCP (<TM>/.mcp.json):               {len(inv['mcp_servers_project_local'])} — {inv['mcp_servers_project_local']}")
-        out.append(f"  MCP (~/.claude/settings.json):      {len(inv['mcp_servers_settings'])} — {inv['mcp_servers_settings']}")
+        out.append(f"  MCP (~/.agy/settings.json):      {len(inv['mcp_servers_settings'])} — {inv['mcp_servers_settings']}")
         out.append(f"  MCP (claude_desktop_config.json):   {len(inv['mcp_servers_desktop'])} — {inv['mcp_servers_desktop']}")
         if inv["undocumented_hooks"]:
             out.append(f"  Undocumented hooks: {inv['undocumented_hooks']}")

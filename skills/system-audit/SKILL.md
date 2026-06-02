@@ -31,7 +31,7 @@ argument-hint: "[no arguments — runs full sweep]"
 
 ## Autonomy
 
-Per the global `--autonomous` / `-y` convention in `~/.claude/rules/phased-work.md` § "Autonomy flag convention". Invoke as `/system-audit --autonomous` (or `-y`). When set:
+Per the global `--autonomous` / `-y` convention in `~/.agy/rules/phased-work.md` § "Autonomy flag convention". Invoke as `/system-audit --autonomous` (or `-y`). When set:
 
 - **No inter-phase pauses** — Lint → Dispatch → Collect → Consolidate → Present chain end-to-end.
 - **No `AskUserQuestion` mid-run** — sub-agent count defaults to 3 (SA2/SA3/SA6), all sub-agents launch in parallel without confirmation.
@@ -78,7 +78,7 @@ If findings > 0, list them in the report under a **Skill-Numbering Lint** sectio
 Run:
 
 ```bash
-grep -E "^After producing (DOMAIN-REVIEW|CODE-REVIEW|your verdict|your referee|the verification)" .claude/agents/*.md
+grep -E "^After producing (DOMAIN-REVIEW|CODE-REVIEW|your verdict|your referee|the verification)" .agy/agents/*.md
 ```
 
 **Pass criteria:** 0 matches. Any match means a review-agent definition is using the stale/fragile logger-gate intro pattern that was fixed by the 5-agent patch (commit `23ebcfff`, 2026-05-17). The fragile pattern conditions the `review-state-log.sh` call on producing a stale top-level filename (`DOMAIN-REVIEW.md`-style) or a soft generic phrase (`"your verdict"`, `"the verification"`); when orchestrators like `/review-cluster` send "Return findings as a structured list, NOT a file write", the gate fails and the helper never fires — leaving a logger gap detectable by `/review-recap`.
@@ -104,7 +104,7 @@ What this covers (all deterministic — no LLM judgment needed):
 | Section | Replaces | What it checks |
 |---------|----------|---------------|
 | `inventory` | SA1 Inventory Auditor | Skill/hook/agent/rule counts vs `count_inventory.py` ground truth, symlinks, file-extension sanity |
-| `docs` | SA4 Documentation Freshness | Stale counts in CLAUDE.md/README/docs, broken markdown links (resolved against source-file dir, not CWD), `.context/` mtime freshness |
+| `docs` | SA4 Documentation Freshness | Stale counts in AGY.md/README/docs, broken markdown links (resolved against source-file dir, not CWD), `.context/` mtime freshness |
 | `ecosystem` | SA5 Ecosystem Health | MCP server registry alignment, orphan tool references, CLI tool presence |
 | `friends` | SA7 Friends Repo Health | Friends-repo skill/rule freshness vs upstream, anonymisation hygiene, install script presence |
 

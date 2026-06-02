@@ -11,7 +11,7 @@ argument-hint: [project-name-or-path]
 
 ## Purpose
 
-Based on Scott Cunningham's Claude Code workflow: "Progress logs are my autosave of the workflow." When sessions end or crash, the next Claude can read logs and pick up exactly where you left off.
+Based on Scott Cunningham's Antigravity CLI workflow: "Progress logs are my autosave of the workflow." When sessions end or crash, the next Antigravity can read logs and pick up exactly where you left off.
 
 ## When to Use
 
@@ -21,16 +21,16 @@ At the end of any significant work session, or when asked to "log this session" 
 
 ### Step 1: Identify Projects Touched
 
-Before writing anything, inventory which projects were affected during this session. A "project" is any directory with its own `CLAUDE.md` or `log/` directory. Common splits:
+Before writing anything, inventory which projects were affected during this session. A "project" is any directory with its own `AGY.md` or `log/` directory. Common splits:
 
 | Scope | Where the log goes |
 |-------|--------------------|
 | Work inside a specific project | That project's `log/` |
 | Global infrastructure (skills, hooks, rules, settings) | Task Management's `log/` |
-| Course/module-level changes (reorganisation, new CLAUDE.md) | That module's `log/` |
+| Course/module-level changes (reorganisation, new AGY.md) | That module's `log/` |
 
 **Signs of a multi-project session:**
-- Files changed under `~/.claude/` (skills, hooks, settings) → global/infrastructure log
+- Files changed under `~/.agy/` (skills, hooks, settings) → global/infrastructure log
 - Files changed in the CWD project → project-specific log
 - Files changed in a parent or sibling directory → check if that's a separate project
 
@@ -94,5 +94,5 @@ This lets a future session in one project discover that related work happened el
 "Please log this session — we did Workshop 17, reorganised the module folder, and created two new global skills."
 
 → Three logs:
-1. **Module project** `log/` — workshop completion, reorganisation, CLAUDE.md creation
+1. **Module project** `log/` — workshop completion, reorganisation, AGY.md creation
 2. **Task Management** `log/` — new skills (`init-project-course`, `audit-project-course`), new hook (`ensure-latexmkrc.sh`), settings.json changes

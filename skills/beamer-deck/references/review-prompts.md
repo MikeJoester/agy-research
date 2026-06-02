@@ -4,7 +4,7 @@
 
 ## Standard Forbid-List for All Review Sub-Agents Below
 
-**Paste this block into every review sub-agent prompt below** (per `~/.claude/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Reviewers are read-only on the deck — only the orchestrator applies fixes.
+**Paste this block into every review sub-agent prompt below** (per `~/.agy/rules/subagent-prompt-discipline.md` § Standard Forbid-List for Write-Capable Sub-Agents). Reviewers are read-only on the deck — only the orchestrator applies fixes.
 
 ```
 ## Scope of action — DO NOT do these things
@@ -18,7 +18,7 @@ following:
   handles compilation between rounds.
 - Do NOT run `git add`, `git commit`, `git push`, or any other git
   write command.
-- Do NOT edit `.context/`, `MEMORY.md`, `CLAUDE.md`, or any project
+- Do NOT edit `.context/`, `MEMORY.md`, `AGY.md`, or any project
   documentation.
 - Do NOT edit the project's `.bib` file.
 - Do NOT create files outside your final response.

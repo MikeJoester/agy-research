@@ -27,7 +27,7 @@ argument-hint: "[no arguments — runs in current directory]"
 
 Read everything already in the directory before asking questions.
 
-1. List all files and folders (excluding `.claude/`, `.DS_Store`)
+1. List all files and folders (excluding `.agy/`, `.DS_Store`)
 2. Identify content types:
    - **Lecture PDFs** — files matching `Lecture*` or containing "lecture" in name
    - **Seminar materials** — files matching `Seminar*`, `Session*`, or containing "seminar" in name (discussion-based modules use seminars instead of lectures)
@@ -72,9 +72,9 @@ Full templates (student + instructor directory structures), workshop naming, lec
 
 ---
 
-## Phase 4: Create CLAUDE.md
+## Phase 4: Create AGY.md
 
-Follow the `lean-claude-md` rule. Include only:
+Follow the `lean-agy-md` rule. Include only:
 
 1. **Module overview** — code, name, institution, programme, credits, 1-2 sentence description
 2. **People** — instructor(s) and/or student, role
@@ -99,7 +99,7 @@ Create `MEMORY.md` using the appropriate template (student or instructor). Templ
 
 ## Phase 6: Settings
 
-Create `.claude/settings.local.json` if missing. Full details: [references/memory-and-settings.md](references/memory-and-settings.md)
+Create `.agy/settings.local.json` if missing. Full details: [references/memory-and-settings.md](references/memory-and-settings.md)
 
 ---
 
@@ -118,7 +118,7 @@ Set up course project: <module code + name>
 Role: Student / Instructor
 
 Created:
-  - CLAUDE.md
+  - AGY.md
   - MEMORY.md (seeded with [student/instructor] template)
   - lectures/ or seminars/ (N PDFs, deduplicated from M locations)
   - notes/ (student only, if applicable)
@@ -126,7 +126,7 @@ Created:
   - workshops/ (N workshops, renamed from original folders)
   - assessments/{types}/ (moved from original folders)
   - docs/ (module specification, guidelines)
-  - [.claude/settings.local.json if created]
+  - [.agy/settings.local.json if created]
   - [vault entry created in Modules Pipeline (Student/Instructor)]
 
 Workshop naming:
@@ -144,4 +144,4 @@ Workshop naming:
 | `/init-project-light` | For non-course document collections |
 | `/init-project-research` | For research projects within a course |
 | `/audit-project-course` | Run later to check the structure is still clean |
-| `/update-project-doc` | Run later to refresh CLAUDE.md if the module grows |
+| `/update-project-doc` | Run later to refresh AGY.md if the module grows |

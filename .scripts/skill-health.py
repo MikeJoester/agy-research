@@ -2,7 +2,7 @@
 """
 Skill Health Assessment — Phase A, Step 2
 
-Reads observation events from ~/.claude/ecc/observations-*.jsonl,
+Reads observation events from ~/.agy/ecc/observations-*.jsonl,
 correlates pre/post events, computes per-skill health metrics,
 and outputs a structured report.
 
@@ -25,7 +25,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
 
-ECC_DIR = Path.home() / ".claude" / "ecc"
+ECC_DIR = Path.home() / ".agy" / "ecc"
 ROLLING_WINDOW_DAYS = 30
 PURGE_DAYS = 90
 MAX_TOTAL_SIZE_MB = 50
@@ -379,7 +379,7 @@ def format_table(report: dict, args) -> str:
     """Format the health report as a readable table."""
     if not report:
         return "No observation data found. The skill observer hook may not have fired yet.\n" \
-               "Invoke any skill (e.g., /session-health) and check ~/.claude/ecc/ for data."
+               "Invoke any skill (e.g., /session-health) and check ~/.agy/ecc/ for data."
 
     # Sort by total invocations descending
     items = sorted(report.items(), key=lambda x: -x[1]["total_invocations"])
@@ -465,9 +465,9 @@ def main():
         if args.json:
             print(json.dumps({"skills": {}, "meta": {"event_count": 0}}))
         else:
-            print("No observation data found in ~/.claude/ecc/.")
+            print("No observation data found in ~/.agy/ecc/.")
             print("The skill observer hook may not have fired yet.")
-            print("Invoke any skill and check ~/.claude/ecc/ for observation files.")
+            print("Invoke any skill and check ~/.agy/ecc/ for observation files.")
         return
 
     # Filter by window

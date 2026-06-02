@@ -23,7 +23,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/bib-validate-prompt.txt \
     --context-file /tmp/bib-and-tex-content.txt \
     --output-md /tmp/bib-validate-council.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 

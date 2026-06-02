@@ -4,7 +4,7 @@
 
 ## What Are Workflows?
 
-Workflows are step-by-step process guides for recurring tasks. They tell Claude how to help you with specific activities.
+Workflows are step-by-step process guides for recurring tasks. They tell Antigravity how to help you with specific activities.
 
 **Note:** Some capabilities are now in `skills/` instead — skills are more comprehensive and include prompt templates, while workflows are simpler process guides.
 

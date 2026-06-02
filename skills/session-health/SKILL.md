@@ -18,10 +18,10 @@ On-demand diagnostic showing context usage, preservation state, and open work it
 Read the context monitor state file to get the current tool call count:
 
 ```
-~/.claude/sessions/{project-hash}/context-monitor-state.json
+~/.agy/sessions/{project-hash}/context-monitor-state.json
 ```
 
-The project hash is a SHA-256 of `CLAUDE_PROJECT_DIR` (first 12 chars). If the state file doesn't exist, report "No context monitor data — hook may not be active."
+The project hash is a SHA-256 of `AGY_PROJECT_DIR` (first 12 chars). If the state file doesn't exist, report "No context monitor data — hook may not be active."
 
 Calculate:
 - Tool calls so far
@@ -50,7 +50,7 @@ Check when `.context/current-focus.md` was last modified:
 
 ### 5. Preservation Hooks
 
-Verify these hooks are configured in `~/.claude/settings.json`:
+Verify these hooks are configured in `~/.agy/settings.json`:
 - `PreCompact` → `precompact-autosave.py` (pre-compact state save)
 - `SessionStart` compact → `postcompact-restore.py` (post-compact restore)
 - `PostToolUse` → `context-monitor.py` (this monitor)
@@ -111,7 +111,7 @@ When context is high (>60%), include these reference tables in the output:
 
 | Persists | Lost |
 |---|---|
-| CLAUDE.md + rules | Intermediate reasoning |
+| AGY.md + rules | Intermediate reasoning |
 | Task list | File contents previously read |
 | MEMORY.md | Multi-step conversation context |
 | Git state | Tool call history |

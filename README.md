@@ -1,13 +1,13 @@
 <!-- Governed by: skills/shared/project-documentation.md -->
 
-# Claude Code for an Academic Researcher
+# Antigravity CLI for an Academic Researcher
 
-Made by a humble PhD student. A complete Claude Code infrastructure for researchers — skills, agents, hooks, and rules for academic workflows. Built for researchers who write papers in LaTeX, manage bibliographies, run experiments, and want AI assistance that understands academic conventions.
+Made by a humble PhD student. A complete Antigravity CLI infrastructure for researchers — skills, agents, hooks, and rules for academic workflows. Built for researchers who write papers in LaTeX, manage bibliographies, run experiments, and want AI assistance that understands academic conventions.
 
-Works on **macOS, Linux, and Windows**. Use Claude Code from the [terminal CLI](https://docs.anthropic.com/en/docs/claude-code), [VS Code](https://marketplace.visualstudio.com/items?itemName=anthropics.claude-code), [JetBrains IDEs](https://plugins.jetbrains.com/plugin/27189-claude-code), [the web](https://claude.ai/code), or the [desktop app](https://claude.ai/download) — all share the same skills, agents, and rules.
+Works on **macOS, Linux, and Windows**. Use Antigravity CLI from the [terminal CLI](https://docs.anthropic.com/en/docs/antigravity-cli), [VS Code](https://marketplace.visualstudio.com/items?itemName=anthropics.antigravity-cli), [JetBrains IDEs](https://plugins.jetbrains.com/plugin/27189-antigravity-cli), [the web](https://agy.ai/code), or the [desktop app](https://agy.ai/download) — all share the same skills, agents, and rules.
 
 [![npm version](https://img.shields.io/npm/v/flonat-research)](https://www.npmjs.com/package/flonat-research)
-[![GitHub release](https://img.shields.io/github/v/release/flonat/claude-research)](https://github.com/flonat/claude-research/releases)
+[![GitHub release](https://img.shields.io/github/v/release/flonat/agy-research)](https://github.com/flonat/agy-research/releases)
 
 ## Installation
 
@@ -17,27 +17,27 @@ Works on **macOS, Linux, and Windows**. Use Claude Code from the [terminal CLI](
 npx flonat-research
 ```
 
-This downloads the package and runs the setup script, which symlinks skills, agents, hooks, and rules into `~/.claude/`.
+This downloads the package and runs the setup script, which symlinks skills, agents, hooks, and rules into `~/.agy/`.
 
 ### Full Install (recommended for customisation)
 
 #### macOS / Linux
 
 ```bash
-git clone https://github.com/flonat/claude-research.git
-cd claude-research
+git clone https://github.com/flonat/agy-research.git
+cd agy-research
 ./scripts/setup.sh
 ```
 
 #### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/flonat/claude-research.git
-cd claude-research
+git clone https://github.com/flonat/agy-research.git
+cd agy-research
 .\scripts\setup.ps1
 ```
 
-The git clone gives you a local copy you can fully customise — edit `.context/profile.md`, `CLAUDE.md`, and workflows to match your research.
+The git clone gives you a local copy you can fully customise — edit `.context/profile.md`, `AGY.md`, and workflows to match your research.
 
 ### Update
 
@@ -49,7 +49,7 @@ git pull && ./scripts/setup.sh --update
 git pull; .\scripts\setup.ps1 -Update
 ```
 
-Then customise `.context/profile.md`, `.context/current-focus.md`, and `CLAUDE.md` with your details. See [`docs/getting-started.md`](docs/getting-started.md) for the full guide (includes Windows-specific setup, Python install, and troubleshooting).
+Then customise `.context/profile.md`, `.context/current-focus.md`, and `AGY.md` with your details. See [`docs/getting-started.md`](docs/getting-started.md) for the full guide (includes Windows-specific setup, Python install, and troubleshooting).
 
 ### Related Packages
 
@@ -68,7 +68,7 @@ Then customise `.context/profile.md`, `.context/current-focus.md`, and `CLAUDE.m
 | **Agents** | 15 | Specialised reviewers (peer review, referee 2, paper critic, domain review, fixer) |
 | **Hooks** | 9 | Automated guardrails (destructive git protection, context monitoring, etc.) |
 | **Rules** | 18 | Always-on policies (plan before implementing, scope discipline, etc.) |
-| **Context library** | — | Structured files that give Claude persistent memory across sessions |
+| **Context library** | — | Structured files that give Antigravity persistent memory across sessions |
 | **Notion integration** | — | Task management and research pipeline tracking — [setup guide](docs/notion-setup.md) |
 | **Bibliography MCP** | — | Multi-source scholarly search (OpenAlex + Scopus + WoS) — [setup guide](docs/biblio-setup.md) |
 | **Council mode** | — | Multi-model deliberation (3 reviewers + synthesis) — [setup guide](docs/council-mode.md) |
@@ -81,9 +81,9 @@ Then customise `.context/profile.md`, `.context/current-focus.md`, and `CLAUDE.m
 <!-- synced from private README — do not edit manually -->
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│  Claude Code (Terminal)              Claude Desktop (GUI)     │
+│  Antigravity CLI (Terminal)              Antigravity Desktop (GUI)     │
 │         │                                   │                │
-│    CLAUDE.md + Rules              MCP Server (load-context)   │
+│    AGY.md + Rules              MCP Server (load-context)   │
 │         │                                   │                │
 │    ┌────┴──────────────┬──────────────┐     │                │
 │    │                   │              │     │                │
@@ -96,12 +96,12 @@ Then customise `.context/profile.md`, `.context/current-focus.md`, and `CLAUDE.m
 └──────────────────────────────────────────────────────────────┘
 ```
 
-The MCP server's `load-context` tool gives Claude Desktop access to the context library and MEMORY.md — the same files Claude Code reads automatically.
+The MCP server's `load-context` tool gives Antigravity Desktop access to the context library and MEMORY.md — the same files Antigravity CLI reads automatically.
 <!-- ARCHITECTURE:END -->
 
 ## Components
 
-**Context Library** (`.context/`) — Markdown files that give Claude persistent memory about you, your projects, and your workflows. Instead of re-explaining your research every session, Claude reads these files automatically.
+**Context Library** (`.context/`) — Markdown files that give Antigravity persistent memory about you, your projects, and your workflows. Instead of re-explaining your research every session, Antigravity reads these files automatically.
 
 **Skills** (`skills/`) — Slash commands invoked with `/<skill-name>` or natural language.
 <!-- SKILLS-SUMMARY:START -->
@@ -110,7 +110,7 @@ The MCP server's `load-context` tool gives Claude Desktop access to the context 
 <!-- SKILLS-SUMMARY:END -->
 See [`docs/skills.md`](docs/skills.md) for the full catalogue.
 
-**Agents** (`.claude/agents/`) — Specialised personas for complex review tasks, spawning sub-agents for parallel work.
+**Agents** (`.agy/agents/`) — Specialised personas for complex review tasks, spawning sub-agents for parallel work.
 
 <!-- AGENTS-TABLE:START -->
 | Agent | Use case |
@@ -145,7 +145,7 @@ See [`docs/agents.md`](docs/agents.md) for detailed descriptions.
 | `handoff-read.sh` | SessionStart | if handoff.md exists in cwd, read it into additionalContext |
 | `postcompact-restore.py` | After compact | restores state after context compression |
 | `precompact-autosave.py` | Before compact | saves state before context compression |
-| `promise-checker.sh` | Session stop | catches "performative compliance": Claude says it remembered/noted/saved |
+| `promise-checker.sh` | Session stop | catches "performative compliance": Antigravity says it remembered/noted/saved |
 | `protect-source-files.sh` | Before edit/write | prompts confirmation for files outside |
 | `resume-context-loader.sh` | Session resume | surfaces current focus and latest session log |
 | `startup-context-loader.sh` | Session start | auto-detects and surfaces project documentation |
@@ -154,7 +154,7 @@ See [`docs/agents.md`](docs/agents.md) for detailed descriptions.
 
 See [`docs/hooks.md`](docs/hooks.md) for full documentation.
 
-**Rules** (`.claude/rules/`) — Always-on policies enforcing good research practices. See [`docs/rules.md`](docs/rules.md).
+**Rules** (`.agy/rules/`) — Always-on policies enforcing good research practices. See [`docs/rules.md`](docs/rules.md).
 
 **Research Vault** — Obsidian-style markdown vault (`~/Research-Vault`) for tasks, pipeline, submissions, venues, people, and themes. Accessed via the `taskflow` MCP server.
 
@@ -196,11 +196,11 @@ The recovery protocol reads the latest plan, session log, and current focus to r
 
 <!-- FILE-TREE:START -->
 ```
-claude-research/
-├── CLAUDE.md                    # Main instruction file (customise this)
+agy-research/
+├── AGY.md                    # Main instruction file (customise this)
 ├── README.md                    # This file
 ├── MEMORY.md                    # Accumulated knowledge (auto-populated)
-├── .claude/
+├── .agy/
 │   ├── agents/                  # 15 specialised review agents
 │   ├── rules/                   # 18 auto-loaded policy rules
 │   └── settings.json            # Permissions, hooks, model config
@@ -248,13 +248,13 @@ claude-research/
 
 | Tool | Why you need it | macOS | Linux | Windows |
 |------|----------------|-------|-------|---------|
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | The AI engine — runs skills, agents, hooks | `curl -fsSL https://claude.ai/install.sh \| bash` | same | `winget install Anthropic.ClaudeCode` |
+| [Antigravity CLI](https://docs.anthropic.com/en/docs/antigravity-cli) | The AI engine — runs skills, agents, hooks | `curl -fsSL https://agy.ai/install.sh \| bash` | same | `winget install Anthropic.AntigravityCode` |
 | [Python 3.11+](https://www.python.org/) | Hooks and MCP servers | `brew install python@3.12` | `apt install python3.12` | `winget install Python.Python.3.12` |
 | [uv](https://docs.astral.sh/uv/) | Fast Python package manager — isolates dependencies, replaces `pip` | `brew install uv` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `winget install astral-sh.uv` |
 | [Git](https://git-scm.com/) | Version control | Included | `apt install git` | `winget install Git.Git` |
 | [TeX Live](https://tug.org/texlive/) | LaTeX compilation (`/proofread`, `/latex-autofix`) | `brew install --cask mactex` | `apt install texlive-full` | [install guide](https://tug.org/texlive/windows.html) |
 
-Also available as a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=anthropics.claude-code), [JetBrains plugin](https://plugins.jetbrains.com/plugin/27189-claude-code), [web app](https://claude.ai/code), or [desktop app](https://claude.ai/download).
+Also available as a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=anthropics.antigravity-cli), [JetBrains plugin](https://plugins.jetbrains.com/plugin/27189-antigravity-cli), [web app](https://agy.ai/code), or [desktop app](https://agy.ai/download).
 
 See [`docs/getting-started.md`](docs/getting-started.md) for Fedora/Arch commands, Windows-specific setup, Python version guidance, and troubleshooting.
 
@@ -267,10 +267,10 @@ This infrastructure draws on design patterns from several open-source workflows.
 ### Academic Researchers
 
 - **[Scott Cunningham](https://github.com/scunning1975/MixtapeTools)** (MixtapeTools) — session logs, rhetoric-driven presentations, "health inspector" model for code audits, cross-language replication, author/reviewer separation
-- **[Pedro Sant'Anna](https://github.com/pedrohcgs/claude-code-my-workflow)** — specialist agents, plan-first protocol, quality gates, critic-fixer loops, [LEARN] tags
+- **[Pedro Sant'Anna](https://github.com/pedrohcgs/antigravity-cli-my-workflow)** — specialist agents, plan-first protocol, quality gates, critic-fixer loops, [LEARN] tags
 - **[Jared Black](https://github.com/Black-JL/Research-Project-Flow)** — "break the glass" protocol for infrastructure changes, data sensitivity rules, reproducible project templates
-- **[Antonio Mele](https://github.com/meleantonio/awesome-econ-ai-stuff)** — curated AI-for-economists resources, programmatic Claude Code controller, scientific skills reference
-- **[Hugo Sant'Anna](https://github.com/hsantanna88/clo-author)** (CLO-Author) — open-source Claude Code workflow for applied econometrics, agents, 29 slash commands
+- **[Antonio Mele](https://github.com/meleantonio/awesome-econ-ai-stuff)** — curated AI-for-economists resources, programmatic Antigravity CLI controller, scientific skills reference
+- **[Hugo Sant'Anna](https://github.com/hsantanna88/clo-author)** (CLO-Author) — open-source Antigravity CLI workflow for applied econometrics, agents, 29 slash commands
 - **[Chris Blattman](https://github.com/chrisblattman/claudeblattman)** — academic AI workflows guide, non-developer-friendly skill and agent patterns
 
 ### General Resources
@@ -280,15 +280,15 @@ This infrastructure draws on design patterns from several open-source workflows.
 - **[NPC Worldwide](https://github.com/npc-worldwide/npcsh)** (npcsh) — knowledge graph sleep/dream cycles, inspiring the memory consolidation skill
 - **[Boris Cherny](https://github.com/AugmendTech/ChernyCode)** (ChernyCode) — AI coding assistant configuration patterns
 - **[Jim Christian](https://github.com/aplaceforallmystuff)** (aplaceforallmystuff) — skill-preflight pre-flight checks, postmortem retrospective, ecosystem health diagnostics
-- **[blader](https://github.com/blader/Claudeception)** (Claudeception) — skill description optimization, post-match action table, solution pattern for skill creation, learning nudge hook
-- **[Anthropic](https://github.com/anthropics/claude-code)** — Claude Code platform, 8 adopted skill patterns (docx, xlsx, pptx, pdf, frontend-design, mcp-builder, webapp-testing, skill-creator)
+- **[blader](https://github.com/blader/Antigravityception)** (Antigravityception) — skill description optimization, post-match action table, solution pattern for skill creation, learning nudge hook
+- **[Anthropic](https://github.com/anthropics/antigravity-cli)** — Antigravity CLI platform, 8 adopted skill patterns (docx, xlsx, pptx, pdf, frontend-design, mcp-builder, webapp-testing, skill-creator)
 
 System created January 2026.
 <!-- CREDITS:END -->
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=flonat/claude-research&type=Date)](https://star-history.com/#flonat/claude-research&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=flonat/agy-research&type=Date)](https://star-history.com/#flonat/agy-research&Date)
 
 ## License
 

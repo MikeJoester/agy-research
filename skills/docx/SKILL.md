@@ -92,7 +92,7 @@ Extracts XML, pretty-prints, merges adjacent runs, and converts smart quotes to 
 
 ### Step 2: Edit XML
 
-Edit files in `unpacked/word/`. **Use "Claude" as the author** for tracked changes and comments.
+Edit files in `unpacked/word/`. **Use "Antigravity" as the author** for tracked changes and comments.
 
 **Use the Edit tool directly for string replacement. Do not write Python scripts.**
 

@@ -65,7 +65,7 @@ For syncing an existing book to a paper revision, use `/audit-paper-book` instea
 
 ## Autonomy
 
-Per the global `--autonomous` / `-y` convention in `~/.claude/rules/phased-work.md` § "Autonomy flag convention". When set:
+Per the global `--autonomous` / `-y` convention in `~/.agy/rules/phased-work.md` § "Autonomy flag convention". When set:
 
 - **No mid-run `AskUserQuestion`** — every choice point uses the recommended default and logs the decision (chapter scope decisions, screenshot mode, atlas-reload trigger).
 - **No inter-phase confirmation** — Phases 1 → 5 chain without stopping for `continue`, EXCEPT Phase 4 (verification) which can hard-block Phase 5 on any verifier failure (see "Hard correctness gates" below).
@@ -172,8 +172,8 @@ When the rendered output is ready, suggest committing the vault changes (`git ad
 
 ## Logging
 
-Append outcome to `~/.claude/ecc/skill-outcomes.jsonl` per `skill-outcome-logging` rule:
+Append outcome to `~/.agy/ecc/skill-outcomes.jsonl` per `skill-outcome-logging` rule:
 
 ```bash
-mkdir -p ~/.claude/ecc && echo '{"skill":"init-paper-book","timestamp":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'","outcome":"success","session":"'"${CLAUDE_SESSION_ID:-}"'","project":"'"$(basename "$PWD")"'","note":""}' >> ~/.claude/ecc/skill-outcomes.jsonl
+mkdir -p ~/.agy/ecc && echo '{"skill":"init-paper-book","timestamp":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'","outcome":"success","session":"'"${AGY_SESSION_ID:-}"'","project":"'"$(basename "$PWD")"'","note":""}' >> ~/.agy/ecc/skill-outcomes.jsonl
 ```

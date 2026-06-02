@@ -15,7 +15,7 @@ argument-hint: [project-path]
 
 Based on Scott Cunningham's workflow of reviving old projects - understanding what exists, documenting it, and making it safe to work with.
 
-**For formal audits with cross-language replication and referee reports, use the Referee 2 agent (`.claude/agents/referee2-reviewer.md`).** This skill is for understanding and documenting existing code, not formal verification.
+**For formal audits with cross-language replication and referee reports, use the Referee 2 agent (`.agy/agents/referee2-reviewer.md`).** This skill is for understanding and documenting existing code, not formal verification.
 
 ## When to Use
 
@@ -106,7 +106,7 @@ After a code audit, you should have:
 project/
 ├── README.md           ← Project overview (generated)
 ├── AUDIT.md            ← Audit findings and issues
-├── CLAUDE.md           ← Safety rules for this project
+├── AGY.md           ← Safety rules for this project
 ├── legacy/             ← Protected original files
 ├── docs/
 │   └── data_dictionary.md

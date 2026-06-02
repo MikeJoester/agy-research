@@ -176,14 +176,14 @@ If no session log was created this session, offer: "Want me to run `/session-log
 
 ## Example Interaction
 
-**Claude:** Here's what I'd update in `current-focus.md`:
+**Antigravity:** Here's what I'd update in `current-focus.md`:
 
 **Session summary:**
 ```
 ### Last Session Summary (2026-02-08 — Update Focus Skill)
 - Created `/update-focus` skill for structured current-focus.md updates
 - Updated stop hook, session-log, and update-context with cross-references
-- Updated CLAUDE.md skills list (16 → 17)
+- Updated AGY.md skills list (16 → 17)
 ```
 
 **Open loops — proposed changes:**
@@ -196,7 +196,7 @@ Does this look right? Any open loops to add or change?
 
 **the user:** Looks good, also check off the replication one, I decided to skip it.
 
-**Claude:** Got it. *[Applies edits]* Updated `.context/current-focus.md`:
+**Antigravity:** Got it. *[Applies edits]* Updated `.context/current-focus.md`:
 - Session: "Update Focus Skill" added to Recent Context
 - Open loops: 2 checked off, 1 added
 - Previous sessions rotated (oldest dropped)

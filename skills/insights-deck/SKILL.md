@@ -1,23 +1,23 @@
 ---
 name: insights-deck
-description: "Use when you need a timestamped Claude Code insights report and Beamer presentation."
+description: "Use when you need a timestamped Antigravity CLI insights report and Beamer presentation."
 allowed-tools: Bash(latexmk*), Bash(pdflatex*), Bash(xelatex*), Bash(mkdir*), Bash(ls*), Bash(cp*), Read, Write, Edit, Glob, Grep, Task
 argument-hint: (no arguments)
 ---
 
 # Insights Deck Skill
 
-> Archive a Claude Code `/insights` HTML report and generate a Beamer presentation summarising the findings. All outputs go to `log/insights/` with date stamps.
+> Archive a Antigravity CLI `/insights` HTML report and generate a Beamer presentation summarising the findings. All outputs go to `log/insights/` with date stamps.
 
 ## When to Use
 
-- After running `/insights` to review your Claude Code usage patterns
-- When you want a shareable deck summarising how you use Claude Code
+- After running `/insights` to review your Antigravity CLI usage patterns
+- When you want a shareable deck summarising how you use Antigravity CLI
 - For periodic self-reflection on AI-assisted workflow
 
 ## Scope
 
-This skill produces **two outputs only**: an archived HTML report and a Beamer deck. Do NOT use insights suggestions to create plans, rules, CLAUDE.md edits, or other follow-up actions during this skill's execution. If the user wants to act on suggestions, that happens after the deck is delivered — as a separate conversation.
+This skill produces **two outputs only**: an archived HTML report and a Beamer deck. Do NOT use insights suggestions to create plans, rules, AGY.md edits, or other follow-up actions during this skill's execution. If the user wants to act on suggestions, that happens after the deck is delivered — as a separate conversation.
 
 ---
 
@@ -25,7 +25,7 @@ This skill produces **two outputs only**: an archived HTML report and a Beamer d
 
 ### Step 1: Prompt the user to run `/insights`
 
-`/insights` is a built-in Claude Code command that cannot be invoked programmatically. Tell the user:
+`/insights` is a built-in Antigravity CLI command that cannot be invoked programmatically. Tell the user:
 
 > Please run `/insights` now. Once the HTML report opens in your browser, let me know and I'll continue.
 
@@ -34,7 +34,7 @@ This skill produces **two outputs only**: an archived HTML report and a Beamer d
 After `/insights` completes, find the most recent insights HTML file:
 
 ```bash
-ls -t /tmp/claude-insights-*.html 2>/dev/null | head -1
+ls -t /tmp/agy-insights-*.html 2>/dev/null | head -1
 ```
 
 If not found in `/tmp/`, check the user's home directory and common download locations. Ask the user for the path if it can't be located automatically.
@@ -92,7 +92,7 @@ Write to `log/insights/YYYY-MM-DD/insights-YYYY-MM-DD-deck.tex` with:
   \definecolor{CloudWhite}{HTML}{FAFBFC}
   ```
 - Suggested structure (adapt based on findings):
-  1. Title slide — "Claude Code Usage: [Month Year]"
+  1. Title slide — "Antigravity CLI Usage: [Month Year]"
   2. Opening claim — lead with the most striking finding
   3. Usage overview — session count, tool distribution, time patterns
   4. Top strengths (1–2 slides)

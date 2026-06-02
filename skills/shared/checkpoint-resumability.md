@@ -82,7 +82,7 @@ Each checkpoint is a JSON file at `.checkpoints/<skill>/<run-id>.json`:
         └── pw-2026-04-09-1600.json
 ```
 
-For skills invoked outside a project directory, use `~/.claude/checkpoints/` instead.
+For skills invoked outside a project directory, use `~/.agy/checkpoints/` instead.
 
 ## Operations
 

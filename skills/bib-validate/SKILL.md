@@ -270,7 +270,7 @@ Compute the score and include the Score Block in the report after the summary ta
 Write the bib-validate report to `reviews/bib-validate/<YYYY-MM-DD-HHMM>.md` (`mkdir -p reviews/bib-validate/` first). Then append a row to the project's `REVIEW-STATE.md`:
 
 ```bash
-bash ~/.claude/skills/_shared/review-state-log.sh \
+bash ~/.agy/skills/_shared/review-state-log.sh \
   --check bib-validate \
   --paper "<paper-{venue} dir>" \
   --verdict "<PASS|ISSUES FOUND>" \

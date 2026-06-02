@@ -1,10 +1,10 @@
 #!/bin/bash
-# Sync Claude Code infrastructure to Codex CLI
+# Sync Antigravity CLI infrastructure to Codex CLI
 # Usage: bash .scripts/sync-to-codex.sh [--dry-run]
 #
 # Phases:
 #   1. Backup existing ~/.codex/ state
-#   2. Symlink skills from ~/.claude/skills/ → ~/.codex/skills/
+#   2. Symlink skills from ~/.agy/skills/ → ~/.codex/skills/
 #   3. Generate ~/.codex/AGENTS.md from agents + rules
 #   4. Update ~/.codex/config.toml (model, sandbox, MCP servers)
 #   5. Validate
@@ -14,12 +14,12 @@ set -euo pipefail
 DRY_RUN=false
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=true
 
-CLAUDE_HOME="$HOME/.claude"
+AGY_HOME="$HOME/.agy"
 CODEX_HOME="$HOME/.codex"
-SKILLS_SRC="$CLAUDE_HOME/skills"
+SKILLS_SRC="$AGY_HOME/skills"
 SKILLS_DST="$CODEX_HOME/skills"
-AGENTS_SRC="$CLAUDE_HOME/agents"
-RULES_SRC="$CLAUDE_HOME/rules"
+AGENTS_SRC="$AGY_HOME/agents"
+RULES_SRC="$AGY_HOME/rules"
 
 # Resolve Task Management root
 _CONFIG="$HOME/.config/task-mgmt/path"
@@ -49,12 +49,12 @@ if ! command -v codex &>/dev/null; then
 fi
 
 if [[ ! -d "$SKILLS_SRC" ]]; then
-    error "Claude skills directory not found at $SKILLS_SRC"
+    error "Antigravity skills directory not found at $SKILLS_SRC"
     exit 1
 fi
 
-echo "Syncing Claude Code → Codex CLI"
-echo "  Claude home: $CLAUDE_HOME"
+echo "Syncing Antigravity CLI → Codex CLI"
+echo "  Antigravity home: $AGY_HOME"
 echo "  Codex home:  $CODEX_HOME"
 echo "  Dry run:     $DRY_RUN"
 echo ""
@@ -84,7 +84,7 @@ LINKED=0
 SKIPPED=0
 REMOVED=0
 
-# Remove stale symlinks (point to skills that no longer exist in Claude)
+# Remove stale symlinks (point to skills that no longer exist in Antigravity)
 for link in "$SKILLS_DST"/*/; do
     [[ ! -L "${link%/}" ]] && continue  # skip non-symlinks
     link_name="$(basename "${link%/}")"
@@ -102,7 +102,7 @@ for link in "$SKILLS_DST"/*/; do
     fi
 done
 
-# Create symlinks for each Claude skill
+# Create symlinks for each Antigravity skill
 for skill_dir in "$SKILLS_SRC"/*/; do
     [[ ! -d "$skill_dir" ]] && continue
     skill_name="$(basename "$skill_dir")"

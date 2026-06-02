@@ -83,7 +83,7 @@ def category_specific_reliability(coded_data, code_var='frame', coders=None):
     Calculate reliability per category across all coders.
 
     coded_data: list of dicts, each with '{coder}_{code_var}' keys
-    coders: list of coder names (e.g., ['claude', 'glm', 'kimi'] or ['coder1', 'coder2'])
+    coders: list of coder names (e.g., ['agy', 'glm', 'kimi'] or ['coder1', 'coder2'])
     """
     # Collect all categories
     categories = set()
@@ -186,7 +186,7 @@ For 3-model annotation, use majority vote (2/3 agreement):
 from collections import Counter
 
 def majority_vote(codes_by_model):
-    """codes_by_model: {'claude': 'X', 'gpt': 'Y', 'gemini': 'X'} → 'X'"""
+    """codes_by_model: {'agy': 'X', 'gpt': 'Y', 'gemini': 'X'} → 'X'"""
     counter = Counter(codes_by_model.values())
     majority, count = counter.most_common(1)[0]
     return majority, count  # count = 2 or 3
@@ -225,7 +225,7 @@ Findings involving this category should be interpreted with caution.
 ### Human Validation (if LLM-annotated)
 - Gold standard sample: N = XXX
 - LLM majority vs. human: κ = X.XX
-- Model-specific: Claude κ = X.XX, GPT κ = X.XX, Gemini κ = X.XX
+- Model-specific: Antigravity κ = X.XX, GPT κ = X.XX, Gemini κ = X.XX
 ```
 
 ---

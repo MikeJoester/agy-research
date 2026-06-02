@@ -157,7 +157,7 @@ Save to `log/audits/quality-reports/YYYY-MM-DD_<project-name>.md`:
 **Project:** <project name>
 **Date:** YYYY-MM-DD
 **File:** <path to main.tex>
-**Target:** <venue from project CLAUDE.md, or "not specified">
+**Target:** <venue from project AGY.md, or "not specified">
 
 ---
 
@@ -255,12 +255,12 @@ For each agent's return:
 1. Write the agent's final response to a temp file (`/tmp/pre-submission-<agent>.md`).
 2. Parse the directive:
    ```bash
-   ARGS=$(bash ~/.claude/skills/_shared/parse-stamp-directive.sh /tmp/pre-submission-<agent>.md)
+   ARGS=$(bash ~/.agy/skills/_shared/parse-stamp-directive.sh /tmp/pre-submission-<agent>.md)
    ```
    If `parse-stamp-directive.sh` exits non-zero, log a warning ("Agent X return did not contain a review-state-stamp directive — INDEX.md not updated for this run") and continue.
 3. **Verify the `.md` report file exists; reconstruct from return content if missing:**
    ```bash
-   VERIFY=$(bash ~/.claude/skills/_shared/post-dispatch-verify.sh \
+   VERIFY=$(bash ~/.agy/skills/_shared/post-dispatch-verify.sh \
        --return-file /tmp/pre-submission-<agent>.md \
        --project "$PROJECT_ROOT" \
        --agent <agent>)
@@ -268,7 +268,7 @@ For each agent's return:
    If `VERIFY` starts with `RECONSTRUCTED`, append `(report reconstructed by orchestrator — agent skipped Write)` to the `--notes` value before stamping. Guards against the blindspot-class failure mode. See `log/2026-05-21-blindspot-write-fix.md`.
 4. Stamp with the orchestrator's `--trigger` override:
    ```bash
-   eval bash ~/.claude/skills/_shared/review-state-log.sh "$ARGS" \
+   eval bash ~/.agy/skills/_shared/review-state-log.sh "$ARGS" \
        --trigger pre-submission-report \
        --source agent \
        --project "$PROJECT_ROOT"

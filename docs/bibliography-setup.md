@@ -14,16 +14,16 @@ client = OpenAlexClient(email="your.email@university.edu")
 
 OpenAlex uses this for its [polite pool](https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication#the-polite-pool) — faster rate limits, no registration needed.
 
-## 2. Add the Server to Your Claude Code MCP Config
+## 2. Add the Server to Your Antigravity CLI MCP Config
 
-In `.mcp.json` (project root) or `~/.claude.json` (global access):
+In `.mcp.json` (project root) or `~/.agy.json` (global access):
 
 ```json
 {
   "mcpServers": {
     "biblio": {
       "command": "/opt/homebrew/bin/uv",
-      "args": ["run", "--frozen", "--directory", "/path/to/claude-research/.mcp-server-biblio", "python", "server.py"],
+      "args": ["run", "--frozen", "--directory", "/path/to/agy-research/.mcp-server-biblio", "python", "server.py"],
       "env": {}
     }
   }

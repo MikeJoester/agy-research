@@ -149,8 +149,8 @@ Projects naturally grow beyond the initial scaffold. These items are **not** cre
 | `SETUP.md` | Computational projects with dependencies | Environment setup for collaborators |
 | `pyproject.toml` / `.venv/` | Python-heavy projects | Package management |
 | `.planning/` | After running `/init-project-orchestration` | Project roadmap and state tracking |
-| `.claude/agents/` | After running `/init-project-orchestration` | Project-level role-specific agents |
-| `.claude/commands/` | After running `/init-project-orchestration` | Project-level repeatable task commands |
+| `.agy/agents/` | After running `/init-project-orchestration` | Project-level role-specific agents |
+| `.agy/commands/` | After running `/init-project-orchestration` | Project-level repeatable task commands |
 
 ---
 

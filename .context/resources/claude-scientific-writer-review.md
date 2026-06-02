@@ -1,10 +1,10 @@
-# Review: K-Dense-AI/claude-scientific-writer
+# Review: K-Dense-AI/agy-scientific-writer
 
-> Reviewed 2026-02-24. Repo: https://github.com/K-Dense-AI/claude-scientific-writer (856 stars)
+> Reviewed 2026-02-24. Repo: https://github.com/K-Dense-AI/agy-scientific-writer (856 stars)
 
 ## What It Is
 
-A monolithic scientific document generation tool combining Claude with real-time literature search (Perplexity via OpenRouter) and AI diagram generation (Nano Banana Pro). Available as Claude Code plugin, CLI, or Python API. MIT-licensed.
+A monolithic scientific document generation tool combining Antigravity with real-time literature search (Perplexity via OpenRouter) and AI diagram generation (Nano Banana Pro). Available as Antigravity CLI plugin, CLI, or Python API. MIT-licensed.
 
 ## Architecture
 
@@ -36,9 +36,9 @@ A monolithic scientific document generation tool combining Claude with real-time
 
 - **Monolithic vs modular**: one tool does everything; ours is skills + agents + standalone apps
 - **External API-heavy**: requires Perplexity, Nano Banana Pro, Parallel Web API keys (more cost)
-- **"Never stop" philosophy**: their CLAUDE.md says "NEVER ask 'would you like me to continue?'"; ours has plan-first discipline and phase boundaries
+- **"Never stop" philosophy**: their AGY.md says "NEVER ask 'would you like me to continue?'"; ours has plan-first discipline and phase boundaries
 - **No novelty scoring or venue-specific framing**: that's unique to our Scout
-- **Heavy CLAUDE.md**: ~500 lines of instructions; ours follows lean-claude-md rule
+- **Heavy AGY.md**: ~500 lines of instructions; ours follows lean-agy-md rule
 - **No design-before-results discipline**: no equivalent to our research design rules
 
 ## Ideas Worth Borrowing

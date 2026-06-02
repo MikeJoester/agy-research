@@ -1,6 +1,6 @@
 # System Documentation Conventions
 
-> Formatting, structure, and style conventions for Task Management infrastructure documentation: CLAUDE.md, SKILL.md, rules, component catalogues (`docs/`), and shared resources.
+> Formatting, structure, and style conventions for Task Management infrastructure documentation: AGY.md, SKILL.md, rules, component catalogues (`docs/`), and shared resources.
 >
 > Companion to `project-documentation.md` (which covers outward-facing docs like READMEs, user manuals, and architecture references).
 
@@ -8,9 +8,9 @@
 
 | Document | Audience | Purpose | Tone |
 |----------|----------|---------|------|
-| `CLAUDE.md` | Claude (AI) | Session instructions — what to do and how | Imperative, terse |
+| `AGY.md` | Antigravity (AI) | Session instructions — what to do and how | Imperative, terse |
 | `README.md` | Human developers | Project overview, quick start, navigation | Friendly, scannable |
-| `SKILL.md` | Claude (AI) | Step-by-step workflow protocol | Imperative, procedural |
+| `SKILL.md` | Antigravity (AI) | Step-by-step workflow protocol | Imperative, procedural |
 | `docs/*.md` | Human + AI | Detailed reference material | Neutral, thorough |
 | `user-manual.md` | End users | Feature docs, how-to guides | Approachable, example-driven |
 | `architecture.md` | Maintainers | Technical internals, data flow, design decisions | Precise, factual |
@@ -111,23 +111,23 @@ Use `---` to separate major conceptual blocks within a section. Do not use betwe
 
 ## Document Structure Patterns
 
-### CLAUDE.md (AI Context File)
+### AGY.md (AI Context File)
 
 ```markdown
-# Claude Context for [Project Name]
+# Antigravity Context for [Project Name]
 
 > One-liner about the project.
 
 ## [Safety/Protection Rules]     ← always first if present
 ## File Structure                ← compact tree, annotated
 ## Conventions                   ← project-specific rules
-## [Domain-Specific Sections]    ← what Claude needs to know
+## [Domain-Specific Sections]    ← what Antigravity needs to know
 ## Session Continuity            ← pointers to .context/, log/
 ```
 
 **Key constraints:**
-- **Max 200 lines.** Extract anything longer than 15 lines of reference material to `docs/` with a one-line pointer (see `lean-claude-md` rule).
-- **Instructions, not knowledge.** CLAUDE.md tells Claude what to do and where to look — it doesn't store the knowledge itself.
+- **Max 200 lines.** Extract anything longer than 15 lines of reference material to `docs/` with a one-line pointer (see `lean-agy-md` rule).
+- **Instructions, not knowledge.** AGY.md tells Antigravity what to do and where to look — it doesn't store the knowledge itself.
 - **Pointer pattern:** `Full guidelines: [\`docs/file.md\`](docs/file.md)`
 
 ### README.md (Human Overview)
@@ -219,7 +219,7 @@ What it does, when it applies, and how it works.
 - **Count in blockquote:** Every catalogue opens with the actual count. This count must match reality — `/sync-repo private` propagates count changes across files.
 - **Overview table first:** A compact table listing every item before any details. Columns vary by component type (see below).
 - **Numbered detail sections:** Each component gets a `###` subsection.
-- **Cross-file count consistency:** Counts appear in CLAUDE.md, README.md, `docs/system.md`, and the catalogue file. All must agree.
+- **Cross-file count consistency:** Counts appear in AGY.md, README.md, `docs/system.md`, and the catalogue file. All must agree.
 
 **Catalogue-specific columns:**
 
@@ -248,7 +248,7 @@ Not a component catalogue but an architectural overview of the entire Task Manag
 
 | Context | Voice | Example |
 |---------|-------|---------|
-| CLAUDE.md, SKILL.md, rules | Imperative | "Read the config file. Compare against the source." |
+| AGY.md, SKILL.md, rules | Imperative | "Read the config file. Compare against the source." |
 | README.md, user-manual | Second person | "You can configure the model with `--model`." |
 | Architecture docs | Third person, present tense | "The orchestrator wires the data source to the LLM service." |
 | Session logs | Past tense, first person plural | "We implemented the validation script." |
@@ -267,8 +267,8 @@ Use these terms consistently across all documentation:
 | Term | Meaning | Not |
 |------|---------|-----|
 | Skill | Reusable workflow definition in `skills/` | "command", "script", "macro" |
-| Agent | Independent Claude instance with fresh context | "sub-agent", "worker" |
-| Hook | Automated script triggered by Claude Code events | "trigger", "listener" |
+| Agent | Independent Antigravity instance with fresh context | "sub-agent", "worker" |
+| Hook | Automated script triggered by Antigravity CLI events | "trigger", "listener" |
 | Rule | Behavioural constraint, auto-loaded every session | "policy", "guideline" |
 | Resource | Cloned external repo in `resources/` | "dependency", "library" |
 | Workflow | A sequence of steps within a skill | "process", "pipeline" (unless actually a data pipeline) |
@@ -310,7 +310,7 @@ project/
 |--------------|-------------|-----|
 | Duplicating content across files | Goes stale independently, contradicts itself | Keep detail in one file, use pointers elsewhere |
 | Hardcoding counts in prose | Requires manual updates across 8+ files | Use verifiable counts or link to the source |
-| Writing CLAUDE.md as a knowledge base | Burns tokens every session | Extract to `docs/`, leave a one-line pointer |
+| Writing AGY.md as a knowledge base | Burns tokens every session | Extract to `docs/`, leave a one-line pointer |
 | Paragraphs inside table cells | Unreadable, breaks rendering | Keep cells to one line; use a subsection instead |
 | Deep nesting (4+ bullet levels) | Cognitive overload, hard to scan | Restructure as subsections or a table |
 | Mixing imperative and descriptive voice | Confusing — is this an instruction or a description? | Match voice to document type (see table above) |
@@ -327,7 +327,7 @@ Before considering a document complete:
 3. **Tables for structured data** — not bullet-list parades
 4. **Code blocks tagged** — every fenced block has a language identifier
 5. **Cross-references linked** — related files and skills linked, not just named
-6. **Within line limits** — CLAUDE.md < 200, README < 150, SKILL.md < 300
+6. **Within line limits** — AGY.md < 200, README < 150, SKILL.md < 300
 7. **No duplication** — information lives in one canonical place with pointers
 8. **Terminology matches** — uses standard terms from the terminology table
 9. **Voice matches document type** — imperative for instructions, descriptive for reference

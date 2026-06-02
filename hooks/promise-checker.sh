@@ -2,7 +2,7 @@
 # Skip on non-Mac environments (cloud, mobile)
 source "$(dirname "$0")/resolve-task-mgmt.sh" || exit 0
 # promise-checker.sh
-# Stop hook — catches "performative compliance": Claude says it remembered/noted/saved
+# Stop hook — catches "performative compliance": Antigravity says it remembered/noted/saved
 # something but never actually called Edit or Write.
 #
 # Scans the last assistant turn for promise patterns.
@@ -50,7 +50,7 @@ if [ -z "$TEXT_CONTENT" ]; then
 fi
 
 # --- Promise patterns ---
-# Phrases where Claude claims to have stored/remembered/noted something,
+# Phrases where Antigravity claims to have stored/remembered/noted something,
 # or promises to do so. Case-insensitive matching applied later.
 
 PROMISE_PATTERNS=(

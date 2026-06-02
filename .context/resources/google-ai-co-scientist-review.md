@@ -52,7 +52,7 @@ Expert-in-the-loop results (Fig 6): AI-augmented expert hypotheses eventually su
 - Tournament + meta-review loop is a novel coordination mechanism distinct from sequential pipelines or debate protocols
 - Proximity graph for idea deduplication and exploration-space mapping
 
-### Borrowed for Claude Code infrastructure
+### Borrowed for Antigravity CLI infrastructure
 - **Multi-turn debate** added to `/devils-advocate` (3-round: critic -> defense -> adjudication)
 
 ### Not worth implementing

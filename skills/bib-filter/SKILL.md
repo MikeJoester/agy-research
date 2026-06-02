@@ -96,15 +96,15 @@ This skill writes files. Before any auto-commit, emit an outputs manifest and ru
 
 **Required tail steps** (before `git commit`):
 
-1. Write manifest to `<project>/.claude/state/outputs-manifest-<UTC-timestamp>.json` listing every file this skill claims to have written in this invocation (paths relative to the project root).
+1. Write manifest to `<project>/.agy/state/outputs-manifest-<UTC-timestamp>.json` listing every file this skill claims to have written in this invocation (paths relative to the project root).
 2. Run:
 
    ```bash
-   python3 "$HOME/.claude/skills/_shared/verify_outputs.py" \
+   python3 "$HOME/.agy/skills/_shared/verify_outputs.py" \
        --manifest "$MANIFEST" \
        --project-root "$PROJECT_ROOT"
    ```
 
-3. If the verifier exits non-zero, **do not commit** — surface the missing-files list to the user and stop. The verifier has already logged an `error` entry to `~/.claude/ecc/skill-outcomes.jsonl`, which feeds the launcher dashboard.
+3. If the verifier exits non-zero, **do not commit** — surface the missing-files list to the user and stop. The verifier has already logged an `error` entry to `~/.agy/ecc/skill-outcomes.jsonl`, which feeds the launcher dashboard.
 
 **Why:** closes the "hallucinated outputs" failure class (commit `b2cff75`, 2026-04-18).

@@ -147,11 +147,11 @@ Print to stdout. If `--save` flag or 10+ projects scanned, also write to `log/la
 
 When writing the report file, emit an outputs manifest and run the shared verifier per [`_shared/verify-outputs.md`](../_shared/verify-outputs.md):
 
-1. Write manifest to `<project>/.claude/state/outputs-manifest-<UTC-timestamp>.json` listing every file written this invocation, paths relative to the project root.
+1. Write manifest to `<project>/.agy/state/outputs-manifest-<UTC-timestamp>.json` listing every file written this invocation, paths relative to the project root.
 2. Run:
 
    ```bash
-   python3 "$HOME/.claude/skills/_shared/verify_outputs.py" \
+   python3 "$HOME/.agy/skills/_shared/verify_outputs.py" \
        --manifest "$MANIFEST" \
        --project-root "$PROJECT_ROOT"
    ```

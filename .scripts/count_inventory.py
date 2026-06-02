@@ -30,7 +30,7 @@ def get_ground_truth(root: Path) -> dict[str, int]:
     # Also count skill.md (lowercase) to avoid missing any
     skills += len([p for p in (root / "skills").glob("**/skill.md")
                    if not any(s.name == "SKILL.md" for s in p.parent.iterdir())])
-    agents = len(list((root / ".claude" / "agents").glob("*.md")))
+    agents = len(list((root / ".agy" / "agents").glob("*.md")))
     rules = len(list((root / "rules").glob("*.md")))
     hooks_sh = len(list((root / "hooks").glob("*.sh")))
     hooks_py = len(list((root / "hooks").glob("*.py")))
@@ -68,7 +68,7 @@ def get_ground_truth(root: Path) -> dict[str, int]:
 
 # Files to scan (relative to repo root)
 SCAN_FILES = [
-    "CLAUDE.md",
+    "AGY.md",
     "README.md",
     "docs/components/skills.md",
     "docs/components/rules.md",

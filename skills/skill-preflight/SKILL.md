@@ -16,7 +16,7 @@ Prevent duplicate functionality by analysing existing skills and agents before c
 
 Invoke **before** creating ANY new:
 - Skill (`skills/*/SKILL.md`)
-- Agent (`.claude/agents/*.md`)
+- Agent (`.agy/agents/*.md`)
 
 Trigger phrases:
 - "Create a skill for..."
@@ -45,13 +45,13 @@ Run these searches in parallel:
 ```
 Grep for each keyword across:
   - skills/*/SKILL.md (frontmatter + body)
-  - .claude/agents/*.md (frontmatter + body)
+  - .agy/agents/*.md (frontmatter + body)
 ```
 
 3. **Agent scan** — read frontmatter of each agent to check purpose overlap:
 
 ```
-Glob: .claude/agents/*.md
+Glob: .agy/agents/*.md
 Read first 20 lines of each match
 ```
 

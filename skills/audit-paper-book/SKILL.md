@@ -120,11 +120,11 @@ Phase 1 + Phase 2's deterministic checks are implemented in `scripts/batch_audit
 ```bash
 # Audit all 9 books
 ~/Task-Management/packages/atlas-workspace/.venv/bin/python \
-    ~/.claude/skills/audit-paper-book/scripts/batch_audit.py
+    ~/.agy/skills/audit-paper-book/scripts/batch_audit.py
 
 # Audit one book
 ~/Task-Management/packages/atlas-workspace/.venv/bin/python \
-    ~/.claude/skills/audit-paper-book/scripts/batch_audit.py <slug>
+    ~/.agy/skills/audit-paper-book/scripts/batch_audit.py <slug>
 ```
 
 What the script gets right:
@@ -177,8 +177,8 @@ See [`references/report-format-template.md`](references/report-format-template.m
 
 ## Logging
 
-Append outcome to `~/.claude/ecc/skill-outcomes.jsonl`:
+Append outcome to `~/.agy/ecc/skill-outcomes.jsonl`:
 
 ```bash
-mkdir -p ~/.claude/ecc && echo '{"skill":"audit-paper-book","timestamp":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'","outcome":"success","session":"'"${CLAUDE_SESSION_ID:-}"'","project":"'"$(basename "$PWD")"'","note":""}' >> ~/.claude/ecc/skill-outcomes.jsonl
+mkdir -p ~/.agy/ecc && echo '{"skill":"audit-paper-book","timestamp":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'","outcome":"success","session":"'"${AGY_SESSION_ID:-}"'","project":"'"$(basename "$PWD")"'","note":""}' >> ~/.agy/ecc/skill-outcomes.jsonl
 ```

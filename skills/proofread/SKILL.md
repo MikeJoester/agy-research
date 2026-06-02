@@ -153,7 +153,7 @@ Verify that mathematical notation is complete and internally consistent.
 
 ### 11a. Anonymity (double-blind venues only)
 
-If the project's vault submission frontmatter or CLAUDE.md indicates a double-blind venue (CCS, NDSS, S&P, USENIX, ICML, NeurIPS, ICLR, FAccT, AAAI, etc.), run paper-side checks P1–P8 from `~/.claude/skills/_shared/double-blind-anonymity-checklist.md` and flag every FAIL as **Critical**:
+If the project's vault submission frontmatter or AGY.md indicates a double-blind venue (CCS, NDSS, S&P, USENIX, ICML, NeurIPS, ICLR, FAccT, AAAI, etc.), run paper-side checks P1–P8 from `~/.agy/skills/_shared/double-blind-anonymity-checklist.md` and flag every FAIL as **Critical**:
 
 - **P1** title page anonymized (no `\author{}` with real names)
 - **P2** no `\thanks{}`, `\acknowledgements`, funding, or grant references in body
@@ -283,7 +283,7 @@ uv run python -m council_cli \
     --prompt-file /tmp/proofread-prompt.txt \
     --context-file /tmp/paper-content.txt \
     --output-md /tmp/proofread-council.md \
-    --chairman claude \
+    --chairman agy \
     --timeout 180
 ```
 
@@ -296,7 +296,7 @@ See `skills/shared/council-protocol.md` for the full orchestration protocol.
 After writing the proofread report, append a row to the project's `REVIEW-STATE.md`:
 
 ```bash
-bash ~/.claude/skills/_shared/review-state-log.sh \
+bash ~/.agy/skills/_shared/review-state-log.sh \
   --check proofread \
   --paper "<paper-{venue} dir>" \
   --verdict "<PASS|ISSUES FOUND>" \

@@ -30,7 +30,7 @@ Create the directory structure:
 
 ```
 <project-name>/
-├── CLAUDE.md               # Project-specific Claude instructions
+├── AGY.md               # Project-specific Antigravity instructions
 ├── README.md               # Project overview
 ├── MEMORY.md               # Knowledge base (seeded with template)
 ├── paper/                  # → Overleaf symlink (or empty dir)
@@ -52,7 +52,7 @@ Create the directory structure:
 
 ### Phase 3: Populate Files
 
-**CLAUDE.md** — project-specific instructions:
+**AGY.md** — project-specific instructions:
 - Paper title and research question
 - Co-authors and target venue
 - Methodology and key conventions
@@ -104,7 +104,7 @@ Print a summary of what was created:
 ```
 Project created: ~/Research/<project-name>/
   Directories: 12
-  Files: 4 (CLAUDE.md, README.md, MEMORY.md, .gitignore)
+  Files: 4 (AGY.md, README.md, MEMORY.md, .gitignore)
   Overleaf: linked / not configured
   Git: initialised with initial commit
 

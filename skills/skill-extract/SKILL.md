@@ -207,9 +207,9 @@ The validator checks: frontmatter validity, name format and directory match, des
 
 1. Copy the skill to the deployed location (rsync won't run until next session start):
    ```bash
-   cp -r skills/{name} ~/.claude/skills/{name}
+   cp -r skills/{name} ~/.agy/skills/{name}
    ```
-2. Check that `~/.claude/skills/{name}/SKILL.md` exists
+2. Check that `~/.agy/skills/{name}/SKILL.md` exists
 3. Tell the user: "Created `/{name}` — [one-line summary]. It's available immediately in all projects."
 4. If the skill is substantial, suggest updating `docs/components/skills.md` with the new entry
 

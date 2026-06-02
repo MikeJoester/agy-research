@@ -20,7 +20,7 @@ Traditional content analysis requires human coders for reliability. This protoco
                 ▼
         ┌─────────────┐
         │  Coder C    │
-        │  (Claude)   │
+        │  (Antigravity)   │
         │ 30-item     │
         │ reliability │
         │ sample      │
@@ -55,7 +55,7 @@ reliability_sample = random.sample(combined, 30)
 
 ### Step 4: Third-Model Validation
 ```python
-# Claude codes the 30-item sample independently
+# Antigravity codes the 30-item sample independently
 claude_results = code_with_claude(reliability_sample, instructions)
 
 # Compare against original coders
@@ -75,8 +75,8 @@ kappa_vs_gemini = cohens_kappa(
 
 | Comparison | kappa | Agreement |
 |------------|-------|-----------|
-| Claude vs Codex | 0.94 | 97% |
-| Claude vs Gemini | 0.92 | 96% |
+| Antigravity vs Codex | 0.94 | 97% |
+| Antigravity vs Gemini | 0.92 | 96% |
 | **Overall** | **0.935** | **96.7%** |
 ```
 
@@ -85,8 +85,8 @@ kappa_vs_gemini = cohens_kappa(
 | Concern | How Protocol Addresses It |
 |---------|---------------------------|
 | Single-model bias | Three different model families |
-| Circular validation | Validator (Claude) never saw training data |
-| Provider collusion | Codex (OpenAI), Gemini (Google), Claude (Anthropic) |
+| Circular validation | Validator (Antigravity) never saw training data |
+| Provider collusion | Codex (OpenAI), Gemini (Google), Antigravity (Anthropic) |
 | Replicability | Fixed random seed, identical instructions |
 
 ## Minimum Requirements
@@ -159,7 +159,7 @@ Always report the nature of disagreements:
 
 Single disagreement (1/30): County fair organization
 - Codex: SERVICE (provides entertainment to community)
-- Claude: FELLOWSHIP (exists for member exhibitors)
+- Antigravity: FELLOWSHIP (exists for member exhibitors)
 
 **Interpretation:** Borderline case illustrating reasonable ambiguity
 in the scheme, not systematic divergence.
