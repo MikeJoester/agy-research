@@ -14,7 +14,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $RepoDir = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
-$AntigravityDir = Join-Path $env:USERPROFILE ".agy"
+$AntigravityDir = Join-Path $env:USERPROFILE ".antigravitycli"
 
 # Try to read version from package.json
 $Version = "unknown"
@@ -73,7 +73,7 @@ function Link-Component {
     }
 }
 
-# ---------- 1. Create ~/.agy if needed ----------
+# ---------- 1. Create ~/.antigravitycli if needed ----------
 if (-not (Test-Path $AntigravityDir)) {
     Write-Info "Creating $AntigravityDir..."
     New-Item -ItemType Directory -Path $AntigravityDir | Out-Null
@@ -82,18 +82,18 @@ if (-not (Test-Path $AntigravityDir)) {
 
 # ---------- 2. Link components ----------
 Link-Component "skills" (Join-Path $RepoDir "skills") (Join-Path $AntigravityDir "skills")
-Link-Component "agents" (Join-Path $RepoDir ".agy\agents") (Join-Path $AntigravityDir "agents")
-Link-Component "rules"  (Join-Path $RepoDir ".agy\rules")  (Join-Path $AntigravityDir "rules")
+Link-Component "agents" (Join-Path $RepoDir ".antigravitycli\agents") (Join-Path $AntigravityDir "agents")
+Link-Component "rules"  (Join-Path $RepoDir ".antigravitycli\rules")  (Join-Path $AntigravityDir "rules")
 Link-Component "hooks"  (Join-Path $RepoDir "hooks")  (Join-Path $AntigravityDir "hooks")
 
 # ---------- 3. Copy settings (skip in update mode) ----------
-$SettingsSrc = Join-Path $RepoDir ".agy\settings.json"
+$SettingsSrc = Join-Path $RepoDir ".antigravitycli\settings.json"
 $SettingsDst = Join-Path $AntigravityDir "settings.json"
 
 if ($Update) {
     Write-Info "Update mode -- skipping settings.json (preserving your config)"
 } elseif (Test-Path $SettingsDst) {
-    Write-Warn "~/.agy/settings.json already exists -- not overwriting"
+    Write-Warn "~/.antigravitycli/settings.json already exists -- not overwriting"
     Write-Warn "Compare with $SettingsSrc and merge manually"
 } else {
     Copy-Item $SettingsSrc $SettingsDst
@@ -167,7 +167,7 @@ if (-not $Update) {
     Write-Host "  2. Edit .context\current-focus.md with your current work"
     Write-Host "  3. Edit .context\projects\_index.md with your projects"
     Write-Host "  4. Edit AGY.md to customise conventions"
-    Write-Host "  5. Review ~\.agy\settings.json for permissions and hooks"
+    Write-Host "  5. Review ~\.antigravitycli\settings.json for permissions and hooks"
     Write-Host ""
     Write-Host "Then open any project directory and run 'agy' to start!"
 } else {
