@@ -5,25 +5,25 @@
 
 ## Identity
 
-- **Name:** [Your Name]
-- **Role:** PhD Researcher
-- **Institution:** UK University
+- **Name:** Nguyen The Dan
+- **Role:** Master's Researcher
+- **Institution:** 한국교통대학교 (Korea National University of Transportation, or KNUT)
 
 ## Supervisors
 
 | Name | Institution | Role | Focus |
 |------|-------------|------|-------|
-| [Supervisor 1] | [University] | Primary | [Their focus] |
+| [Yong-Hwa Kim] | [한국교통대학교] | Primary | [Artificial Intelligence, Communication Systems] |
 | [Supervisor 2] | [University] | Secondary | [Their focus] |
 
 ## Teaching
 
-- Graduate TA for Research Methods (Autumn term)
-- Workshop facilitator for Data Analysis in R
+<!-- - Graduate TA for Research Methods (Autumn term)
+- Workshop facilitator for Data Analysis in R -->
 
 ## Tools & Preferences
 
 - **Writing:** LaTeX (papers), Markdown (notes)
-- **Data analysis:** R (primary), Python (secondary)
+- **Data analysis:** Python (primary), NodeJS (secondary)
 - **Version control:** Git
 - **Reference management:** Paperpile (synced to `paperpile.bib`)

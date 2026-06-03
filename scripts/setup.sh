@@ -11,7 +11,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-AGY_DIR="$HOME/.agy"
+AGY_DIR="$HOME/.antigravitycli"
 VERSION="$(grep '"version"' "$REPO_DIR/package.json" 2>/dev/null | head -1 | sed 's/.*: *"\(.*\)".*/\1/' || echo "unknown")"
 UPDATE_MODE=false
 
@@ -63,7 +63,7 @@ link_component() {
   fi
 }
 
-# ---------- 1. Create ~/.agy if needed ----------
+# ---------- 1. Create ~/.antigravitycli if needed ----------
 if [[ ! -d "$AGY_DIR" ]]; then
   info "Creating $AGY_DIR..."
   mkdir -p "$AGY_DIR"
@@ -72,18 +72,18 @@ fi
 
 # ---------- 2. Symlink components ----------
 link_component "skills" "$REPO_DIR/skills" "$AGY_DIR/skills"
-link_component "agents" "$REPO_DIR/.agy/agents" "$AGY_DIR/agents"
-link_component "rules"  "$REPO_DIR/.agy/rules"  "$AGY_DIR/rules"
+link_component "agents" "$REPO_DIR/.antigravitycli/agents" "$AGY_DIR/agents"
+link_component "rules"  "$REPO_DIR/.antigravitycli/rules"  "$AGY_DIR/rules"
 link_component "hooks"  "$REPO_DIR/hooks"  "$AGY_DIR/hooks"
 
 # ---------- 3. Copy settings (skip in update mode) ----------
 if $UPDATE_MODE; then
   info "Update mode — skipping settings.json (preserving your config)"
 elif [[ -f "$AGY_DIR/settings.json" ]]; then
-  warn "~/.agy/settings.json already exists — not overwriting"
-  warn "Compare with $REPO_DIR/.agy/settings.json and merge manually"
+  warn "~/.antigravitycli/settings.json already exists — not overwriting"
+  warn "Compare with $REPO_DIR/.antigravitycli/settings.json and merge manually"
 else
-  cp "$REPO_DIR/.agy/settings.json" "$AGY_DIR/settings.json"
+  cp "$REPO_DIR/.antigravitycli/settings.json" "$AGY_DIR/settings.json"
   ok "Copied settings.json → $AGY_DIR/settings.json"
 fi
 
@@ -133,7 +133,7 @@ if ! $UPDATE_MODE; then
   echo "  2. Edit .context/current-focus.md with your current work"
   echo "  3. Edit .context/projects/_index.md with your projects"
   echo "  4. Edit AGY.md to customise conventions"
-  echo "  5. Review ~/.agy/settings.json for permissions and hooks"
+  echo "  5. Review ~/.antigravitycli/settings.json for permissions and hooks"
   echo ""
   echo "Then open any project directory and run 'agy' to start!"
 else
