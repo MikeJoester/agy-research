@@ -275,11 +275,3 @@ This infrastructure draws on design patterns from several open-source workflows.
 
 System created January 2026.
 <!-- CREDITS:END -->
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=flonat/agy-research&type=Date)](https://star-history.com/#flonat/agy-research&Date)
-
-## License
-
-MIT
