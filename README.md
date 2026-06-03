@@ -11,20 +11,11 @@ Works on **macOS, Linux, and Windows**. Use Antigravity CLI from the [terminal C
 
 ## Installation
 
-### Quick Install (npm)
-
-```bash
-npx flonat-research
-```
-
-This downloads the package and runs the setup script, which symlinks skills, agents, hooks, and rules into `~/.agy/`.
-
 ### Full Install (recommended for customisation)
 
 #### macOS / Linux
 
 ```bash
-git clone https://github.com/flonat/agy-research.git
 cd agy-research
 ./scripts/setup.sh
 ```
@@ -32,7 +23,6 @@ cd agy-research
 #### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/flonat/agy-research.git
 cd agy-research
 .\scripts\setup.ps1
 ```
